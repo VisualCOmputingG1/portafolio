@@ -1,0 +1,15 @@
+{
+  "name": "Visual Computing",
+  "short_name": "Visual Computing",
+  "start_url": "/portafolio/",
+  "scope": "/portafolio/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/portafolio/favicon.svg",
+      "sizes": "512x512"
+    }
+  ]
+}
