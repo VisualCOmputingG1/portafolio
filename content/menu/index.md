@@ -4,6 +4,7 @@ headless: true
 
 - **Shortcodes**
 - [p5]({{< relref "/docs/shortcodes/p5" >}})
+- [Participants]({{relref "/docs/shortcodes/participants"}})
 - [Buttons]({{< relref "/docs/shortcodes/buttons" >}})
 - [Columns]({{< relref "/docs/shortcodes/columns" >}})
 - [Expand]({{< relref "/docs/shortcodes/expand" >}})
