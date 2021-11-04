@@ -1,6 +1,6 @@
 ---
 # Display name
-name: Michael Vahn
+name: Santiago Hernandez
 avatar_image: "user-full.png"
 # Username (this should match the folder name)
 authors:
@@ -14,11 +14,11 @@ btn:
 superuser: true
 
 # Role/position
-role: Professor of Artificial Intelligence
+role: Student of systems engineering
 
 # Organizations/Affiliations
 organizations:
-- name: Stanford University
+- name: Universidad nacional de Colombia
   url: ""
 
 # Short bio (displayed in user profile at end of posts)
