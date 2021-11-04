@@ -17,8 +17,8 @@ subtitle = "I AM REALLY GOOD AT THE FOLLOWING TECHNICAL SKILLS"
 [[feature]]
   icon = "chart-line"
   icon_pack = "fas"
-  name = "Analysis"
-  parcent = "90%"
+  name = "Designs"
+  parcent = "75%"
   
 [[feature]]
   icon = "user-secret"
@@ -27,10 +27,10 @@ subtitle = "I AM REALLY GOOD AT THE FOLLOWING TECHNICAL SKILLS"
   parcent = "80%"  
   
 [[feature]]
-  icon = "camera-retro"
-  icon_pack = "fas"
-  name = "Photography"
-  parcent = "70%"
+  icon = "codepen"
+  icon_pack = "fab"
+  name = "Software building"
+  parcent = "80%"
   
 [[feature]]
   icon = "searchengin"

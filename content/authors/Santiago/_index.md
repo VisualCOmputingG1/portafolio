@@ -1,7 +1,7 @@
 ---
 # Display name
 name: Santiago Hernandez
-avatar_image: "user-full.png"
+avatar_image: "Santiago.png"
 # Username (this should match the folder name)
 authors:
 - Santiago

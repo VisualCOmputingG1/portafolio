@@ -153,6 +153,7 @@ p5.pop();
 Adapted from [here](https://p5js.org/examples/dom-video-canvas.html). Don't forget to checkout also the [video on dom](https://p5js.org/examples/dom-video.html) example.
 
 {{< details title="p5-instance-div markdown" open=false >}}
+
 ```js
 {{</* p5-instance-div id="video" >}}
   let fingers;
@@ -180,7 +181,6 @@ Adapted from [here](https://p5js.org/examples/dom-video-canvas.html). Don't forg
 {{< hint warning >}}
 Note that `p5` should be the name to be used for the sketch object variable.
 {{< /hint >}}
-{{< /details >}}
 
 {{< p5-instance-div id="video" >}}
 let fingers;
