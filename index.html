@@ -1,273 +1,941 @@
-<!doctype html><html lang=en dir=ltr>
+<!doctype html><html lang=en-us>
 <head>
-<meta name=generator content="Hugo 0.88.1">
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="Visual Computing Template #  Welcome to the UN / DISI visual computing course template site.
-Goal #  To study the process of creation and manipulation of a digital image of a modern visual application, using current hardware.
-Methodology #  Active-learning using free-software to develop:
- Slides. nub and p5.tree. p5.quadrille.js.  Grading #  Workshops blog posts-like reports produced with codedoc and p5.js and having a basic research structure:">
-<meta name=theme-color content="#FFFFFF">
-<meta name=color-scheme content="light dark"><meta property="og:title" content="Introduction">
-<meta property="og:description" content>
-<meta property="og:type" content="website">
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=generator content="Source Themes Academia 4.3.1">
+<meta name=generator content="Hugo 0.89.0">
+<meta name=author content="Michael Vahn">
+<meta name=description content="Professor of Artificial Intelligence">
+<link rel=alternate hreflang=en-us href=https://visualcomputingg1.github.io/portafolio/>
+<meta name=theme-color content="#fc6f5c">
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin=anonymous>
+<link rel=stylesheet href=https://use.fontawesome.com/releases/v5.6.0/css/all.css integrity=sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h crossorigin=anonymous>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin=anonymous>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css crossorigin=anonymous title=hl-light>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/dracula.min.css crossorigin=anonymous title=hl-dark disabled>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.css integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ==" crossorigin=anonymous>
+<link rel=stylesheet href="https://fonts.googleapis.com/css?family=Lato:400,700|Open+Sans|Roboto+Mono&display=swap">
+<link rel=stylesheet href=/portafolio/css/academia.min.76e69f7370e1e1222344c0109d841c44.css>
+<link rel=alternate href=/portafolio/index.xml type=application/rss+xml title=portfolio>
+<link rel=feed href=/portafolio/index.xml type=application/rss+xml title=portfolio>
+<link rel=manifest href=/portafolio/site.webmanifest>
+<link rel=icon type=image/png href=/portafolio/img/icon.png>
+<link rel=apple-touch-icon type=image/png href=/portafolio/img/icon-192.png>
+<link rel=canonical href=https://visualcomputingg1.github.io/portafolio/>
+<meta property="twitter:card" content="summary">
+<meta property="og:site_name" content="portfolio">
 <meta property="og:url" content="https://visualcomputingg1.github.io/portafolio/">
-<title>Introduction | Visual Computing</title>
-<link rel=manifest href=/portafolio/manifest.json>
-<link rel=icon href=/portafolio/favicon.png type=image/x-icon>
-<link rel=stylesheet href=/portafolio/book.min.89a77f7e702a8626749b948bbfb01109823daf6c1246ca407d1378833494c402.css integrity="sha256-iad/fnAqhiZ0m5SLv7ARCYI9r2wSRspAfRN4gzSUxAI=" crossorigin=anonymous>
-<script defer src=/portafolio/flexsearch.min.js></script>
-<script defer src=/portafolio/en.search.min.4fa9025123e902f01fccb21f5811250d360db803f51302a6c0bd441876d65712.js integrity="sha256-T6kCUSPpAvAfzLIfWBElDTYNuAP1EwKmwL1EGHbWVxI=" crossorigin=anonymous></script>
-<link rel=alternate type=application/rss+xml href=https://visualcomputingg1.github.io/portafolio/index.xml title="Visual Computing">
+<meta property="og:title" content="portfolio">
+<meta property="og:description" content="Professor of Artificial Intelligence"><meta property="og:image" content="https://visualcomputingg1.github.io/portafolio/img/icon-192.png">
+<meta property="twitter:image" content="https://visualcomputingg1.github.io/portafolio/img/icon-192.png"><meta property="og:locale" content="en-us">
+<meta property="og:updated_time" content="2030-06-01T13:00:00+00:00">
+<title>portfolio</title>
 </head>
-<body dir=ltr>
-<input type=checkbox class="hidden toggle" id=menu-control>
-<input type=checkbox class="hidden toggle" id=toc-control>
-<main class="container flex">
-<aside class=book-menu>
-<div class=book-menu-content>
-<nav>
-<h2 class=book-brand>
-<a class="flex align-center" href=/portafolio/><span>Visual Computing</span>
-</a>
-</h2>
-<div class=book-search>
-<input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
-<div class="book-search-spinner hidden"></div>
-<ul id=book-search-results></ul>
+<body id=top data-spy=scroll data-target=#navbar-main data-offset=71>
+<aside class=search-results id=search>
+<div class=container>
+<section class=search-header>
+<div class="row no-gutters justify-content-between mb-3">
+<div class=col-6>
+<h1>Search</h1>
 </div>
-<ul>
-<li class=book-section-flat>
-<span>Shortcodes</span>
-<ul>
-<li>
-<a href=https://visualcomputingg1.github.io/portafolio/docs/shortcodes/buttons/>Buttons</a>
-</li>
-<li>
-<a href=https://visualcomputingg1.github.io/portafolio/docs/shortcodes/columns/>Columns</a>
-</li>
-<li>
-<a href=https://visualcomputingg1.github.io/portafolio/docs/shortcodes/details/>Details</a>
-</li>
-<li>
-<a href=https://visualcomputingg1.github.io/portafolio/docs/shortcodes/expand/>Expand</a>
-</li>
-<li>
-<a href=https://visualcomputingg1.github.io/portafolio/docs/shortcodes/hints/>Hints</a>
-</li>
-<li>
-<a href=https://visualcomputingg1.github.io/portafolio/docs/shortcodes/katex/>Katex</a>
-</li>
-<li>
-<a href=https://visualcomputingg1.github.io/portafolio/docs/shortcodes/mermaid/>Mermaid</a>
-</li>
-<li>
-<input type=checkbox id=section-ec67a64aba70b9df3d2a9acd6c92e3bc class=toggle>
-<label for=section-ec67a64aba70b9df3d2a9acd6c92e3bc class="flex justify-between">
-<a href=https://visualcomputingg1.github.io/portafolio/docs/shortcodes/p5/>P5</a>
-</label>
-<ul>
-<li>
-<a href=https://visualcomputingg1.github.io/portafolio/docs/shortcodes/p5/div/>Div</a>
-</li>
-<li>
-<a href=https://visualcomputingg1.github.io/portafolio/docs/shortcodes/p5/iframe/>Iframe</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-d4ea35610ffe3b41a96498d9702fa516 class=toggle>
-<label for=section-d4ea35610ffe3b41a96498d9702fa516 class="flex justify-between">
-<a href=https://visualcomputingg1.github.io/portafolio/docs/shortcodes/participants/>Participants</a>
-</label>
-<ul>
-<li>
-<a href=https://visualcomputingg1.github.io/portafolio/docs/shortcodes/participants/santiago/>Santiago</a>
-</li>
-</ul>
-</li>
-<li>
-<a href=https://visualcomputingg1.github.io/portafolio/docs/shortcodes/tabs/>Tabs</a>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>
-<a href=/portafolio/posts/>
-Blog
-</a>
-</li>
-</ul>
-</nav>
-<script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+<div class="col-6 col-search-close">
+<a class=js-search href=#><i class="fas fa-times-circle text-muted" aria-hidden=true></i></a>
+</div>
+</div>
+<div id=search-box>
+</div>
+</section>
+<section class=section-search-results>
+<div id=search-hits>
+</div>
+</section>
 </div>
 </aside>
-<div class=book-page>
-<header class=book-header>
-<div class="flex align-center justify-between">
-<label for=menu-control>
-<img src=/portafolio/svg/menu.svg class=book-icon alt=Menu>
-</label>
-<strong>Introduction</strong>
-<label for=toc-control>
-<img src=/portafolio/svg/toc.svg class=book-icon alt="Table of Contents">
-</label>
-</div>
-<aside class="hidden clearfix">
-<nav id=TableOfContents>
-<ul>
-<li><a href=#visual-computing-template>Visual Computing Template</a>
-<ul>
-<li><a href=#goal>Goal</a></li>
-<li><a href=#methodology>Methodology</a></li>
-<li><a href=#grading>Grading</a></li>
-<li><a href=#outline>Outline</a></li>
-<li><a href=#hacking>Hacking</a></li>
-</ul>
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id=navbar-main>
+<div class=container>
+<a class=navbar-brand href=/portafolio/>portfolio</a>
+<button type=button class=navbar-toggler data-toggle=collapse data-target=#navbar aria-controls=navbar aria-expanded=false aria-label="Toggle navigation"><span><i class="fas fa-bars"></i></span>
+</button>
+<div class="collapse navbar-collapse" id=navbar>
+<ul class="navbar-nav ml-auto">
+<li class=nav-item>
+<a class=nav-link href=/portafolio/#about data-target=#about><span>Home</span></a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=/portafolio/#posts data-target=#posts><span>Posts</span></a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=/portafolio/#projects data-target=#projects><span>Projects</span></a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=/portafolio/#publications data-target=#publications><span>Publications</span></a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=/portafolio/courses/><span>Courses</span></a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=/portafolio/#contact data-target=#contact><span>Contact</span></a>
+</li>
+<li class="nav-item dropdown">
+<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>dropdown</span><span class=caret></span>
+</a>
+<ul class=dropdown-menu>
+<li class="dropdown-item my-0 py-0 mx-0 px-0">
+<a href=/portafolio/# data-target=#><span>dropdown 1</span></a>
+</li>
+<li class="dropdown-item my-0 py-0 mx-0 px-0">
+<a href=/portafolio/#! data-target=#!><span>dropdown 2</span></a>
 </li>
 </ul>
+</li>
+<li class=nav-item>
+<a class="nav-link js-dark-toggle" href=#><i class="fas fa-moon" aria-hidden=true></i></a>
+</li>
+</ul>
+</div>
+</div>
 </nav>
-</aside>
-</header>
-<article class=markdown><h1 id=visual-computing-template>
-Visual Computing Template
-<a class=anchor href=#visual-computing-template>#</a>
-</h1>
-<p>Welcome to the <a href=http://www.ingenieria.unal.edu.co/dependencias/departamentos/departamento-de-ingenieria-de-sistemas-e-industrial>UN / DISI</a> <em>visual computing</em> course template site.</p>
-<h2 id=goal>
-Goal
-<a class=anchor href=#goal>#</a>
-</h2>
-<p>To study the process of creation and manipulation of a digital image of a modern visual application, using current hardware.</p>
-<h2 id=methodology>
-Methodology
-<a class=anchor href=#methodology>#</a>
-</h2>
-<p><a href=https://en.wikipedia.org/wiki/Active_learning>Active-learning</a> using <a href=https://en.wikipedia.org/wiki/Free_software>free-software</a> to develop:</p>
-<ul>
-<li><a href=https://github.com/orgs/VisualComputing/teams/presentations/repositories>Slides</a>.</li>
-<li><a href=https://github.com/VisualComputing/nub>nub</a> and <a href=https://github.com/VisualComputing/p5.tree>p5.tree</a>.</li>
-<li><a href=https://github.com/objetos/p5.quadrille.js>p5.quadrille.js</a>.</li>
+<span class="js-widget-page d-none"></span>
+<section id=hero class="home-section wg-hero" style=background-color:#fff>
+<div class=container>
+<div class=row>
+<div class="col-md-6 order-md-1 text-center text-md-left align-self-center">
+<div><h2 id=my-name-is-michael-vahn-and-im-a-professor-specializing-in-artificial-intelligence>My name is <strong>Michael Vahn</strong> and I&rsquo;m a <strong>Professor</strong> specializing in <strong>Artificial Intelligence</strong></h2>
+<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.</p>
+</div>
+<p class=mt-4>
+<a href=/portafolio/authors/admin class="btn btn-primary btn-lg page-scroll">Know more</a>
+<a href=/portafolio/#contact class="btn btn-lg btn-outline-primary page-scroll">Contact me</a>
+</p>
+</div>
+<div class="col-10 mx-auto col-md-6 order-md-2 hero-media">
+<img class="hero-img img-fluid" src=/portafolio/img/user-2.jpg alt>
+</div>
+</div>
+</div>
+</section>
+<section id=about class="home-section wg-about">
+<div class=container>
+<div class=row itemprop=author itemscope itemtype=http://schema.org/Person itemref="person-email person-telephone person-address">
+<div class=col-lg-5>
+<div id=profile>
+<img class=img-fluid src=/portafolio/img/user-full-2.jpg itemprop=image alt=Avatar>
+</div>
+<ul class="network-icon bg-white mx-2 py-2 text-center" aria-hidden=true>
+<li class=mx-3>
+<a itemprop=sameAs href=/portafolio/#contact>
+<i class="fas fa-envelope"></i>
+</a>
+</li>
+<li class=mx-3>
+<a itemprop=sameAs href=https://twitter.com/GeorgeCushen target=_blank rel=noopener>
+<i class="fab fa-twitter"></i>
+</a>
+</li>
+<li class=mx-3>
+<a itemprop=sameAs href="https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ" target=_blank rel=noopener>
+<i class="ai ai-google-scholar"></i>
+</a>
+</li>
+<li class=mx-3>
+<a itemprop=sameAs href=https://github.com/gcushen target=_blank rel=noopener>
+<i class="fab fa-github"></i>
+</a>
+</li>
 </ul>
-<h2 id=grading>
-Grading
-<a class=anchor href=#grading>#</a>
-</h2>
-<p>Workshops <a href=https://en.wikipedia.org/wiki/Edublog>blog posts</a>-like reports produced with <a href=https://codedoc.cc/>codedoc</a> and <a href=https://p5js.org/>p5.js</a> and having a basic research structure:</p>
+</div>
+<div class=col-lg-7 itemprop=description>
+<div class=portrait-title>
+<h2 itemprop=name>Michael Vahn</h2>
+<h3 class=d-inline-block itemprop=jobTitle>Professor of Artificial Intelligence,</h3>
+<h3 class=d-inline-block itemprop=worksFor itemscope itemtype=http://schema.org/Organization>
+<span itemprop=name>Stanford University</span>
+</h3>
+</div>
+<link itemprop=url href>
+<p>Nelson Bighetti is a professor of artificial intelligence at the Stanford AI Lab. His research interests include distributed robotics, mobile computing and programmable matter. He leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.</p>
+<p><img src=../../img/certifacates.jpg alt=reviews></p>
+<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum. The point of using Lorem Ipsum. distracted by the readable content of a page.</p>
+<a href=https://sourcethemes.com/academic/docs/install/ class="btn btn-primary btn-lg"><i class="fas fa-download mr-2" aria-hidden=true></i>Download Resume</a>
+</div>
+</div>
+</div>
+</section>
+<section id=skills class="home-section wg-featurette">
+<div class=container>
+<div class="row featurette">
+<div class="col-12 section-heading">
+<h1>Skills</h1>
+<p>I AM REALLY GOOD AT THE FOLLOWING TECHNICAL SKILLS</p>
+</div>
+<div class="col-lg-3 col-sm-6 mb-4 mb-lg-0">
+<div class="position-relative py-2 shadow featurette-margin">
+<div class=progress-bar style=width:90%></div>
+<div class=featurette-icon><i class="fas fa-chart-line"></i></div>
+<h3>Analysis</h3>
+<p>90%</p>
+</div>
+</div>
+<div class="col-lg-3 col-sm-6 mb-4 mb-lg-0">
+<div class="position-relative py-2 shadow featurette-margin">
+<div class=progress-bar style=width:80%></div>
+<div class=featurette-icon><i class="fas fa-user-secret"></i></div>
+<h3>Leadership</h3>
+<p>80%</p>
+</div>
+</div>
+<div class="col-lg-3 col-sm-6 mb-4 mb-lg-0">
+<div class="position-relative py-2 shadow featurette-margin">
+<div class=progress-bar style=width:70%></div>
+<div class=featurette-icon><i class="fas fa-camera-retro"></i></div>
+<h3>Photography</h3>
+<p>70%</p>
+</div>
+</div>
+<div class="col-lg-3 col-sm-6 mb-4 mb-lg-0">
+<div class="position-relative py-2 shadow featurette-margin">
+<div class=progress-bar style=width:95%></div>
+<div class=featurette-icon><i class="fab fa-searchengin"></i></div>
+<h3>Research</h3>
+<p>95%</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id=experience class="home-section wg-experience">
+<div class=container>
+<div class=row>
+<div class="col-12 col-lg-4 section-heading">
+<h1>Experience</h1>
+<p>PREVIOUS ASSOCIATIONS THAT HELPED TO GATHER EXPERIENCE</p>
+</div>
+<div class="col-12 col-lg-8">
+<div class="row experience">
+<div class="col-auto text-center flex-column d-none d-sm-flex">
+<div class="row h-50">
+<div class=col>&nbsp;</div>
+<div class=col>&nbsp;</div>
+</div>
+<div class=m-2>
+<span class="badge badge-pill border exp-fill">&nbsp;</span>
+</div>
+<div class="row h-50">
+<div class="col border-right">&nbsp;</div>
+<div class=col>&nbsp;</div>
+</div>
+</div>
+<div class="col py-2">
+<div class=card>
+<div class=card-body>
+<h4 class="card-title exp-title text-muted mt-0 mb-1">CEO</h4>
+<h4 class="card-title exp-company text-muted my-0">GenCoin</h4>
+<div class="text-muted exp-meta">
+Jan 2017 –
+Present
+<span class=middot-divider></span>
+<span>California</span>
+</div>
+<div class=card-text><p>Responsibilities include:</p>
 <ul>
-<li>Problem statement</li>
-<li>Background</li>
-<li>Code (solution) & results</li>
-<li>Conclusions & future work</li>
+<li>Analysing</li>
+<li>Modelling</li>
+<li>Deploying</li>
 </ul>
-<h2 id=outline>
-Outline
-<a class=anchor href=#outline>#</a>
-</h2>
-<table>
-<thead>
-<tr>
-<th>To read</th>
-<th>Subject</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td><a href=https://github.com/VisualComputing/Introduction>Introduction</a></td>
-</tr>
-<tr>
-<td></td>
-<td><a href=https://processing.org/>Processing</a> & <a href=https://p5js.org/>p5.js</a></td>
-</tr>
-<tr>
-<td><a href=https://pages.github.com/>gh-pages</a></td>
-<td><a href=https://visualcomputing.github.io/vc/>VC Template</a></td>
-</tr>
-<tr>
-<td><a href=http://y2u.be/oYp5XuGYqqY>Do we see reality as it is?</a></td>
-<td><a href=https://github.com/VisualComputing/Cognitive>Cognitive</a></td>
-</tr>
-<tr>
-<td><a href=https://fgiesen.wordpress.com/2013/02/06/the-barycentric-conspirac/>The barycentric conspiracy</a></td>
-<td><a href=https://github.com/VisualComputing/Rendering>Rendering & Algorithm visualization</a></td>
-</tr>
-<tr>
-<td><a href=https://processing.org/tutorials/pshader/>Shaders tutorial</a></td>
-<td><a href=https://github.com/VisualComputing/FragmentShaders>Fragment Shaders</a></td>
-</tr>
-<tr>
-<td><a href=https://tfetimes.com/wp-content/uploads/2015/04/F.Dunn-I.Parberry-3D-Math-Primer-for-Graphics-and-Game-Development.pdf>3D Math primer for Graphics and Game Development &ndash; chs. 8 & 9</a>, <a href=http://www.songho.ca/opengl/gl_projectionmatrix.html>Projection matrix</a></td>
-<td><a href=https://github.com/VisualComputing/Transformations>Affine Transformations</a></td>
-</tr>
-<tr>
-<td></td>
-<td><a href=https://visualcomputing.github.io/Curves>spline</a></td>
-</tr>
-<tr>
-<td><a href=https://github.com/VisualComputing/nub>nub</a></td>
-<td><a href=https://github.com/VisualComputing/SceneGraphs>SceneGraphs</a></td>
-</tr>
-<tr>
-<td><a href=https://hal.inria.fr/hal-00789413/document>A Survey of Interaction Techniques</a></td>
-<td><a href=https://github.com/VisualComputing/Interaction>Interaction</a></td>
-</tr>
-<tr>
-<td><a href=https://processing.org/tutorials/pshader/>Shaders tutorial</a></td>
-<td><a href=https://github.com/VisualComputing/VertexShaders>Vertex Shaders</a></td>
-</tr>
-<tr>
-<td><a href=http://media.espora.org/mgoblin_media/media_entries/1633/Visualizing_Data.pdf>Visualizing Data</a>, <a href=http://networksciencebook.com/chapter/2>Network Science &ndash; ch. 2</a></td>
-<td>Data Visualization</td>
-</tr>
-</tbody>
-</table>
-<h2 id=hacking>
-Hacking
-<a class=anchor href=#hacking>#</a>
-</h2>
-<p>Install the <a href=https://gohugo.io/>gohugo</a> <a href=https://jamstack.org/generators/>static site generator</a> then:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$git clone https://github.com/VisualComputing/vc
-$cd vc
-$git submodule update --init --recursive
-$hugo server -D --disableFastRender
-</code></pre></div><p>Deploy with <code>$git push</code> after redefined <code>baseURL</code> in <code>config.toml</code> which should point to your actual public remote.</p>
-<blockquote class="book-hint info">
-The <strong>vc</strong> template uses the <a href=https://github.com/alex-shpak/hugo-book>hugo-book</a> theme by default. Check the <a href=https://themes.gohugo.io/>hugo themes site</a> if you wish to add other ones.
-</blockquote>
-</article>
-<footer class=book-footer>
-<div class="flex flex-wrap justify-between">
-<div><a class="flex align-center" href=https://github.com/VisualCOmputingG1/portafolio/commit/3183630cfc2c6ffba650cff5f2969501db54a17b title="Last modified by santiago | October 21, 2021" target=_blank rel=noopener>
-<img src=/portafolio/svg/calendar.svg class=book-icon alt=Calendar>
-<span>October 21, 2021</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row experience">
+<div class="col-auto text-center flex-column d-none d-sm-flex">
+<div class="row h-50">
+<div class="col border-right">&nbsp;</div>
+<div class=col>&nbsp;</div>
+</div>
+<div class=m-2>
+<span class="badge badge-pill border">&nbsp;</span>
+</div>
+<div class="row h-50">
+<div class="col border-right">&nbsp;</div>
+<div class=col>&nbsp;</div>
+</div>
+</div>
+<div class="col py-2">
+<div class=card>
+<div class=card-body>
+<h4 class="card-title exp-title text-muted mt-0 mb-1">Professor</h4>
+<h4 class="card-title exp-company text-muted my-0">University Y</h4>
+<div class="text-muted exp-meta">
+Jan 2017 –
+Dec 2016
+<span class=middot-divider></span>
+<span>California</span>
+</div>
+<div class=card-text>Taught electronic engineering and researched semiconductor physics.</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row experience">
+<div class="col-auto text-center flex-column d-none d-sm-flex">
+<div class="row h-50">
+<div class="col border-right">&nbsp;</div>
+<div class=col>&nbsp;</div>
+</div>
+<div class=m-2>
+<span class="badge badge-pill border">&nbsp;</span>
+</div>
+<div class="row h-50">
+<div class=col>&nbsp;</div>
+<div class=col>&nbsp;</div>
+</div>
+</div>
+<div class="col py-2">
+<div class=card>
+<div class=card-body>
+<h4 class="card-title exp-title text-muted mt-0 mb-1">Professor</h4>
+<h4 class="card-title exp-company text-muted my-0">University X</h4>
+<div class="text-muted exp-meta">
+Jan 2016 –
+Dec 2016
+<span class=middot-divider></span>
+<span>California</span>
+</div>
+<div class=card-text>Taught electronic engineering and researched semiconductor physics.</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id=accomplishments class="home-section wg-accomplishments">
+<div class=container>
+<div class=row>
+<div class="col-12 text-center section-heading">
+<h1>Accomplish­ments</h1>
+<p>PREVIOUS ASSOCIATIONS THAT HELPED TO GATHER EXPERIENCE</p>
+</div>
+<div class="col-lg-6 col-md-6 mb-4">
+<div class="card experience course shadow-sm rounded-0 border-0">
+<div class=card-body><h4 class="card-title exp-title text-muted my-0">Neural Networks and Deep Learning</h4><div class="card-subtitle my-0 article-metadata"><a href=https://www.coursera.org target=_blank rel=noopener>Coursera</a><span class=middot-divider></span>
+Oct 2018
+</div>
+<div class=card-text>Formulated informed blockchain models, hypotheses, and use cases.</div>
+<a class=card-link href=https://www.coursera.org target=_blank rel=noopener>
+See certificate
 </a>
 </div>
 </div>
-<script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+</div>
+<div class="col-lg-6 col-md-6 mb-4">
+<div class="card experience course shadow-sm rounded-0 border-0">
+<div class=card-body><a href=https://www.edx.org/professional-certificate/uc-berkeleyx-blockchain-fundamentals target=_blank rel=noopener><h4 class="card-title exp-title text-muted my-0">Blockchain Fundamentals</h4></a><div class="card-subtitle my-0 article-metadata"><a href=https://www.edx.org target=_blank rel=noopener>edX</a><span class=middot-divider></span>
+Mar 2018
+</div>
+<div class=card-text>Formulated informed blockchain models, hypotheses, and use cases.</div>
+<a class=card-link href=https://www.edx.org target=_blank rel=noopener>
+See certificate
+</a>
+</div>
+</div>
+</div>
+<div class="col-lg-6 col-md-6 mb-4">
+<div class="card experience course shadow-sm rounded-0 border-0">
+<div class=card-body><h4 class="card-title exp-title text-muted my-0">Object-Oriented Programming in R: S3 and R6 Course</h4><div class="card-subtitle my-0 article-metadata"><a href=https://www.datacamp.com target=_blank rel=noopener>DataCamp</a><span class=middot-divider></span>
+Jul 2017
+– Dec 2017
+</div>
+<a class=card-link href=https://www.datacamp.com target=_blank rel=noopener>
+See certificate
+</a>
+</div>
+</div>
+</div>
+<div class="col-lg-6 col-md-6 mb-4">
+<div class="card experience course shadow-sm rounded-0 border-0">
+<div class=card-body><h4 class="card-title exp-title text-muted my-0">Object-Oriented Programming in R: S3 and R6 Course</h4><div class="card-subtitle my-0 article-metadata"><a href=https://www.rdx.com target=_blank rel=noopener>RDX</a><span class=middot-divider></span>
+Jul 2017
+– Dec 2017
+</div>
+<a class=card-link href=https://www.datacamp.com target=_blank rel=noopener>
+See certificate
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id=posts class="home-section wg-pages">
+<div class=container>
+<div class=row>
+<div class="col-12 section-heading text-center">
+<h1>Recent Posts</h1>
+<p>MY FANS DON&rsquo;T FEEL LIKE I HOLD ANYTHING BACK FROM THEM</p>
+</div>
+<div class=col-12>
+<div class="row justify-content-center">
+<div class="col-lg-4 col-md-6 mb-4">
+<div class=card-simple itemscope itemtype=http://schema.org/BlogPosting>
+<a href=/portafolio/post/jupyter/>
+<img src=/portafolio/post/jupyter/featured_hu17228671acc7297decf3359d3864d9fb_379701_918x517_fill_q90_lanczos_smart1.jpg class=article-banner itemprop=image alt>
+</a>
+<div class=card-body>
+<h3 class="article-title mb-1 mt-0" itemprop=name>
+<a href=/portafolio/post/jupyter/ itemprop=url>Display Jupyter Notebooks with academia</a>
+</h3>
+<meta content="2019-02-05 00:00:00 +0000 UTC" itemprop=datePublished>
+<meta content="2019-02-05 00:00:00 +0000 UTC" itemprop=dateModified>
+<div class=article-metadata>
+<div>
+<span itemprop="author name" itemtype=http://schema.org/Person><a href=/portafolio/authors/admin/>Michael Vahn</a></span>
+</div>
+<span class=article-date>
+<time>Feb 5, 2019</time>
+</span>
+<span class=middot-divider></span>
+<span class=article-reading-time>
+1 min read
+</span>
+</div>
+<div class=article-style itemprop=articleBody>
+Learn how to blog in academia using Jupyter notebooks
+</div>
+</div>
+</div>
+</div>
+<div class="col-lg-4 col-md-6 mb-4">
+<div class=card-simple itemscope itemtype=http://schema.org/BlogPosting>
+<a href=/portafolio/post/snail/>
+<img src=/portafolio/post/snail/featured_hu4ab823d7c0812bfb65b9cd805c14c8ad_441301_918x517_fill_q90_lanczos_smart1.jpg class=article-banner itemprop=image alt>
+</a>
+<div class=card-body>
+<h3 class="article-title mb-1 mt-0" itemprop=name>
+<a href=/portafolio/post/snail/ itemprop=url>A Study of Snail Behavior</a>
+</h3>
+<meta content="2016-04-20 00:00:00 +0000 UTC" itemprop=datePublished>
+<meta content="2019-04-17 00:00:00 +0000 UTC" itemprop=dateModified>
+<div class=article-metadata>
+<div>
+<span itemprop="author name" itemtype=http://schema.org/Person><a href=/portafolio/authors/admin/>Michael Vahn</a></span>
+</div>
+<span class=article-date>
+Last updated on
+<time>Apr 17, 2019</time>
+</span>
+<span class=middot-divider></span>
+<span class=article-reading-time>
+2 min read
+</span>
+</div>
+<div class=article-style itemprop=articleBody>
+Create a beautifully simple website in under 10 minutes.
+</div>
+</div>
+</div>
+</div>
+<div class="col-lg-4 col-md-6 mb-4">
+<div class=card-simple itemscope itemtype=http://schema.org/BlogPosting>
+<a href=/portafolio/post/getting-started/>
+<img src=/portafolio/post/getting-started/featured_hue69fb4adfc11ca9c4444dcd3a513aa00_325031_918x517_fill_q90_lanczos_smart1.jpg class=article-banner itemprop=image alt>
+</a>
+<div class=card-body>
+<h3 class="article-title mb-1 mt-0" itemprop=name>
+<a href=/portafolio/post/getting-started/ itemprop=url>academia: the website builder for Hugo</a>
+</h3>
+<meta content="2016-04-20 00:00:00 +0000 UTC" itemprop=datePublished>
+<meta content="2019-04-17 00:00:00 +0000 UTC" itemprop=dateModified>
+<div class=article-metadata>
+<div>
+<span itemprop="author name" itemtype=http://schema.org/Person><a href=/portafolio/authors/admin/>Michael Vahn</a></span>
+</div>
+<span class=article-date>
+Last updated on
+<time>Apr 17, 2019</time>
+</span>
+<span class=middot-divider></span>
+<span class=article-reading-time>
+2 min read
+</span>
+</div>
+<div class=article-style itemprop=articleBody>
+Create a beautifully simple website in under 10 minutes.
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id=projects class="home-section wg-portfolio">
+<div class=container>
+<div class=row>
+<div class="col-12 text-center section-heading">
+<h1>Projects</h1>
+<p>ALL THINGS ARE DIFFICULT BEFORE THEY ARE EASY</p>
+</div>
+<div class=col-12>
+<span class="d-none default-project-filter">*</span>
+<div class=project-toolbar>
+<div class=project-filters>
+<ul class="list-inline text-center">
+<li class=list-inline-item>
+<a href=# data-filter=* class="btn btn-primary btn-lg active">All</a>
+<a href=# data-filter=.js-id-Deep-Learning class="btn btn-primary btn-lg">Deep Learning</a>
+<a href=# data-filter=.js-id-Demo class="btn btn-primary btn-lg">Other</a>
+<a href=# data-filter=.js-id-human class="btn btn-primary btn-lg">Human</a>
+<a href=# data-filter=.js-id-robotics class="btn btn-primary btn-lg">Robotics</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="isotope projects-container js-layout-masonry">
+<div class="project-card project-item isotope-item js-id-Demo js-id-robotics">
+<div class="card rounded-0 shadow-sm">
+<a href=/portafolio/project/artificial-intelligence/ class=card-image>
+<img src=/portafolio/project/artificial-intelligence/featured_hu6c0b305659adbd3ad0bb1e71e95fba4b_145422_550x0_resize_q90_lanczos.jpg alt class=img-responsive>
+</a>
+<div class=card-body>
+<h4><a href=/portafolio/project/artificial-intelligence/>Artificial Intelligence</a></h4>
+<div class=card-desription>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, eius.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="project-card project-item isotope-item js-id-Demo js-id-Deep-Learning">
+<div class="card rounded-0 shadow-sm">
+<a href=/portafolio/project/deep-learning/ class=card-image>
+<img src=/portafolio/project/deep-learning/featured_hu2f10183b737d61a7067f845238986e95_517328_550x0_resize_q90_lanczos.jpg alt class=img-responsive>
+</a>
+<div class=card-body>
+<h4><a href=/portafolio/project/deep-learning/>Deep Learning</a></h4>
+<div class=card-desription>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, eius.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="project-card project-item isotope-item js-id-Demo">
+<div class="card rounded-0 shadow-sm">
+<a href=http://example.org target=_blank rel=noopener class=card-image>
+<img src=/portafolio/project/external-project/featured_hudcd0f4e2122db32ce26fba26432226b5_547671_550x0_resize_q90_lanczos.jpg alt class=img-responsive>
+</a>
+<div class=card-body>
+<h4><a href=http://example.org target=_blank rel=noopener>External Project</a></h4>
+<div class=card-desription>
+<p>An example of linking directly to an external project website using &ldquo;external_link&rdquo;.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="project-card project-item isotope-item js-id-Deep-Learning">
+<div class="card rounded-0 shadow-sm">
+<a href=/portafolio/project/internal-project/ class=card-image>
+<img src=/portafolio/project/internal-project/featured_hud12993ed88efcd4a474de88bbfcb308e_416984_550x0_resize_q90_lanczos.jpg alt class=img-responsive>
+</a>
+<div class=card-body>
+<h4><a href=/portafolio/project/internal-project/>Internal Project</a></h4>
+<div class=card-desription>
+<p>An example of using the in-built project page.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="project-card project-item isotope-item js-id-Robotics">
+<div class="card rounded-0 shadow-sm">
+<a href=/portafolio/project/robotics/ class=card-image>
+<img src=/portafolio/project/robotics/featured_hu794e390df3a30800c66d68d4fc4eb331_105904_550x0_resize_q90_lanczos.jpg alt class=img-responsive>
+</a>
+<div class=card-body>
+<h4><a href=/portafolio/project/robotics/>Robotics</a></h4>
+<div class=card-desription>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, eius.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="project-card project-item isotope-item js-id-human">
+<div class="card rounded-0 shadow-sm">
+<a href=/portafolio/project/Skin-Cancer-AI/ class=card-image>
+<img src=/portafolio/project/Skin-Cancer-AI/featured_hu2ba4d2990bc426259049f6d933026b0d_91597_550x0_resize_q90_lanczos.jpg alt class=img-responsive>
+</a>
+<div class=card-body>
+<h4><a href=/portafolio/project/Skin-Cancer-AI/>Skin Cancer AI</a></h4>
+<div class=card-desription>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, eius.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id=gallery class="home-section wg-blank">
+<div class=container>
+<div class=row>
+<div class="col-12 section-heading text-center">
+<h1>Gallery</h1>
+<p>I have done many projects, here is some featured image</p>
+</div>
+<div class=col-12>
+<div class=gallery>
+<a data-fancybox=gallery-gallery href=/portafolio/home/gallery/gallery/1.jpg>
+<img src=/portafolio/home/gallery/gallery/1_hu19b4900f8098da457b554cdd930822d4_190211_0x190_resize_q90_lanczos.jpg alt>
+</a>
+<a data-fancybox=gallery-gallery href=/portafolio/home/gallery/gallery/2.jpg>
+<img src=/portafolio/home/gallery/gallery/2_hu2502092c646308752a703d92e6f48c57_60475_0x190_resize_q90_lanczos.jpg alt>
+</a>
+<a data-fancybox=gallery-gallery href=/portafolio/home/gallery/gallery/3.jpg>
+<img src=/portafolio/home/gallery/gallery/3_hucf30dcabeb4ce9caddaffa4b707286f7_69653_0x190_resize_q90_lanczos.jpg alt>
+</a>
+<a data-fancybox=gallery-gallery href=/portafolio/home/gallery/gallery/4.jpg>
+<img src=/portafolio/home/gallery/gallery/4_huede5b49ba2f4631a7703ed289ac1c94d_49328_0x190_resize_q90_lanczos.jpg alt>
+</a>
+<a data-fancybox=gallery-gallery href=/portafolio/home/gallery/gallery/5.jpg>
+<img src=/portafolio/home/gallery/gallery/5_hu269f89a0ca0d1ed07d79205570b29bfc_103587_0x190_resize_q90_lanczos.jpg alt>
+</a>
+<a data-fancybox=gallery-gallery href=/portafolio/home/gallery/gallery/6.jpg>
+<img src=/portafolio/home/gallery/gallery/6_hu1f0a703780325d26fd243646ff031074_41414_0x190_resize_q90_lanczos.jpg alt>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id=talks class="home-section wg-pages">
+<div class=container>
+<div class=row>
+<div class="col-12 section-heading text-center">
+<h1>Recent & Upcoming Talks</h1>
+<p>MY FANS DON&rsquo;T FEEL LIKE I HOLD ANYTHING BACK FROM THEM</p>
+</div>
+<div class=col-12>
+<div class="row justify-content-center">
+<div class="col-lg-4 col-md-6 mb-4">
+<div class=card-simple itemscope itemtype=http://schema.org/Event>
+<a href=/portafolio/talk/Coding/>
+<img src=/portafolio/talk/Coding/featured_hu3d03a01dcc18bc5be0e67db3d8d209a6_620088_918x517_fill_q90_lanczos_right.jpg class=article-banner itemprop=image alt>
+</a>
+<div class=card-body>
+<h3 class="article-title mb-1 mt-0" itemprop=name>
+<a href=/portafolio/talk/Coding/ itemprop=url>Coding and Analyzing Qualitative Data</a>
+</h3>
+<div class=article-metadata>
+<span itemprop=startDate>
+Jun 1, 2030
+1:00 PM
+&mdash; 3:00 PM
+</span>
+<span class=middot-divider></span>
+<span itemprop=location>London, United Kingdom</span>
+</div>
+<div class=article-style itemprop=articleBody>
+An example talk using academia&rsquo;s Markdown slides feature.
+</div>
+<div class=btn-links>
+</div>
+</div>
+</div>
+</div>
+<div class="col-lg-4 col-md-6 mb-4">
+<div class=card-simple itemscope itemtype=http://schema.org/Event>
+<a href=/portafolio/talk/Qualitative/>
+<img src=/portafolio/talk/Qualitative/featured_huaa234988cd1decfab4e17171c49b62cf_48506_918x517_fill_q90_lanczos_right.jpg class=article-banner itemprop=image alt>
+</a>
+<div class=card-body>
+<h3 class="article-title mb-1 mt-0" itemprop=name>
+<a href=/portafolio/talk/Qualitative/ itemprop=url>Qualitative Research Summer Intensive</a>
+</h3>
+<div class=article-metadata>
+<span itemprop=startDate>
+Jun 1, 2030
+1:00 PM
+&mdash; 3:00 PM
+</span>
+<span class=middot-divider></span>
+<span itemprop=location>London, United Kingdom</span>
+</div>
+<div class=article-style itemprop=articleBody>
+An example talk using academia&rsquo;s Markdown slides feature.
+</div>
+<div class=btn-links>
+</div>
+</div>
+</div>
+</div>
+<div class="col-lg-4 col-md-6 mb-4">
+<div class=card-simple itemscope itemtype=http://schema.org/Event>
+<a href=/portafolio/talk/Synthesizing/>
+<img src=/portafolio/talk/Synthesizing/featured_hu7f15be25aa79c62af27074aba04c63d8_37803_918x517_fill_q90_lanczos_right.jpg class=article-banner itemprop=image alt>
+</a>
+<div class=card-body>
+<h3 class="article-title mb-1 mt-0" itemprop=name>
+<a href=/portafolio/talk/Synthesizing/ itemprop=url>Synthesizing Qualitative Data</a>
+</h3>
+<div class=article-metadata>
+<span itemprop=startDate>
+Jun 1, 2030
+1:00 PM
+&mdash; 3:00 PM
+</span>
+<span class=middot-divider></span>
+<span itemprop=location>London, United Kingdom</span>
+</div>
+<div class=article-style itemprop=articleBody>
+An example talk using academia&rsquo;s Markdown slides feature.
+</div>
+<div class=btn-links>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id=featured class="home-section wg-featured">
+<div class=container>
+<div class=row>
+<div class="col-12 section-heading text-center">
+<h1>Featured Publications</h1>
+</div>
+<div class=col-12>
+<div class="row justify-content-center">
+<div class="col-lg-4 col-md-6 mb-4">
+<div class=card-simple itemscope itemtype=http://schema.org/ScholarlyArticle>
+<a href=/portafolio/publication/conference-paper/>
+<img src=/portafolio/publication/conference-paper/featured_hu3d03a01dcc18bc5be0e67db3d8d209a6_312700_918x517_fill_q90_lanczos_smart1.jpg class=article-banner itemprop=image alt>
+</a>
+<div class=card-body>
+<h3 class="article-title mb-1 mt-0" itemprop=name>
+<a href=/portafolio/publication/conference-paper/ itemprop=url>An example conference paper</a>
+</h3>
+<meta content="2013-07-01 00:00:00 +0000 UTC" itemprop=datePublished>
+<meta content="2013-07-01 00:00:00 +0000 UTC" itemprop=dateModified>
+<div class=article-metadata>
+<div>
+<span itemprop="author name" itemtype=http://schema.org/Person><a href=/portafolio/authors/admin/>Michael Vahn</a></span>, <span itemprop="author name" itemtype=http://schema.org/Person><a href=/portafolio/authors/Robert-Ford/>Robert Ford</a></span>
+</div>
+<span class=article-date>
+<time>July 2013</time>
+</span>
+<span class=middot-divider></span>
+<span class=pub-publication>
+In <em>STC</em>
+</span>
+</div>
+<div class=article-style itemprop=articleBody>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum.
+</div>
+<div class=btn-links>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id=publications class="home-section wg-pages">
+<div class=container>
+<div class=row>
+<div class="col-12 section-heading text-center">
+<h1>Recent Publications</h1>
+<p>Some publications i have recently published</p>
+</div>
+<div class=col-12>
+<div class="row justify-content-center">
+<div class="view-list-item col-lg-8 mx-auto" itemscope itemtype=http://schema.org/ScholarlyArticle>
+<i class="far fa-file-alt pub-icon" aria-hidden=true></i>
+<a href=/portafolio/publication/preprint/ itemprop=url><span itemprop=name>An example preprint / working paper</span></a>
+<div class=article-metadata itemprop=author>
+<span itemprop="author name" itemtype=http://schema.org/Person><a href=/portafolio/authors/admin/>Michael Vahn</a></span>
+</div>
+<div class=btn-links>
+</div>
+</div>
+<div class="view-list-item col-lg-8 mx-auto" itemscope itemtype=http://schema.org/ScholarlyArticle>
+<i class="far fa-file-alt pub-icon" aria-hidden=true></i>
+<a href=/portafolio/publication/journal-article/ itemprop=url><span itemprop=name>An example journal article</span></a>
+<div class=article-metadata itemprop=author>
+<span itemprop="author name" itemtype=http://schema.org/Person><a href=/portafolio/authors/admin/>Michael Vahn</a></span>, <span itemprop="author name" itemtype=http://schema.org/Person><a href=/portafolio/authors/Robert-Ford/>Robert Ford</a></span>
+</div>
+<div class=btn-links>
+</div>
+</div>
+<div class="view-list-item col-lg-8 mx-auto" itemscope itemtype=http://schema.org/ScholarlyArticle>
+<i class="far fa-file-alt pub-icon" aria-hidden=true></i>
+<a href=/portafolio/publication/conference-paper/ itemprop=url><span itemprop=name>An example conference paper</span></a>
+<div class=article-metadata itemprop=author>
+<span itemprop="author name" itemtype=http://schema.org/Person><a href=/portafolio/authors/admin/>Michael Vahn</a></span>, <span itemprop="author name" itemtype=http://schema.org/Person><a href=/portafolio/authors/Robert-Ford/>Robert Ford</a></span>
+</div>
+<div class=btn-links>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id=tags class="home-section wg-tag-cloud">
+<div class=container>
+<div class=row>
+<div class="col-12 text-center section-heading">
+<h1>Popular Topics</h1>
+</div>
+<div class=col-12>
+<div class=text-center>
+<a class="btn btn-outline-dark btn-lg" href=/portafolio/tags/Deep-Learning/>Deep Learning</a>
+<a class="btn btn-outline-dark btn-lg" href=/portafolio/tags/Demo/>Demo</a>
+<a class="btn btn-outline-dark btn-lg" href=/portafolio/tags/robotics/>robotics</a>
+<a class="btn btn-outline-dark btn-lg" href=/portafolio/tags/Source-Themes/>Source Themes</a>
+<a class="btn btn-outline-dark btn-lg" href=/portafolio/tags/academia/>academia</a>
+<a class="btn btn-outline-dark btn-lg" href=/portafolio/tags/human/>human</a>
+<a class="btn btn-outline-dark btn-lg" href=/portafolio/tags/robotics/>robotics</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id=contact class="home-section wg-contact">
+<div class=container>
+<div class="row contact-widget">
+<div class="col-12 text-center section-heading">
+<h1>Contact</h1>
+<p>Connect with me</p>
+</div>
+<div class=col-12>
+</div>
+<div class=col-md-6>
+<div class=mb-3>
+<form name=contact method=post action=https://formspree.io/test@example.org>
+<div class="form-group form-inline">
+<label class=sr-only for=inputName>Name</label>
+<input type=text name=name class="form-control rounded-0 w-100" id=inputName placeholder=Name required>
+</div>
+<div class="form-group form-inline">
+<label class=sr-only for=inputEmail>Email</label>
+<input type=email name=email class="form-control rounded-0 w-100" id=inputEmail placeholder=Email required>
+</div>
+<div class=form-group>
+<label class=sr-only for=inputMessage>Message</label>
+<textarea name=message class="form-control rounded-0" id=inputMessage rows=5 placeholder=Message required></textarea>
+</div>
+<button type=submit class="btn btn-outline-primary px-3 py-2">Send</button>
+</form>
+</div>
+</div>
+<div class=col-md-6>
+<ul class=fa-ul itemscope>
+<li>
+<i class="fa-li fas fa-phone mt-2" aria-hidden=true></i>
+<span id=person-telephone itemprop=telephone><a href=tel:888%20888%2088%2088>888 888 88 88</a></span>
+</li>
+<li>
+<i class="fa-li fas fa-map-marker-alt mt-2" aria-hidden=true></i>
+<span id=person-address itemprop=address>Building 1 Room 1, Stanford University, California, 90210, USA</span>
+</li>
+<li>
+<i class="fa-li fas fa-clock mt-2" aria-hidden=true></i>
+<span>Monday 10:00 to 13:00<br>
+Wednesday 09:00 to 10:00</span>
+</li>
+<li>
+<i class="fa-li fas fa-calendar-check mt-2" aria-hidden=true></i>
+<a href=https://calendly.com target=_blank rel=noopener>Book an appointment</a>
+</li>
+</ul>
+</div>
+<div class=col-12>
+<div class=d-none>
+<input id=map-provider value=2>
+<input id=map-lat value=37.4275>
+<input id=map-lng value=-122.1697>
+<input id=map-dir value="Building 1 Room 1, Stanford University, California, 90210, USA">
+<input id=map-zoom value=15>
+<input id=map-api-key value=AIzaSyBu5nZKbeK-WHQ70oqOWo-_4VmwOwKP9YQ>
+</div>
+<div id=map></div>
+</div>
+</div>
+</div>
+</section>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js integrity="sha256-aYTdUrn6Ow1DDgh5JTc3aDGnnju48y/1c8s1dgkYPQ8=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.js integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log==" crossorigin=anonymous></script>
+<script>hljs.initHighlightingOnLoad()</script>
+<script src=/portafolio/js/academia.min.e40e230d9b3dfeac86994156b6388764.js></script>
+<div class=container>
+<footer class=site-footer>
+<div class=container>
+<div class="row align-items-center">
+<div class="col-md-6 mb-4 mb-md-0">
+<p class=mb-0>
+Copyright © 2021 &#183;
+Powered by
+<a href=https://gethugothemes.com target=_blank rel=noopener>Gethugothemes</a>
+</p>
+</div>
+<div class=col-md-6>
+<ul class="list-inline network-icon text-right mb-0">
+<li class=list-inline-item>
+<a href=https://twitter.com/Twitter target=_blank rel=noopener title="DM Me"><i class="fab fa-twitter" aria-hidden=true></i></a>
+</li>
+<li class=list-inline-item>
+<a href=skype:echo123?call title="Skype Me"><i class="fab fa-skype" aria-hidden=true></i></a>
+</li>
+<li class=list-inline-item>
+<a href=https://keybase.io/ target=_blank rel=noopener title="Chat on Keybase"><i class="fab fa-keybase" aria-hidden=true></i></a>
+</li>
+<li class=list-inline-item>
+<a href=https://discourse.gohugo.io target=_blank rel=noopener title="Discuss on Forum"><i class="fas fa-comments" aria-hidden=true></i></a>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </footer>
-<div class=book-comments>
 </div>
-<label for=menu-control class="hidden book-menu-overlay"></label>
+<div id=modal class="modal fade" role=dialog>
+<div class=modal-dialog>
+<div class=modal-content>
+<div class=modal-header>
+<h5 class=modal-title>Cite</h5>
+<button type=button class=close data-dismiss=modal aria-label=Close>
+<span aria-hidden=true>&#215;</span>
+</button>
 </div>
-<aside class=book-toc>
-<div class=book-toc-content>
-<nav id=TableOfContents>
-<ul>
-<li><a href=#visual-computing-template>Visual Computing Template</a>
-<ul>
-<li><a href=#goal>Goal</a></li>
-<li><a href=#methodology>Methodology</a></li>
-<li><a href=#grading>Grading</a></li>
-<li><a href=#outline>Outline</a></li>
-<li><a href=#hacking>Hacking</a></li>
-</ul>
-</li>
-</ul>
-</nav>
+<div class=modal-body>
+<pre><code class="tex hljs"></code></pre>
 </div>
-</aside>
-</main>
+<div class=modal-footer>
+<a class="btn btn-outline-primary my-1 js-copy-cite" href=# target=_blank>
+<i class="fas fa-copy"></i> Copy
+</a>
+<a class="btn btn-outline-primary my-1 js-download-cite" href=# target=_blank>
+<i class="fas fa-download"></i> Download
+</a>
+<div id=modal-error></div>
+</div>
+</div>
+</div>
+</div>
 </body>
 </html>
