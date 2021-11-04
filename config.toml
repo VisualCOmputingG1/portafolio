@@ -1,7 +1,7 @@
 baseURL = "https://visualcomputingg1.github.io/portafolio"
 languageCode = "en-us"
 title = "Visual Computing"
-theme = 'book'
+theme = 'portfolio'
 
 # Book configuration
 disablePathToLower = true
