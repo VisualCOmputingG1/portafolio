@@ -15,4 +15,4 @@
 {{ if isset .Params "lib5" }} <script src={{ $lib5 }}></script> {{ end }}
 <script src={{ $sketch }}></script>
 
-<div id="{{ strings.TrimSuffix ".js" (path.Base $sketch) }}"></div>
+<div class="p5-div" id="{{ strings.TrimSuffix ".js" (path.Base $sketch) }}"></div>

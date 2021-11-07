@@ -149,5 +149,4 @@
     {{ $js_bundle := $js_bundle | resources.Concat "js/academia-bundle-pre.js" | minify }}
     {{ $js_bundle := slice $js_bundle_head $js_bundle | resources.Concat "js/academia.min.js" | fingerprint "md5" }}
     <script src="{{ $js_bundle.RelPermalink }}"></script>
-
     {{ partial "custom_js" . }}
