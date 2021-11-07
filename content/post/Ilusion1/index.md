@@ -1,5 +1,5 @@
 ---
-title: invisible contours
+title: Illusory contours
 subtitle: when the figure makes a sqare or a triangle we can see how they are being developed
 summary: this is a fanomenum that makes us feel as there were a real sqare or triangle but actually there is just a 
 authors:
@@ -16,7 +16,7 @@ draft: false
 image:
   caption: 'Image credit: [**rafasalgado**](https://rafasalgado.github.io/personal/projects/ilusionoptica/ilusion.html)'
   focal_point: ""
-  preview_only: false
+  preview_only: true
 
 # Projects (optional).
 #   Associate this post with one or more of your projects.
@@ -27,98 +27,31 @@ projects: []
 
 ---
 
-{{< p5-global-iframe id="ilusion" sketch=contournsIlusion.js width="400" height="400" >}}
-let angle = 0
-let HALF_PI = 1.7
-let PI = 3.4
-function setup() {
-var canvas = createCanvas(400, 400);
-canvas.parent('simple-sketch-holder');
+## Descripcion
 
-}
+Contornos ilusorios o contornos subjetivos son ilusiones ópticas que evocan la percepción de una era sin luminancia o 
+cambio de color dentro del borde. El brillo ilusorio y su profundidad ordenados son frecuentemente acompañados de 
+contornos ilusorios. Friedrich Schumann es a menudo acreditado con el descubrimiento de los contornos ilusorios 
+alrededor de los principios del siglo veinte, sin embargo los contornos ilusorios son presentados en un arte de 
+citar a las Edades Medias. La hoja Científica Americana de Gaetano Kanizsa escrita en 1976 marca el resurgimiento de 
+interés en los contornos ilusorios por científicos de visión. _[**contornos ilusorios**](https://es.wikipedia.org/wiki/Contornos_ilusorios)_
 
-function draw() {
-background(240);
+## Usabilidad
 
-//First
-fill(255, 0, 0)
-stroke('yellow')
-strokeWeight(2)
+Al ser estimulos que afectan directamente las bases neuronales de las percepciones suelen ser utilizados para llamar la 
+atencion de los receptores de manera discreta, formando figuras que realmente no estan en la imagen
 
-push()
-translate(50, 150)
-rotate(HALF_PI + angle)
-arc(0, 0, 80, 80, PI, HALF_PI)
-pop()
+![img_1.png](img_1.png)
 
-push()
-strokeWeight(2)
-translate(150, 150)
-rotate(HALF_PI * 2 - angle)
-arc(0, 0, 80, 80, PI, HALF_PI)
-pop()
+{{< p5-iframe sketch="contournsIlusion.js" width="425" height="425" >}}
 
-push()
-strokeWeight(2)
-translate(150, 250)
-rotate(HALF_PI * 3 + angle)
-arc(0, 0, 80, 80, PI, HALF_PI)
-pop()
-
-push()
-strokeWeight(2)
-translate(50, 250)
-rotate(HALF_PI * 4 - angle)
-arc(0, 0, 80, 80, PI, HALF_PI)
-pop()
-
-
-//Second
-fill('blue')
-stroke('yellow')
-strokeWeight(2)
-
-push()
-strokeWeight(2)
-translate(250, 150)
-rotate(HALF_PI * 3 - angle)
-arc(0, 0, 80, 80, PI, HALF_PI)
-pop()
-
-push()
-strokeWeight(2)
-translate(350, 150)
-rotate(HALF_PI * 4 + angle)
-arc(0, 0, 80, 80, PI, HALF_PI)
-pop()
-
-push()
-strokeWeight(2)
-translate(250, 250)
-rotate(HALF_PI * 2 + angle)
-arc(0, 0, 80, 80, PI, HALF_PI)
-pop()
-
-push()
-strokeWeight(2)
-translate(350, 250)
-rotate(HALF_PI - angle)
-arc(0, 0, 80, 80, PI, HALF_PI)
-pop()
-
-
-angle += 0.003
-}
-{{< /p5-global-iframe >}}
 
 {{< details title="code to the solution" open=false >}}
 ```js
 let angle = 0
 
 function setup() {
-  var canvas = createCanvas(400, 400);
-  canvas.parent('simple-sketch-holder');
-
+  createCanvas(400, 400);
 }
 
 function draw() {
@@ -196,42 +129,3 @@ function draw() {
 
 ```
 {{< /details >}}
-
-
-
-{{< p5-global-iframe id="breath" width="400" height="400" >}}
-let angle = 0;
-let speed = 0.06;
-
-function setup() {
-createCanvas(400, 400);
-}
-
-function draw() {
-background(255, 255, 255);
-rotateSquare();
-if (!mouseIsPressed) {
-strokeWeight(0);
-stroke(0);
-fill(255, 140, 0);
-rect(0, 0, 180, 180);
-rect(200, 0, 180, 180);
-rect(0, 200, 180, 180);
-rect(200, 200, 180, 180);
-}
-}
-
-function rotateSquare() {
-push();
-angle += speed;
-strokeWeight(0);
-stroke(0);
-fill(0, 0, 255);
-translate(width / 2, height / 2);
-rotate(angle);
-rect(-140.5, -140.5, 275, 275);
-pop();
-}
-
-{{< /p5-global-iframe >}}
-

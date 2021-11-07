@@ -7,7 +7,7 @@ authors:
 - Santiago
 # resume download button
 btn:
-- url : "https://www.overleaf.com/read/rdhywgkzzpzf"
+- url : "https://drive.google.com/file/d/1Kj8bVv2jfekahh_Lmostml1-9iU1y5W7/view?usp=sharing"
   label : "Download CV"
 
 # Is this the primary user of the site?
@@ -22,7 +22,7 @@ organizations:
   url: "https://unal.edu.co/"
 
 # Short bio (displayed in user profile at end of posts)
-bio: My interest are backend computing, artificial intelligence and project management
+bio: Mis intereses principales son enfocados al desarrollo backend, a la gestion de proyectos de software y a la investigacion en inteligencia artificial
 
 # Should the user's education and interests be displayed?
 display_education: false
@@ -40,9 +40,9 @@ social:
 - icon: linkedin
   icon_pack: fab
   link: https://www.linkedin.com/in/sanhernandezmon/
-- icon: twitter
+- icon: instagram
   icon_pack: fab
-  link: https://twitter.com/esesanto
+  link: https://www.instagram.com/sanhmon/
 - icon: github
   icon_pack: fab
   link: https://github.com/santihernandezS4N

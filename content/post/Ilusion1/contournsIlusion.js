@@ -1,8 +1,8 @@
 let angle = 0
 
 function setup() {
-    var canvas = createCanvas(400, 400);
-    canvas.parent('simple-sketch-holder');
+    createCanvas(400, 400);
+//    canvas.parent('simple-sketch-holder');
 
 }
 
@@ -77,4 +77,12 @@ function draw() {
 
 
     angle += 0.003
+}
+
+function mousePressed() {
+    noLoop();
+}
+
+function mouseReleased() {
+    loop();
 }
