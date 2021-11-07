@@ -1,30 +1,98 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on portfolio</title><link>https://visualcomputingg1.github.io/portafolio/post/</link><description>Recent content in Posts on portfolio</description><generator>Source Themes academia (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Copyright &amp;copy; {year}</copyright><lastBuildDate>Tue, 05 Feb 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://visualcomputingg1.github.io/portafolio/post/index.xml" rel="self" type="application/rss+xml"/><item><title>Display Jupyter Notebooks with academia</title><link>https://visualcomputingg1.github.io/portafolio/post/jupyter/</link><pubDate>Tue, 05 Feb 2019 00:00:00 +0000</pubDate><guid>https://visualcomputingg1.github.io/portafolio/post/jupyter/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-python" data-lang="python">&lt;span style="color:#f92672">from&lt;/span> IPython.core.display &lt;span style="color:#f92672">import&lt;/span> Image
-Image(&lt;span style="color:#e6db74">&amp;#39;https://www.python.org/static/community_logos/python-logo-master-v3-TM-flattened.png&amp;#39;&lt;/span>)
-&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;img src="academia_0_0.png" alt="png">&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-python" data-lang="python">print(&lt;span style="color:#e6db74">&amp;#34;Welcome to academia!&amp;#34;&lt;/span>)
-&lt;/code>&lt;/pre>&lt;/div>&lt;pre>&lt;code>Welcome to academia!
-&lt;/code>&lt;/pre>
-&lt;h2 id="install-python-and-jupyter">Install Python and Jupyter&lt;/h2>
-&lt;p>&lt;a href="https://www.anaconda.com/distribution/#download-section">Install Anaconda&lt;/a> which includes Python 3 and Jupyter notebook.&lt;/p>
-&lt;p>Otherwise, for advanced users, install Jupyter notebook with &lt;code>pip3 install jupyter&lt;/code>.&lt;/p>
-&lt;h2 id="create-a-new-blog-post-as-usualhttpssourcethemescomacademicdocsmanaging-contentcreate-a-blog-post">Create a new blog post &lt;a href="https://sourcethemes.com/academic/docs/managing-content/#create-a-blog-post">as usual&lt;/a>&lt;/h2>
-&lt;p>Run the following commands in your Terminal, substituting &lt;code>&amp;lt;MY_WEBSITE_FOLDER&amp;gt;&lt;/code> and &lt;code>my-post&lt;/code> with the file path to your academia website folder and a name for your blog post (without spaces), respectively:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">cd &amp;lt;MY_WEBSITE_FOLDER&amp;gt;
-hugo new --kind post post/my-post
-cd &amp;lt;MY_WEBSITE_FOLDER&amp;gt;/content/post/my-post/
-&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="create-or-upload-a-jupyter-notebook">Create or upload a Jupyter notebook&lt;/h2>
-&lt;p>Run the following command to start Jupyter within your new blog post folder. Then create a new Jupyter notebook (&lt;em>New &amp;gt; Python Notebook&lt;/em>) or upload a notebook.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">jupyter notebook
-&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="convert-notebook-to-markdown">Convert notebook to Markdown&lt;/h2>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">jupyter nbconvert Untitled.ipynb --to markdown --NbConvertApp.output_files_dir&lt;span style="color:#f92672">=&lt;/span>.
-&lt;span style="color:#75715e"># Copy the contents of Untitled.md and append it to index.md:&lt;/span>
-cat Untitled.md | tee -a index.md
-&lt;span style="color:#75715e"># Remove the temporary file:&lt;/span>
-rm Untitled.md
-&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="edit-your-post-metadata">Edit your post metadata&lt;/h2>
-&lt;p>Open &lt;code>index.md&lt;/code> in your text editor and edit the title etc. in the &lt;a href="https://sourcethemes.com/academic/docs/front-matter/">front matter&lt;/a> according to your preference.&lt;/p>
-&lt;p>To set a &lt;a href="https://sourcethemes.com/academic/docs/managing-content/#featured-image">featured image&lt;/a>, place an image named &lt;code>featured&lt;/code> into your post&amp;rsquo;s folder.&lt;/p>
-&lt;p>For other tips, such as using math, see the guide on &lt;a href="https://sourcethemes.com/academic/docs/writing-markdown-latex/">writing content with academia&lt;/a>.&lt;/p></description></item><item><title>A Study of Snail Behavior</title><link>https://visualcomputingg1.github.io/portafolio/post/snail/</link><pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate><guid>https://visualcomputingg1.github.io/portafolio/post/snail/</guid><description>&lt;p>&lt;strong>Create a free website with academia using Markdown, Jupyter, or RStudio. Choose a beautiful color theme and build anything with the Page Builder - over 40 &lt;em>widgets&lt;/em>, &lt;em>themes&lt;/em>, and &lt;em>language packs&lt;/em> included!&lt;/strong>&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on portfolio</title><link>https://visualcomputingg1.github.io/portafolio/post/</link><description>Recent content in Posts on portfolio</description><generator>Source Themes academia (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Copyright &amp;copy; {year}</copyright><lastBuildDate>Thu, 04 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://visualcomputingg1.github.io/portafolio/post/index.xml" rel="self" type="application/rss+xml"/><item><title>Illusory contours</title><link>https://visualcomputingg1.github.io/portafolio/post/Ilusion1/</link><pubDate>Thu, 04 Nov 2021 00:00:00 +0000</pubDate><guid>https://visualcomputingg1.github.io/portafolio/post/Ilusion1/</guid><description>&lt;h2 id="descripcion">Descripcion&lt;/h2>
+&lt;p>Contornos ilusorios o contornos subjetivos son ilusiones ópticas que evocan la percepción de una era sin luminancia o
+cambio de color dentro del borde. El brillo ilusorio y su profundidad ordenados son frecuentemente acompañados de
+contornos ilusorios. Friedrich Schumann es a menudo acreditado con el descubrimiento de los contornos ilusorios
+alrededor de los principios del siglo veinte, sin embargo los contornos ilusorios son presentados en un arte de
+citar a las Edades Medias. La hoja Científica Americana de Gaetano Kanizsa escrita en 1976 marca el resurgimiento de
+interés en los contornos ilusorios por científicos de visión. &lt;em>&lt;a href="https://es.wikipedia.org/wiki/Contornos_ilusorios">&lt;strong>contornos ilusorios&lt;/strong>&lt;/a>&lt;/em>&lt;/p>
+&lt;h2 id="usabilidad">Usabilidad&lt;/h2>
+&lt;p>Al ser estimulos que afectan directamente las bases neuronales de las percepciones suelen ser utilizados para llamar la
+atencion de los receptores de manera discreta, formando figuras que realmente no estan en la imagen&lt;/p>
+&lt;p>&lt;img src="img_1.png" alt="img_1.png">&lt;/p>
+&lt;iframe
+id="contournsIlusion"
+style="width:425px; height:425px"
+srcdoc="
+&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+&lt;script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js>&lt;/script>
+&lt;script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js>&lt;/script>
+&lt;script src=contournsIlusion.js>&lt;/script>
+&lt;/head>
+&lt;body>
+&lt;/body>
+&lt;/html>
+"
+>&lt;/iframe>
+&lt;details >&lt;summary>code to the solution&lt;/summary>
+&lt;div class="markdown-inner">
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-js" data-lang="js">&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>
+&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">setup&lt;/span>() {
+&lt;span style="color:#a6e22e">createCanvas&lt;/span>(&lt;span style="color:#ae81ff">400&lt;/span>, &lt;span style="color:#ae81ff">400&lt;/span>);
+}
+&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">draw&lt;/span>() {
+&lt;span style="color:#a6e22e">background&lt;/span>(&lt;span style="color:#ae81ff">240&lt;/span>);
+&lt;span style="color:#75715e">//First
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">fill&lt;/span>(&lt;span style="color:#ae81ff">255&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>)
+&lt;span style="color:#a6e22e">stroke&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;yellow&amp;#39;&lt;/span>)
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;span style="color:#a6e22e">push&lt;/span>()
+&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">50&lt;/span>, &lt;span style="color:#ae81ff">150&lt;/span>)
+&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
+&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
+&lt;span style="color:#a6e22e">pop&lt;/span>()
+&lt;span style="color:#a6e22e">push&lt;/span>()
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">150&lt;/span>, &lt;span style="color:#ae81ff">150&lt;/span>)
+&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span> &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
+&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
+&lt;span style="color:#a6e22e">pop&lt;/span>()
+&lt;span style="color:#a6e22e">push&lt;/span>()
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">150&lt;/span>, &lt;span style="color:#ae81ff">250&lt;/span>)
+&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">3&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
+&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
+&lt;span style="color:#a6e22e">pop&lt;/span>()
+&lt;span style="color:#a6e22e">push&lt;/span>()
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">50&lt;/span>, &lt;span style="color:#ae81ff">250&lt;/span>)
+&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">4&lt;/span> &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
+&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
+&lt;span style="color:#a6e22e">pop&lt;/span>()
+&lt;span style="color:#75715e">//Second
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">fill&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;blue&amp;#39;&lt;/span>)
+&lt;span style="color:#a6e22e">stroke&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;yellow&amp;#39;&lt;/span>)
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;span style="color:#a6e22e">push&lt;/span>()
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">250&lt;/span>, &lt;span style="color:#ae81ff">150&lt;/span>)
+&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">3&lt;/span> &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
+&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
+&lt;span style="color:#a6e22e">pop&lt;/span>()
+&lt;span style="color:#a6e22e">push&lt;/span>()
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">350&lt;/span>, &lt;span style="color:#ae81ff">150&lt;/span>)
+&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">4&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
+&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
+&lt;span style="color:#a6e22e">pop&lt;/span>()
+&lt;span style="color:#a6e22e">push&lt;/span>()
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">250&lt;/span>, &lt;span style="color:#ae81ff">250&lt;/span>)
+&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
+&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
+&lt;span style="color:#a6e22e">pop&lt;/span>()
+&lt;span style="color:#a6e22e">push&lt;/span>()
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">350&lt;/span>, &lt;span style="color:#ae81ff">250&lt;/span>)
+&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
+&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
+&lt;span style="color:#a6e22e">pop&lt;/span>()
+&lt;span style="color:#a6e22e">angle&lt;/span> &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#ae81ff">0.003&lt;/span>
+}
+&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/details></description></item><item><title>A Study of Snail Behavior</title><link>https://visualcomputingg1.github.io/portafolio/post/snail/</link><pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate><guid>https://visualcomputingg1.github.io/portafolio/post/snail/</guid><description>&lt;p>&lt;strong>Create a free website with academia using Markdown, Jupyter, or RStudio. Choose a beautiful color theme and build anything with the Page Builder - over 40 &lt;em>widgets&lt;/em>, &lt;em>themes&lt;/em>, and &lt;em>language packs&lt;/em> included!&lt;/strong>&lt;/p>
 &lt;p>&lt;a href="https://academia-demo.netlify.com/">Check out the latest &lt;strong>demo&lt;/strong>&lt;/a> of what you&amp;rsquo;ll get in less than 10 minutes, or &lt;a href="https://sourcethemes.com/academic/#expo">view the &lt;strong>showcase&lt;/strong>&lt;/a> of personal, project, and business sites.&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="#install">&lt;strong>Setup academia&lt;/strong>&lt;/a>&lt;/li>
