@@ -1,7 +1,9 @@
 ---
-title: Illusory contours
-subtitle: when the figure makes a sqare or a triangle we can see how they are being developed
-summary: this is a fanomenum that makes us feel as there were a real sqare or triangle but actually there is just a 
+title: Contornos Ilusorios
+subtitle: cuando se forma una figura geométrica, el ojo humano tiende a identificarlo por encima del resto de imágenes, 
+aun cuando en realidad no existe
+summary: este fenómeno nos hace ver que figuras geométricas resaltan, o inclusive que están en otro color, siendo que
+no es realmente asi
 authors:
 - Santiago
 tags: []
