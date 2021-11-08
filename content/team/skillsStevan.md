@@ -21,17 +21,17 @@ feature:
   - icon: chart-line
     icon_pack: fas
     name: Designs
-    parcent: 75%
+    parcent: 70%
   - icon: user-secret
     icon_pack: fas
-    name: Designs
-    parcent: 80%
+    name: Hardware Building
+    parcent: 70%
   - icon: codepen
     icon_pack: fab
-    name: Software building
-    parcent: 80%
+    name: Software Building
+    parcent: 75%
   - icon: searchengin
     icon_pack: fab
     name: Research
-    parcent: 90%
+    parcent: 85%
 ---
