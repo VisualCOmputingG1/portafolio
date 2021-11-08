@@ -1,9 +1,7 @@
 ---
 title: Contornos Ilusorios
-subtitle: cuando se forma una figura geométrica, el ojo humano tiende a identificarlo por encima del resto de imágenes, 
-aun cuando en realidad no existe
-summary: este fenómeno nos hace ver que figuras geométricas resaltan, o inclusive que están en otro color, siendo que
-no es realmente asi
+subtitle: cuando se forma una figura geométrica, el ojo humano tiende a identificarlo por encima del resto de imágenes, aun cuando en realidad no existe
+summary: este fenómeno nos hace ver que figuras geométricas resaltan, o inclusive que están en otro color, siendo que no es realmente asi
 authors:
 - Santiago
 tags: []
