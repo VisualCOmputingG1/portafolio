@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Movimiento on UNstable</title><link>https://visualcomputingg1.github.io/portafolio/tags/Movimiento/</link><description>Recent content in Movimiento on UNstable</description><generator>Source Themes academia (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Copyright &amp;copy; {year}</copyright><lastBuildDate>Mon, 08 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://visualcomputingg1.github.io/portafolio/tags/Movimiento/index.xml" rel="self" type="application/rss+xml"/><item><title>Pies escalonados</title><link>https://visualcomputingg1.github.io/portafolio/post/ilusion3/</link><pubDate>Mon, 08 Nov 2021 00:00:00 +0000</pubDate><guid>https://visualcomputingg1.github.io/portafolio/post/ilusion3/</guid><description>&lt;h2 id="descripción">Descripción&lt;/h2>
+&lt;p>Observe el movimiento de los rectangulos azul y amarillo. Los bloques parecen tener un desplazamiento alternante, asi como dos pies yendo punta a punta. Este efecto es más pronunciado si no se mira a los rectangulos directamente si no se mira entre ellos, y también cuando estos no estan del todo juntos, asi como se ve en la animación.&lt;/p>
+&lt;h2 id="explicación">Explicación&lt;/h2>
+&lt;p>Cuando el rectangulo azul se encuentra sobre las franjas blancas, el contraste es alto y fácilmente visible, por lo que parece moverse más rápido de lo que realmente lo esta haciendo. Por el contrario cuando el rectangulo azul está en las franjas de color negro, el contraste es bajo y más difícil de ver, por lo que el movimiento parece más lento.&lt;/p>
+&lt;p>Los efectos opuestos ocurren con el bus amarillo. Para mayor claridad puede ver el efecto en: Wikipedia y Michael Bach&amp;rsquo;s blog&lt;/p>
+&lt;h2 id="usabilidad">Usabilidad&lt;/h2>
+&lt;p>Haga click sobre la imagen para remover/poner las barrras y ver como los dos objetos van a velocidad constante y siempre se mantienen a la misma distancia el uno del otro.&lt;/p>
+&lt;iframe
+id="piesEscalonados"
+style="width:730px; height:730px"
+srcdoc="
+&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+&lt;script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js>&lt;/script>
+&lt;script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js>&lt;/script>
+&lt;script src=piesEscalonados.js>&lt;/script>
+&lt;/head>
+&lt;body>
+&lt;/body>
+&lt;/html>
+"
+>&lt;/iframe>
+&lt;details >&lt;summary>code to the solution&lt;/summary>
+&lt;div class="markdown-inner">
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-js" data-lang="js">&lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">x&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">xspeed&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>;
+&lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">i&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">bars&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">true&lt;/span>;
+&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">setup&lt;/span>() {
+&lt;span style="color:#a6e22e">createCanvas&lt;/span>(&lt;span style="color:#ae81ff">640&lt;/span>, &lt;span style="color:#ae81ff">640&lt;/span>);
+}
+&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">draw&lt;/span>() {
+&lt;span style="color:#a6e22e">background&lt;/span>(&lt;span style="color:#a6e22e">color&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>));
+&lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#a6e22e">x&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">100&lt;/span> &lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">width&lt;/span> &lt;span style="color:#f92672">||&lt;/span> &lt;span style="color:#a6e22e">x&lt;/span> &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>) {
+&lt;span style="color:#a6e22e">xspeed&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#a6e22e">xspeed&lt;/span>;
+}
+&lt;span style="color:#a6e22e">x&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">x&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">xspeed&lt;/span>;
+&lt;span style="color:#a6e22e">createBars&lt;/span>();
+&lt;span style="color:#a6e22e">fill&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">255&lt;/span>);
+&lt;span style="color:#a6e22e">rect&lt;/span>(&lt;span style="color:#a6e22e">x&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">25&lt;/span>, &lt;span style="color:#ae81ff">200&lt;/span>, &lt;span style="color:#ae81ff">125&lt;/span>, &lt;span style="color:#ae81ff">50&lt;/span>);
+&lt;span style="color:#a6e22e">fill&lt;/span>(&lt;span style="color:#ae81ff">255&lt;/span>, &lt;span style="color:#ae81ff">255&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>);
+&lt;span style="color:#a6e22e">rect&lt;/span>(&lt;span style="color:#a6e22e">x&lt;/span>, &lt;span style="color:#ae81ff">400&lt;/span>, &lt;span style="color:#ae81ff">125&lt;/span>, &lt;span style="color:#ae81ff">50&lt;/span>);
+&lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#a6e22e">bars&lt;/span>) {
+&lt;span style="color:#a6e22e">createBars&lt;/span>();
+}
+}
+&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">createBars&lt;/span>() {
+&lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">len&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">20&lt;/span>;
+&lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">i&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; &lt;span style="color:#a6e22e">i&lt;/span> &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#a6e22e">width&lt;/span> &lt;span style="color:#f92672">/&lt;/span> &lt;span style="color:#a6e22e">len&lt;/span>; &lt;span style="color:#a6e22e">i&lt;/span>&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;span style="color:#a6e22e">fill&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;white&amp;#34;&lt;/span>);
+&lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#a6e22e">i&lt;/span> &lt;span style="color:#f92672">%&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span> &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>) &lt;span style="color:#a6e22e">rect&lt;/span>(&lt;span style="color:#a6e22e">i&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#a6e22e">len&lt;/span>, &lt;span style="color:#a6e22e">height&lt;/span>, &lt;span style="color:#a6e22e">len&lt;/span>, &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#a6e22e">height&lt;/span>);
+}
+}
+&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">mousePressed&lt;/span>() {
+&lt;span style="color:#a6e22e">bars&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#f92672">!&lt;/span>&lt;span style="color:#a6e22e">bars&lt;/span>;
+}
+&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">keyPressed&lt;/span>() {
+&lt;span style="color:#a6e22e">bars&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#f92672">!&lt;/span>&lt;span style="color:#a6e22e">bars&lt;/span>;
+}
+&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/details></description></item></channel></rss>
