@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>UNstable</title><link>https://visualcomputingg1.github.io/portafolio/authors/Stevan/</link><description>Recent content on UNstable</description><generator>Source Themes academia (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Copyright &amp;copy; {year}</copyright><lastBuildDate>Thu, 04 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://visualcomputingg1.github.io/portafolio/authors/Stevan/index.xml" rel="self" type="application/rss+xml"/><item><title>Moving Dots Illusion</title><link>https://visualcomputingg1.github.io/portafolio/post/Ilusion2/</link><pubDate>Thu, 04 Nov 2021 00:00:00 +0000</pubDate><guid>https://visualcomputingg1.github.io/portafolio/post/Ilusion2/</guid><description>&lt;h2 id="descripcion">Descripcion&lt;/h2>
+&lt;p>En esta ilusión de puntos en movimiento, los puntos parecen moverse en un movimiento ondulatorio, pero en realidad los puntos están girando en su lugar, creando una ilusión de movimiento ondulado.&lt;/p>
+&lt;h2 id="usabilidad">Usabilidad&lt;/h2>
+&lt;p>Las ilusiones de movimiento suelen funcionar presentando un patrón compuesto por colores o tonos de alto contraste. Estos aspectos contrastantes desencadenan diferentes señales neuronales simultáneamente, lo que da como resultado un efecto de detección de movimiento cuando en realidad no hay movimiento.&lt;/p>
+&lt;iframe
+id="contournsIlusion"
+style="width:730px; height:730px"
+srcdoc="
+&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+&lt;script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js>&lt;/script>
+&lt;script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js>&lt;/script>
+&lt;script src=contournsIlusion.js>&lt;/script>
+&lt;/head>
+&lt;body>
+&lt;/body>
+&lt;/html>
+"
+>&lt;/iframe>
+&lt;details >&lt;summary>code to the solution&lt;/summary>
+&lt;div class="markdown-inner">
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-js" data-lang="js">&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">setup&lt;/span>() {
+&lt;span style="color:#a6e22e">createCanvas&lt;/span>(&lt;span style="color:#ae81ff">700&lt;/span>, &lt;span style="color:#ae81ff">700&lt;/span>);
+}
+&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">draw&lt;/span>() {
+&lt;span style="color:#a6e22e">background&lt;/span>(&lt;span style="color:#ae81ff">50&lt;/span>);
+&lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">i&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">50&lt;/span>; &lt;span style="color:#a6e22e">i&lt;/span> &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#a6e22e">width&lt;/span> &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#ae81ff">45&lt;/span>; &lt;span style="color:#a6e22e">i&lt;/span> &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#ae81ff">50&lt;/span>) {
+&lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">j&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">50&lt;/span>; &lt;span style="color:#a6e22e">j&lt;/span> &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#a6e22e">height&lt;/span> &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#ae81ff">45&lt;/span>; &lt;span style="color:#a6e22e">j&lt;/span> &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#ae81ff">50&lt;/span>) {
+&lt;span style="color:#a6e22e">push&lt;/span>()
+&lt;span style="color:#a6e22e">fill&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">168&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>);
+&lt;span style="color:#a6e22e">stroke&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">150&lt;/span>);
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">3&lt;/span>);
+&lt;span style="color:#a6e22e">ellipse&lt;/span>(&lt;span style="color:#a6e22e">i&lt;/span>, &lt;span style="color:#a6e22e">j&lt;/span>, &lt;span style="color:#ae81ff">25&lt;/span>, &lt;span style="color:#ae81ff">25&lt;/span>);
+&lt;span style="color:#a6e22e">pop&lt;/span>()
+&lt;span style="color:#a6e22e">push&lt;/span>()
+&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#a6e22e">i&lt;/span>, &lt;span style="color:#a6e22e">j&lt;/span>);
+&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">i&lt;/span> &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">3&lt;/span>)
+&lt;span style="color:#a6e22e">stroke&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">168&lt;/span>, &lt;span style="color:#ae81ff">168&lt;/span>);
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">3&lt;/span>);
+&lt;span style="color:#a6e22e">noFill&lt;/span>();
+&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">30&lt;/span>, &lt;span style="color:#ae81ff">30&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>)
+&lt;span style="color:#a6e22e">pop&lt;/span>()
+&lt;span style="color:#a6e22e">push&lt;/span>()
+&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#a6e22e">i&lt;/span>, &lt;span style="color:#a6e22e">j&lt;/span>);
+&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">QUARTER_PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#a6e22e">j&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">4&lt;/span>)
+&lt;span style="color:#a6e22e">stroke&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">255&lt;/span>, &lt;span style="color:#ae81ff">255&lt;/span>);
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">3&lt;/span>);
+&lt;span style="color:#a6e22e">noFill&lt;/span>();
+&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">25&lt;/span>, &lt;span style="color:#ae81ff">25&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span> , &lt;span style="color:#ae81ff">0&lt;/span>)
+&lt;span style="color:#a6e22e">pop&lt;/span>()
+&lt;span style="color:#a6e22e">angle&lt;/span> &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#ae81ff">0.0005&lt;/span>
+}
+}
+}
+&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/details></description></item></channel></rss>
