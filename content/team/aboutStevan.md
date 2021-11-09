@@ -7,8 +7,8 @@ weight: 70  # Order that this section will appear in.
 # Choose the user profile to display
 # This should be the username of a profile in your `content/authors/` folder.
 # See https://sourcethemes.com/academic/docs/get-started/#introduce-yourself
-author: "Santiago"
-avatar_image: "Santiago.png"
+author: "Stevan"
+avatar_image: "Stevan.png"
 design:
   spacing:
     padding: ["25px", "0", "0", "0"]
