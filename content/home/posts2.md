@@ -5,17 +5,17 @@
 widget = "pages"  # See https://sourcethemes.com/academic/docs/page-builder/
 headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
-weight = 90  # Order that this section will appear.
+weight = 100  # Order that this section will appear.
 
-title = "Ilusiones Visuales"
-subtitle = "LAS COSAS NO SIEMPRE SON COMO LAS VEMOS"
+title = "Rendering"
+subtitle = "LA MATGEMATICA DETRAS DE LAS VISUALIZACIONES"
 
 [content]
   # Page type to display. E.g. post, talk, or publication.
   page_type = "post"
   
   # Choose how much pages you would like to display (0 = all pages)
-  count = 4
+  count = 3
   
   # Choose how many pages you would like to offset by
   offset = 0
@@ -26,7 +26,7 @@ subtitle = "LAS COSAS NO SIEMPRE SON COMO LAS VEMOS"
   # Filter posts by a taxonomy term.
   [content.filters]
     tag = ""
-    category = "ILUSIONES"
+    category = "RENDERING"
     publication_type = ""
     exclude_featured = false
   

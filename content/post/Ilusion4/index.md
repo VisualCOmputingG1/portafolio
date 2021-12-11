@@ -5,7 +5,7 @@ summary: Ilusión óptica realizada con circulos que aparentan un movimiento ond
 authors:
 - Nicolas
 tags: []
-categories: []
+categories: ["ILUSIONES"]
 date: "2021-11-08T00:00:00Z"
 featured: false
 draft: 

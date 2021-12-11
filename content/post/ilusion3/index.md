@@ -5,7 +5,7 @@ summary: Ilusión de los buses escalonados. Los bloques parecen tener un desplaz
 authors:
   - Camilo
 tags: [Movimiento, Tiempo, Contraste]
-categories: []
+categories: ["ILUSIONES"]
 date: "2021-11-08T00:00:00Z"
 featured: false
 draft:
