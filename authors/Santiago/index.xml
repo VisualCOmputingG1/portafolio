@@ -92,6 +92,288 @@ srcdoc="
 }
 &lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
+&lt;/details></description></item><item><title>Ejemplo de rasterizacion</title><link>https://visualcomputingg1.github.io/portafolio/post/iluminacion/</link><pubDate>Thu, 04 Nov 2021 00:00:00 +0000</pubDate><guid>https://visualcomputingg1.github.io/portafolio/post/iluminacion/</guid><description>&lt;h2 id="descripcion">Descripcion&lt;/h2>
+&lt;p>Contornos ilusorios o contornos subjetivos son ilusiones ópticas que evocan la percepción de una era sin luminancia o
+cambio de color dentro del borde. El brillo ilusorio y su profundidad ordenados son frecuentemente acompañados de
+contornos ilusorios. Friedrich Schumann es a menudo acreditado con el descubrimiento de los contornos ilusorios
+alrededor de los principios del siglo veinte, sin embargo los contornos ilusorios son presentados en un arte de
+citar a las Edades Medias. La hoja Científica Americana de Gaetano Kanizsa escrita en 1976 marca el resurgimiento de
+interés en los contornos ilusorios por científicos de visión. &lt;em>&lt;a href="https://es.wikipedia.org/wiki/Contornos_ilusorios">&lt;strong>contornos ilusorios&lt;/strong>&lt;/a>&lt;/em>&lt;/p>
+&lt;h2 id="usabilidad">Usabilidad&lt;/h2>
+&lt;p>Al ser estimulos que afectan directamente las bases neuronales de las percepciones suelen ser utilizados para llamar la
+atencion de los receptores de manera discreta, formando figuras que realmente no estan en la imagen&lt;/p>
+&lt;p>&lt;img src="img_1.png" alt="img_1.png">&lt;/p>
+&lt;iframe
+id="contournsIlusion"
+style="width:425px; height:425px"
+srcdoc="
+&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+&lt;script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js>&lt;/script>
+&lt;script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js>&lt;/script>
+&lt;script src=contournsIlusion.js>&lt;/script>
+&lt;/head>
+&lt;body>
+&lt;/body>
+&lt;/html>
+"
+>&lt;/iframe>
+&lt;details >&lt;summary>code to the solution&lt;/summary>
+&lt;div class="markdown-inner">
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-js" data-lang="js">&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>
+&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">setup&lt;/span>() {
+&lt;span style="color:#a6e22e">createCanvas&lt;/span>(&lt;span style="color:#ae81ff">400&lt;/span>, &lt;span style="color:#ae81ff">400&lt;/span>);
+}
+&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">draw&lt;/span>() {
+&lt;span style="color:#a6e22e">background&lt;/span>(&lt;span style="color:#ae81ff">240&lt;/span>);
+&lt;span style="color:#75715e">//First
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">fill&lt;/span>(&lt;span style="color:#ae81ff">255&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>)
+&lt;span style="color:#a6e22e">stroke&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;yellow&amp;#39;&lt;/span>)
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;span style="color:#a6e22e">push&lt;/span>()
+&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">50&lt;/span>, &lt;span style="color:#ae81ff">150&lt;/span>)
+&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
+&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
+&lt;span style="color:#a6e22e">pop&lt;/span>()
+&lt;span style="color:#a6e22e">push&lt;/span>()
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">150&lt;/span>, &lt;span style="color:#ae81ff">150&lt;/span>)
+&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span> &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
+&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
+&lt;span style="color:#a6e22e">pop&lt;/span>()
+&lt;span style="color:#a6e22e">push&lt;/span>()
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">150&lt;/span>, &lt;span style="color:#ae81ff">250&lt;/span>)
+&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">3&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
+&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
+&lt;span style="color:#a6e22e">pop&lt;/span>()
+&lt;span style="color:#a6e22e">push&lt;/span>()
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">50&lt;/span>, &lt;span style="color:#ae81ff">250&lt;/span>)
+&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">4&lt;/span> &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
+&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
+&lt;span style="color:#a6e22e">pop&lt;/span>()
+&lt;span style="color:#75715e">//Second
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">fill&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;blue&amp;#39;&lt;/span>)
+&lt;span style="color:#a6e22e">stroke&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;yellow&amp;#39;&lt;/span>)
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;span style="color:#a6e22e">push&lt;/span>()
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">250&lt;/span>, &lt;span style="color:#ae81ff">150&lt;/span>)
+&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">3&lt;/span> &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
+&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
+&lt;span style="color:#a6e22e">pop&lt;/span>()
+&lt;span style="color:#a6e22e">push&lt;/span>()
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">350&lt;/span>, &lt;span style="color:#ae81ff">150&lt;/span>)
+&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">4&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
+&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
+&lt;span style="color:#a6e22e">pop&lt;/span>()
+&lt;span style="color:#a6e22e">push&lt;/span>()
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">250&lt;/span>, &lt;span style="color:#ae81ff">250&lt;/span>)
+&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
+&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
+&lt;span style="color:#a6e22e">pop&lt;/span>()
+&lt;span style="color:#a6e22e">push&lt;/span>()
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">350&lt;/span>, &lt;span style="color:#ae81ff">250&lt;/span>)
+&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
+&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
+&lt;span style="color:#a6e22e">pop&lt;/span>()
+&lt;span style="color:#a6e22e">angle&lt;/span> &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#ae81ff">0.003&lt;/span>
+}
+&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/details></description></item><item><title>Ejemplo de rasterizacion</title><link>https://visualcomputingg1.github.io/portafolio/post/rasterizacion/</link><pubDate>Thu, 04 Nov 2021 00:00:00 +0000</pubDate><guid>https://visualcomputingg1.github.io/portafolio/post/rasterizacion/</guid><description>&lt;h2 id="descripcion">Descripcion&lt;/h2>
+&lt;p>Contornos ilusorios o contornos subjetivos son ilusiones ópticas que evocan la percepción de una era sin luminancia o
+cambio de color dentro del borde. El brillo ilusorio y su profundidad ordenados son frecuentemente acompañados de
+contornos ilusorios. Friedrich Schumann es a menudo acreditado con el descubrimiento de los contornos ilusorios
+alrededor de los principios del siglo veinte, sin embargo los contornos ilusorios son presentados en un arte de
+citar a las Edades Medias. La hoja Científica Americana de Gaetano Kanizsa escrita en 1976 marca el resurgimiento de
+interés en los contornos ilusorios por científicos de visión. &lt;em>&lt;a href="https://es.wikipedia.org/wiki/Contornos_ilusorios">&lt;strong>contornos ilusorios&lt;/strong>&lt;/a>&lt;/em>&lt;/p>
+&lt;h2 id="usabilidad">Usabilidad&lt;/h2>
+&lt;p>Al ser estimulos que afectan directamente las bases neuronales de las percepciones suelen ser utilizados para llamar la
+atencion de los receptores de manera discreta, formando figuras que realmente no estan en la imagen&lt;/p>
+&lt;p>&lt;img src="img_1.png" alt="img_1.png">&lt;/p>
+&lt;iframe
+id="contournsIlusion"
+style="width:425px; height:425px"
+srcdoc="
+&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+&lt;script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js>&lt;/script>
+&lt;script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js>&lt;/script>
+&lt;script src=contournsIlusion.js>&lt;/script>
+&lt;/head>
+&lt;body>
+&lt;/body>
+&lt;/html>
+"
+>&lt;/iframe>
+&lt;details >&lt;summary>code to the solution&lt;/summary>
+&lt;div class="markdown-inner">
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-js" data-lang="js">&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>
+&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">setup&lt;/span>() {
+&lt;span style="color:#a6e22e">createCanvas&lt;/span>(&lt;span style="color:#ae81ff">400&lt;/span>, &lt;span style="color:#ae81ff">400&lt;/span>);
+}
+&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">draw&lt;/span>() {
+&lt;span style="color:#a6e22e">background&lt;/span>(&lt;span style="color:#ae81ff">240&lt;/span>);
+&lt;span style="color:#75715e">//First
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">fill&lt;/span>(&lt;span style="color:#ae81ff">255&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>)
+&lt;span style="color:#a6e22e">stroke&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;yellow&amp;#39;&lt;/span>)
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;span style="color:#a6e22e">push&lt;/span>()
+&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">50&lt;/span>, &lt;span style="color:#ae81ff">150&lt;/span>)
+&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
+&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
+&lt;span style="color:#a6e22e">pop&lt;/span>()
+&lt;span style="color:#a6e22e">push&lt;/span>()
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">150&lt;/span>, &lt;span style="color:#ae81ff">150&lt;/span>)
+&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span> &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
+&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
+&lt;span style="color:#a6e22e">pop&lt;/span>()
+&lt;span style="color:#a6e22e">push&lt;/span>()
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">150&lt;/span>, &lt;span style="color:#ae81ff">250&lt;/span>)
+&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">3&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
+&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
+&lt;span style="color:#a6e22e">pop&lt;/span>()
+&lt;span style="color:#a6e22e">push&lt;/span>()
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">50&lt;/span>, &lt;span style="color:#ae81ff">250&lt;/span>)
+&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">4&lt;/span> &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
+&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
+&lt;span style="color:#a6e22e">pop&lt;/span>()
+&lt;span style="color:#75715e">//Second
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">fill&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;blue&amp;#39;&lt;/span>)
+&lt;span style="color:#a6e22e">stroke&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;yellow&amp;#39;&lt;/span>)
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;span style="color:#a6e22e">push&lt;/span>()
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">250&lt;/span>, &lt;span style="color:#ae81ff">150&lt;/span>)
+&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">3&lt;/span> &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
+&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
+&lt;span style="color:#a6e22e">pop&lt;/span>()
+&lt;span style="color:#a6e22e">push&lt;/span>()
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">350&lt;/span>, &lt;span style="color:#ae81ff">150&lt;/span>)
+&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">4&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
+&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
+&lt;span style="color:#a6e22e">pop&lt;/span>()
+&lt;span style="color:#a6e22e">push&lt;/span>()
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">250&lt;/span>, &lt;span style="color:#ae81ff">250&lt;/span>)
+&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
+&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
+&lt;span style="color:#a6e22e">pop&lt;/span>()
+&lt;span style="color:#a6e22e">push&lt;/span>()
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">350&lt;/span>, &lt;span style="color:#ae81ff">250&lt;/span>)
+&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
+&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
+&lt;span style="color:#a6e22e">pop&lt;/span>()
+&lt;span style="color:#a6e22e">angle&lt;/span> &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#ae81ff">0.003&lt;/span>
+}
+&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/details></description></item><item><title>Ejemplo de rasterizacion</title><link>https://visualcomputingg1.github.io/portafolio/post/visibilidad/</link><pubDate>Thu, 04 Nov 2021 00:00:00 +0000</pubDate><guid>https://visualcomputingg1.github.io/portafolio/post/visibilidad/</guid><description>&lt;h2 id="descripcion">Descripcion&lt;/h2>
+&lt;p>Contornos ilusorios o contornos subjetivos son ilusiones ópticas que evocan la percepción de una era sin luminancia o
+cambio de color dentro del borde. El brillo ilusorio y su profundidad ordenados son frecuentemente acompañados de
+contornos ilusorios. Friedrich Schumann es a menudo acreditado con el descubrimiento de los contornos ilusorios
+alrededor de los principios del siglo veinte, sin embargo los contornos ilusorios son presentados en un arte de
+citar a las Edades Medias. La hoja Científica Americana de Gaetano Kanizsa escrita en 1976 marca el resurgimiento de
+interés en los contornos ilusorios por científicos de visión. &lt;em>&lt;a href="https://es.wikipedia.org/wiki/Contornos_ilusorios">&lt;strong>contornos ilusorios&lt;/strong>&lt;/a>&lt;/em>&lt;/p>
+&lt;h2 id="usabilidad">Usabilidad&lt;/h2>
+&lt;p>Al ser estimulos que afectan directamente las bases neuronales de las percepciones suelen ser utilizados para llamar la
+atencion de los receptores de manera discreta, formando figuras que realmente no estan en la imagen&lt;/p>
+&lt;p>&lt;img src="img_1.png" alt="img_1.png">&lt;/p>
+&lt;iframe
+id="contournsIlusion"
+style="width:425px; height:425px"
+srcdoc="
+&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+&lt;script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js>&lt;/script>
+&lt;script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js>&lt;/script>
+&lt;script src=contournsIlusion.js>&lt;/script>
+&lt;/head>
+&lt;body>
+&lt;/body>
+&lt;/html>
+"
+>&lt;/iframe>
+&lt;details >&lt;summary>code to the solution&lt;/summary>
+&lt;div class="markdown-inner">
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-js" data-lang="js">&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>
+&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">setup&lt;/span>() {
+&lt;span style="color:#a6e22e">createCanvas&lt;/span>(&lt;span style="color:#ae81ff">400&lt;/span>, &lt;span style="color:#ae81ff">400&lt;/span>);
+}
+&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">draw&lt;/span>() {
+&lt;span style="color:#a6e22e">background&lt;/span>(&lt;span style="color:#ae81ff">240&lt;/span>);
+&lt;span style="color:#75715e">//First
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">fill&lt;/span>(&lt;span style="color:#ae81ff">255&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>)
+&lt;span style="color:#a6e22e">stroke&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;yellow&amp;#39;&lt;/span>)
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;span style="color:#a6e22e">push&lt;/span>()
+&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">50&lt;/span>, &lt;span style="color:#ae81ff">150&lt;/span>)
+&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
+&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
+&lt;span style="color:#a6e22e">pop&lt;/span>()
+&lt;span style="color:#a6e22e">push&lt;/span>()
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">150&lt;/span>, &lt;span style="color:#ae81ff">150&lt;/span>)
+&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span> &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
+&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
+&lt;span style="color:#a6e22e">pop&lt;/span>()
+&lt;span style="color:#a6e22e">push&lt;/span>()
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">150&lt;/span>, &lt;span style="color:#ae81ff">250&lt;/span>)
+&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">3&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
+&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
+&lt;span style="color:#a6e22e">pop&lt;/span>()
+&lt;span style="color:#a6e22e">push&lt;/span>()
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">50&lt;/span>, &lt;span style="color:#ae81ff">250&lt;/span>)
+&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">4&lt;/span> &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
+&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
+&lt;span style="color:#a6e22e">pop&lt;/span>()
+&lt;span style="color:#75715e">//Second
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">fill&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;blue&amp;#39;&lt;/span>)
+&lt;span style="color:#a6e22e">stroke&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;yellow&amp;#39;&lt;/span>)
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;span style="color:#a6e22e">push&lt;/span>()
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">250&lt;/span>, &lt;span style="color:#ae81ff">150&lt;/span>)
+&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">3&lt;/span> &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
+&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
+&lt;span style="color:#a6e22e">pop&lt;/span>()
+&lt;span style="color:#a6e22e">push&lt;/span>()
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">350&lt;/span>, &lt;span style="color:#ae81ff">150&lt;/span>)
+&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">4&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
+&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
+&lt;span style="color:#a6e22e">pop&lt;/span>()
+&lt;span style="color:#a6e22e">push&lt;/span>()
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">250&lt;/span>, &lt;span style="color:#ae81ff">250&lt;/span>)
+&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
+&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
+&lt;span style="color:#a6e22e">pop&lt;/span>()
+&lt;span style="color:#a6e22e">push&lt;/span>()
+&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">350&lt;/span>, &lt;span style="color:#ae81ff">250&lt;/span>)
+&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
+&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
+&lt;span style="color:#a6e22e">pop&lt;/span>()
+&lt;span style="color:#a6e22e">angle&lt;/span> &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#ae81ff">0.003&lt;/span>
+}
+&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
 &lt;/details></description></item><item><title>An example preprint / working paper</title><link>https://visualcomputingg1.github.io/portafolio/publication/preprint/</link><pubDate>Sun, 07 Apr 2019 00:00:00 +0000</pubDate><guid>https://visualcomputingg1.github.io/portafolio/publication/preprint/</guid><description>&lt;div class="alert alert-note">
 &lt;div>
 Click the &lt;em>Slides&lt;/em> button above to demo academia&amp;rsquo;s Markdown slides feature.
