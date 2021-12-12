@@ -1,11 +1,11 @@
 ---
-title: Contornos Ilusorios
+title: Ejemplo de rasterizacion
 subtitle: cuando se forma una figura geométrica, el ojo humano tiende a identificarlo por encima del resto de imágenes, aun cuando en realidad no existe
 summary: este fenómeno nos hace ver que figuras geométricas resaltan, o inclusive que están en otro color, siendo que no es realmente asi
 authors:
 - Santiago
 tags: []
-categories: ["ILUSIONES"]
+categories: ["RENDERING"]
 date: "2021-11-04T00:00:00Z"
 featured: false
 draft: 
