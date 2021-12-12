@@ -1,7 +1,7 @@
 ---
 title: Ejemplo de rasterizacion
-subtitle: cuando se forma una figura geométrica, el ojo humano tiende a identificarlo por encima del resto de imágenes, aun cuando en realidad no existe
-summary: este fenómeno nos hace ver que figuras geométricas resaltan, o inclusive que están en otro color, siendo que no es realmente asi
+summary: The mid-point circle es un algoritmo usado para determinar los puntos necesarios para rasrterizar un circulo.
+subtitle: The mid-point circle
 authors:
 - Santiago
 tags: []
@@ -15,7 +15,7 @@ share: false
 # To use, add an image named `featured.jpg/png` to your page's folder.
 # Focal point options: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight
 image:
-  caption: 'Image credit: [**rafasalgado**](https://rafasalgado.github.io/personal/projects/ilusionoptica/ilusion.html)'
+  caption: 'Image credit: [fgeeksforgeeks](https://www.geeksforgeeks.org/mid-point-circle-drawing-algorithm/)'
   focal_point: ""
   preview_only: true
 
@@ -30,102 +30,109 @@ projects: []
 
 ## Descripcion
 
-Contornos ilusorios o contornos subjetivos son ilusiones ópticas que evocan la percepción de una era sin luminancia o 
-cambio de color dentro del borde. El brillo ilusorio y su profundidad ordenados son frecuentemente acompañados de 
-contornos ilusorios. Friedrich Schumann es a menudo acreditado con el descubrimiento de los contornos ilusorios 
-alrededor de los principios del siglo veinte, sin embargo los contornos ilusorios son presentados en un arte de 
-citar a las Edades Medias. La hoja Científica Americana de Gaetano Kanizsa escrita en 1976 marca el resurgimiento de 
-interés en los contornos ilusorios por científicos de visión. _[**contornos ilusorios**](https://es.wikipedia.org/wiki/Contornos_ilusorios)_
+Usamos el algoritmo del punto medio para calcular todos los puntos perimetrales en el primer octante, y luego los reflejamos a los demas octantes, basados en la propiedad simetrica de la figura a generar
+el algoritmo es muy similar al algoritmo para generar lineas basado en el punto medio, lo unico que cambia es la condicion de frontera
 
-## Usabilidad
+paara cualquier pixel (x,y), el siguiente pixel en ser pintado es bien sea ``` (x, y+1) ``` o ``` (x-1, y+1) ```. Esto se decide en los siguientes pasos:
+1. Encuentra el punto medio ``` p ``` para ambos posibles pixeles ``` (x-0.5, y+1) ```
+2. si  ``` p ``` yace dentro del perimetro del perimetro o bien sobre el, entonces pintamos ``` (x, y+1) ```, de otro modo si esta afuera pintmaremos ```  (x-1, y+1) ```
+[geeksforgeeks](https://www.geeksforgeeks.org/mid-point-circle-drawing-algorithm/)
 
-Al ser estimulos que afectan directamente las bases neuronales de las percepciones suelen ser utilizados para llamar la 
-atencion de los receptores de manera discreta, formando figuras que realmente no estan en la imagen
+### Condicion de frontera
+decidir si el punto yace dentro o fuera del perimetro se decide a travez de la siguiente formula:
+```python 
+F(p) = x2 + y2 - r2 
+if F(p)<0: return inside
+else if F(p) == 0: return inside # it means to be on the perimeter
+else: return outside
+ ```
 
-![img_1.png](img_1.png)
+## Ejemplo estatico
 
-{{< p5-iframe sketch="contournsIlusion.js" width="425" height="425" >}}
+![](295px-Midpoint_circle_algorithm_animation_(radius_23).gif)
+
+## Implementacion
+
+{{< p5-iframe sketch="contournsIlusion.js" width="625" height="625" >}}
+
 
 
 {{< details title="code to the solution" open=false >}}
 ```js
-let angle = 0
+// initial values
+// initial values
+let x, y, r, d, xc, yc;
+
+let i = 0;
+let grids = 26;
+let scalFact;
 
 function setup() {
-  createCanvas(400, 400);
+    createCanvas(600, 600);
+    background(0);
+
+    scalFact = width / grids;
+    r = 8 * scalFact;
+
+    xc = 12 * scalFact;
+    yc = 12 * scalFact;
+
+    showGrids();
+    showRefCircle();
+    bresenham();
 }
 
-function draw() {
-  background(240);
+function showGrids() {
+    stroke(255);
+    for (i; i < grids * scalFact; i += scalFact) {
+        line(i, 0, i, height);
+        line(0, i, width, i);
+    }
+}
 
-  //First
-  fill(255, 0, 0)
-  stroke('yellow')
-  strokeWeight(2)
+function showRefCircle() {
+    stroke(200);
+    noFill();
+    circle(xc + (scalFact / 2), yc + (scalFact / 2), r * 2);
+}
 
-  push()
-  translate(50, 150)
-  rotate(HALF_PI + angle)
-  arc(0, 0, 80, 80, PI, HALF_PI)
-  pop()
+function bresenham() {
+    x = 0;
+    y = r;
 
-  push()
-  strokeWeight(2)
-  translate(150, 150)
-  rotate(HALF_PI * 2 - angle)
-  arc(0, 0, 80, 80, PI, HALF_PI)
-  pop()
+    d = (3 * scalFact) - (2 * r);
 
-  push()
-  strokeWeight(2)
-  translate(150, 250)
-  rotate(HALF_PI * 3 + angle)
-  arc(0, 0, 80, 80, PI, HALF_PI)
-  pop()
+    symPlot();
+    while (x <= y) {
+        if (d <= 0) {
+            d = d + (4 * x) + (6 * scalFact);
+        } else {
+            d = d + (4 * x) - (4 * y) + (10 * scalFact);
+            y -= scalFact;
+        }
 
-  push()
-  strokeWeight(2)
-  translate(50, 250)
-  rotate(HALF_PI * 4 - angle)
-  arc(0, 0, 80, 80, PI, HALF_PI)
-  pop()
+        x += scalFact;
+        symPlot();
+    }
+}
 
+function symPlot() {
+    fillPixel(x + xc, y + yc);
+    fillPixel(x + xc, -y + yc);
+    fillPixel(-x + xc, -y + yc);
+    fillPixel(-x + xc, y + yc);
+    fillPixel(y + xc, x + yc);
+    fillPixel(y + xc, -x + yc);
+    fillPixel(-y + xc, -x + yc);
+    fillPixel(-y + xc, x + yc);
+}
 
-  //Second
-  fill('blue')
-  stroke('yellow')
-  strokeWeight(2)
-
-  push()
-  strokeWeight(2)
-  translate(250, 150)
-  rotate(HALF_PI * 3 - angle)
-  arc(0, 0, 80, 80, PI, HALF_PI)
-  pop()
-
-  push()
-  strokeWeight(2)
-  translate(350, 150)
-  rotate(HALF_PI * 4 + angle)
-  arc(0, 0, 80, 80, PI, HALF_PI)
-  pop()
-
-  push()
-  strokeWeight(2)
-  translate(250, 250)
-  rotate(HALF_PI * 2 + angle)
-  arc(0, 0, 80, 80, PI, HALF_PI)
-  pop()
-
-  push()
-  strokeWeight(2)
-  translate(350, 250)
-  rotate(HALF_PI - angle)
-  arc(0, 0, 80, 80, PI, HALF_PI)
-  pop()
-
-
-  angle += 0.003
+function fillPixel(x, y) {
+    noStroke();
+    squareColor = color(255, 255, 255);
+    squareColor.setAlpha(100);
+    fill(squareColor);
+    square(x, y, scalFact);
 }
 
 ```

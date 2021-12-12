@@ -8,9 +8,16 @@ let scalFact;
 function setup() {
     createCanvas(600, 600);
     background(0);
-
+    slider = createSlider(0, 10, 1);
+    slider.position(10, 10);
+    slider.style('width', '80px');
     scalFact = width / grids;
-    r = 8 * scalFact;
+
+}
+
+function draw(){
+    push();
+    r = slider.value() * scalFact;
 
     xc = 12 * scalFact;
     yc = 12 * scalFact;
@@ -18,8 +25,8 @@ function setup() {
     showGrids();
     showRefCircle();
     bresenham();
+    pop();
 }
-
 function showGrids() {
     stroke(255);
     for (i; i < grids * scalFact; i += scalFact) {
@@ -35,6 +42,7 @@ function showRefCircle() {
 }
 
 function bresenham() {
+    push();
     x = 0;
     y = r;
 
@@ -52,9 +60,11 @@ function bresenham() {
         x += scalFact;
         symPlot();
     }
+    pop();
 }
 
 function symPlot() {
+    push();
     fillPixel(x + xc, y + yc);
     fillPixel(x + xc, -y + yc);
     fillPixel(-x + xc, -y + yc);
@@ -63,12 +73,15 @@ function symPlot() {
     fillPixel(y + xc, -x + yc);
     fillPixel(-y + xc, -x + yc);
     fillPixel(-y + xc, x + yc);
+    pop();
 }
 
 function fillPixel(x, y) {
+    push();
     noStroke();
     squareColor = color(255, 255, 255);
     squareColor.setAlpha(100);
     fill(squareColor);
     square(x, y, scalFact);
+    pop();
 }
