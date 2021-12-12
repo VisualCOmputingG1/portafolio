@@ -6,7 +6,7 @@
 <meta name=generator content="Source Themes Academia 4.3.1">
 <meta name=generator content="Hugo 0.90.1">
 <meta name=author content="Camilo Sepúlveda">
-<meta name=description content="este fenómeno nos hace ver que figuras geométricas resaltan, o inclusive que están en otro color, siendo que no es realmente asi">
+<meta name=description content="The mid-point circle es un algoritmo usado para determinar los puntos necesarios para rasrterizar un circulo.">
 <link rel=alternate hreflang=en-us href=https://visualcomputingg1.github.io/portafolio/post/rasterizacion/>
 <meta name=theme-color content="#fc6f5c">
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin=anonymous>
@@ -25,8 +25,8 @@
 <meta property="og:site_name" content="UNstable">
 <meta property="og:url" content="https://visualcomputingg1.github.io/portafolio/post/rasterizacion/">
 <meta property="og:title" content="Ejemplo de rasterizacion | UNstable">
-<meta property="og:description" content="este fenómeno nos hace ver que figuras geométricas resaltan, o inclusive que están en otro color, siendo que no es realmente asi"><meta property="og:image" content="https://visualcomputingg1.github.io/portafolio/post/rasterizacion/featured.jpg">
-<meta property="twitter:image" content="https://visualcomputingg1.github.io/portafolio/post/rasterizacion/featured.jpg"><meta property="og:locale" content="en-us">
+<meta property="og:description" content="The mid-point circle es un algoritmo usado para determinar los puntos necesarios para rasrterizar un circulo."><meta property="og:image" content="https://visualcomputingg1.github.io/portafolio/post/rasterizacion/featured.png">
+<meta property="twitter:image" content="https://visualcomputingg1.github.io/portafolio/post/rasterizacion/featured.png"><meta property="og:locale" content="en-us">
 <meta property="article:published_time" content="2021-11-04T00:00:00+00:00">
 <meta property="article:modified_time" content="2021-11-04T00:00:00+00:00">
 <title>Ejemplo de rasterizacion | UNstable</title>
@@ -75,7 +75,7 @@
 <article class="article py-5" itemscope itemtype=http://schema.org/Article>
 <div class="article-container py-3">
 <h1 itemprop=name>Ejemplo de rasterizacion</h1>
-<p class=page-subtitle>cuando se forma una figura geométrica, el ojo humano tiende a identificarlo por encima del resto de imágenes, aun cuando en realidad no existe</p>
+<p class=page-subtitle>The mid-point circle</p>
 <meta content="2021-11-04 00:00:00 +0000 UTC" itemprop=datePublished>
 <meta content="2021-11-04 00:00:00 +0000 UTC" itemprop=dateModified>
 <div class=article-metadata>
@@ -100,17 +100,24 @@
 <div class=article-container>
 <div class=article-style itemprop=articleBody>
 <h2 id=descripcion>Descripcion</h2>
-<p>Contornos ilusorios o contornos subjetivos son ilusiones ópticas que evocan la percepción de una era sin luminancia o
-cambio de color dentro del borde. El brillo ilusorio y su profundidad ordenados son frecuentemente acompañados de
-contornos ilusorios. Friedrich Schumann es a menudo acreditado con el descubrimiento de los contornos ilusorios
-alrededor de los principios del siglo veinte, sin embargo los contornos ilusorios son presentados en un arte de
-citar a las Edades Medias. La hoja Científica Americana de Gaetano Kanizsa escrita en 1976 marca el resurgimiento de
-interés en los contornos ilusorios por científicos de visión. <em><a href=https://es.wikipedia.org/wiki/Contornos_ilusorios><strong>contornos ilusorios</strong></a></em></p>
-<h2 id=usabilidad>Usabilidad</h2>
-<p>Al ser estimulos que afectan directamente las bases neuronales de las percepciones suelen ser utilizados para llamar la
-atencion de los receptores de manera discreta, formando figuras que realmente no estan en la imagen</p>
-<p><img src=img_1.png alt=img_1.png></p>
-<iframe id=contournsIlusion style=width:425px;height:425px srcdoc="
+<p>Usamos el algoritmo del punto medio para calcular todos los puntos perimetrales en el primer octante, y luego los reflejamos a los demas octantes, basados en la propiedad simetrica de la figura a generar
+el algoritmo es muy similar al algoritmo para generar lineas basado en el punto medio, lo unico que cambia es la condicion de frontera</p>
+<p>paara cualquier pixel (x,y), el siguiente pixel en ser pintado es bien sea <code>(x, y+1)</code> o <code>(x-1, y+1)</code>. Esto se decide en los siguientes pasos:</p>
+<ol>
+<li>Encuentra el punto medio <code>p</code> para ambos posibles pixeles <code>(x-0.5, y+1)</code></li>
+<li>si <code>p</code> yace dentro del perimetro del perimetro o bien sobre el, entonces pintamos <code>(x, y+1)</code>, de otro modo si esta afuera pintmaremos <code> (x-1, y+1)</code>
+<a href=https://www.geeksforgeeks.org/mid-point-circle-drawing-algorithm/>geeksforgeeks</a></li>
+</ol>
+<h3 id=condicion-de-frontera>Condicion de frontera</h3>
+<p>decidir si el punto yace dentro o fuera del perimetro se decide a travez de la siguiente formula:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>F(p) <span style=color:#f92672>=</span> x2 <span style=color:#f92672>+</span> y2 <span style=color:#f92672>-</span> r2 
+<span style=color:#66d9ef>if</span> F(p)<span style=color:#f92672>&lt;</span><span style=color:#ae81ff>0</span>: <span style=color:#66d9ef>return</span> inside
+<span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> F(p) <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>: <span style=color:#66d9ef>return</span> inside <span style=color:#75715e># it means to be on the perimeter</span>
+<span style=color:#66d9ef>else</span>: <span style=color:#66d9ef>return</span> outside
+</code></pre></div><h2 id=ejemplo-estatico>Ejemplo estatico</h2>
+<p><img src=295px-Midpoint_circle_algorithm_animation_(radius_23).gif alt></p>
+<h2 id=implementacion>Implementacion</h2>
+<iframe id=contournsIlusion style=width:625px;height:625px srcdoc="
 <!DOCTYPE html>
 <html>
 <head>
@@ -129,83 +136,80 @@ atencion de los receptores de manera discreta, formando figuras que realmente no
 "></iframe>
 <details><summary>code to the solution</summary>
 <div class=markdown-inner>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>angle</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#75715e>// initial values
+</span><span style=color:#75715e>// initial values
+</span><span style=color:#75715e></span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>r</span>, <span style=color:#a6e22e>d</span>, <span style=color:#a6e22e>xc</span>, <span style=color:#a6e22e>yc</span>;
+
+<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>grids</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>26</span>;
+<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>scalFact</span>;
 
 <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>setup</span>() {
-  <span style=color:#a6e22e>createCanvas</span>(<span style=color:#ae81ff>400</span>, <span style=color:#ae81ff>400</span>);
+    <span style=color:#a6e22e>createCanvas</span>(<span style=color:#ae81ff>600</span>, <span style=color:#ae81ff>600</span>);
+    <span style=color:#a6e22e>background</span>(<span style=color:#ae81ff>0</span>);
+
+    <span style=color:#a6e22e>scalFact</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>width</span> <span style=color:#f92672>/</span> <span style=color:#a6e22e>grids</span>;
+    <span style=color:#a6e22e>r</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>8</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>scalFact</span>;
+
+    <span style=color:#a6e22e>xc</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>12</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>scalFact</span>;
+    <span style=color:#a6e22e>yc</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>12</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>scalFact</span>;
+
+    <span style=color:#a6e22e>showGrids</span>();
+    <span style=color:#a6e22e>showRefCircle</span>();
+    <span style=color:#a6e22e>bresenham</span>();
 }
 
-<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>draw</span>() {
-  <span style=color:#a6e22e>background</span>(<span style=color:#ae81ff>240</span>);
+<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>showGrids</span>() {
+    <span style=color:#a6e22e>stroke</span>(<span style=color:#ae81ff>255</span>);
+    <span style=color:#66d9ef>for</span> (<span style=color:#a6e22e>i</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>grids</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>scalFact</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>+=</span> <span style=color:#a6e22e>scalFact</span>) {
+        <span style=color:#a6e22e>line</span>(<span style=color:#a6e22e>i</span>, <span style=color:#ae81ff>0</span>, <span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>height</span>);
+        <span style=color:#a6e22e>line</span>(<span style=color:#ae81ff>0</span>, <span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>width</span>, <span style=color:#a6e22e>i</span>);
+    }
+}
 
-  <span style=color:#75715e>//First
-</span><span style=color:#75715e></span>  <span style=color:#a6e22e>fill</span>(<span style=color:#ae81ff>255</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>)
-  <span style=color:#a6e22e>stroke</span>(<span style=color:#e6db74>&#39;yellow&#39;</span>)
-  <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>2</span>)
+<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>showRefCircle</span>() {
+    <span style=color:#a6e22e>stroke</span>(<span style=color:#ae81ff>200</span>);
+    <span style=color:#a6e22e>noFill</span>();
+    <span style=color:#a6e22e>circle</span>(<span style=color:#a6e22e>xc</span> <span style=color:#f92672>+</span> (<span style=color:#a6e22e>scalFact</span> <span style=color:#f92672>/</span> <span style=color:#ae81ff>2</span>), <span style=color:#a6e22e>yc</span> <span style=color:#f92672>+</span> (<span style=color:#a6e22e>scalFact</span> <span style=color:#f92672>/</span> <span style=color:#ae81ff>2</span>), <span style=color:#a6e22e>r</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>2</span>);
+}
 
-  <span style=color:#a6e22e>push</span>()
-  <span style=color:#a6e22e>translate</span>(<span style=color:#ae81ff>50</span>, <span style=color:#ae81ff>150</span>)
-  <span style=color:#a6e22e>rotate</span>(<span style=color:#a6e22e>HALF_PI</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>angle</span>)
-  <span style=color:#a6e22e>arc</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>80</span>, <span style=color:#ae81ff>80</span>, <span style=color:#a6e22e>PI</span>, <span style=color:#a6e22e>HALF_PI</span>)
-  <span style=color:#a6e22e>pop</span>()
+<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>bresenham</span>() {
+    <span style=color:#a6e22e>x</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+    <span style=color:#a6e22e>y</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>r</span>;
 
-  <span style=color:#a6e22e>push</span>()
-  <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>2</span>)
-  <span style=color:#a6e22e>translate</span>(<span style=color:#ae81ff>150</span>, <span style=color:#ae81ff>150</span>)
-  <span style=color:#a6e22e>rotate</span>(<span style=color:#a6e22e>HALF_PI</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>-</span> <span style=color:#a6e22e>angle</span>)
-  <span style=color:#a6e22e>arc</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>80</span>, <span style=color:#ae81ff>80</span>, <span style=color:#a6e22e>PI</span>, <span style=color:#a6e22e>HALF_PI</span>)
-  <span style=color:#a6e22e>pop</span>()
+    <span style=color:#a6e22e>d</span> <span style=color:#f92672>=</span> (<span style=color:#ae81ff>3</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>scalFact</span>) <span style=color:#f92672>-</span> (<span style=color:#ae81ff>2</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>r</span>);
 
-  <span style=color:#a6e22e>push</span>()
-  <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>2</span>)
-  <span style=color:#a6e22e>translate</span>(<span style=color:#ae81ff>150</span>, <span style=color:#ae81ff>250</span>)
-  <span style=color:#a6e22e>rotate</span>(<span style=color:#a6e22e>HALF_PI</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>3</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>angle</span>)
-  <span style=color:#a6e22e>arc</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>80</span>, <span style=color:#ae81ff>80</span>, <span style=color:#a6e22e>PI</span>, <span style=color:#a6e22e>HALF_PI</span>)
-  <span style=color:#a6e22e>pop</span>()
+    <span style=color:#a6e22e>symPlot</span>();
+    <span style=color:#66d9ef>while</span> (<span style=color:#a6e22e>x</span> <span style=color:#f92672>&lt;=</span> <span style=color:#a6e22e>y</span>) {
+        <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>d</span> <span style=color:#f92672>&lt;=</span> <span style=color:#ae81ff>0</span>) {
+            <span style=color:#a6e22e>d</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>d</span> <span style=color:#f92672>+</span> (<span style=color:#ae81ff>4</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>x</span>) <span style=color:#f92672>+</span> (<span style=color:#ae81ff>6</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>scalFact</span>);
+        } <span style=color:#66d9ef>else</span> {
+            <span style=color:#a6e22e>d</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>d</span> <span style=color:#f92672>+</span> (<span style=color:#ae81ff>4</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>x</span>) <span style=color:#f92672>-</span> (<span style=color:#ae81ff>4</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>y</span>) <span style=color:#f92672>+</span> (<span style=color:#ae81ff>10</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>scalFact</span>);
+            <span style=color:#a6e22e>y</span> <span style=color:#f92672>-=</span> <span style=color:#a6e22e>scalFact</span>;
+        }
 
-  <span style=color:#a6e22e>push</span>()
-  <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>2</span>)
-  <span style=color:#a6e22e>translate</span>(<span style=color:#ae81ff>50</span>, <span style=color:#ae81ff>250</span>)
-  <span style=color:#a6e22e>rotate</span>(<span style=color:#a6e22e>HALF_PI</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>4</span> <span style=color:#f92672>-</span> <span style=color:#a6e22e>angle</span>)
-  <span style=color:#a6e22e>arc</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>80</span>, <span style=color:#ae81ff>80</span>, <span style=color:#a6e22e>PI</span>, <span style=color:#a6e22e>HALF_PI</span>)
-  <span style=color:#a6e22e>pop</span>()
+        <span style=color:#a6e22e>x</span> <span style=color:#f92672>+=</span> <span style=color:#a6e22e>scalFact</span>;
+        <span style=color:#a6e22e>symPlot</span>();
+    }
+}
 
+<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>symPlot</span>() {
+    <span style=color:#a6e22e>fillPixel</span>(<span style=color:#a6e22e>x</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>xc</span>, <span style=color:#a6e22e>y</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>yc</span>);
+    <span style=color:#a6e22e>fillPixel</span>(<span style=color:#a6e22e>x</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>xc</span>, <span style=color:#f92672>-</span><span style=color:#a6e22e>y</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>yc</span>);
+    <span style=color:#a6e22e>fillPixel</span>(<span style=color:#f92672>-</span><span style=color:#a6e22e>x</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>xc</span>, <span style=color:#f92672>-</span><span style=color:#a6e22e>y</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>yc</span>);
+    <span style=color:#a6e22e>fillPixel</span>(<span style=color:#f92672>-</span><span style=color:#a6e22e>x</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>xc</span>, <span style=color:#a6e22e>y</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>yc</span>);
+    <span style=color:#a6e22e>fillPixel</span>(<span style=color:#a6e22e>y</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>xc</span>, <span style=color:#a6e22e>x</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>yc</span>);
+    <span style=color:#a6e22e>fillPixel</span>(<span style=color:#a6e22e>y</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>xc</span>, <span style=color:#f92672>-</span><span style=color:#a6e22e>x</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>yc</span>);
+    <span style=color:#a6e22e>fillPixel</span>(<span style=color:#f92672>-</span><span style=color:#a6e22e>y</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>xc</span>, <span style=color:#f92672>-</span><span style=color:#a6e22e>x</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>yc</span>);
+    <span style=color:#a6e22e>fillPixel</span>(<span style=color:#f92672>-</span><span style=color:#a6e22e>y</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>xc</span>, <span style=color:#a6e22e>x</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>yc</span>);
+}
 
-  <span style=color:#75715e>//Second
-</span><span style=color:#75715e></span>  <span style=color:#a6e22e>fill</span>(<span style=color:#e6db74>&#39;blue&#39;</span>)
-  <span style=color:#a6e22e>stroke</span>(<span style=color:#e6db74>&#39;yellow&#39;</span>)
-  <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>2</span>)
-
-  <span style=color:#a6e22e>push</span>()
-  <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>2</span>)
-  <span style=color:#a6e22e>translate</span>(<span style=color:#ae81ff>250</span>, <span style=color:#ae81ff>150</span>)
-  <span style=color:#a6e22e>rotate</span>(<span style=color:#a6e22e>HALF_PI</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>3</span> <span style=color:#f92672>-</span> <span style=color:#a6e22e>angle</span>)
-  <span style=color:#a6e22e>arc</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>80</span>, <span style=color:#ae81ff>80</span>, <span style=color:#a6e22e>PI</span>, <span style=color:#a6e22e>HALF_PI</span>)
-  <span style=color:#a6e22e>pop</span>()
-
-  <span style=color:#a6e22e>push</span>()
-  <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>2</span>)
-  <span style=color:#a6e22e>translate</span>(<span style=color:#ae81ff>350</span>, <span style=color:#ae81ff>150</span>)
-  <span style=color:#a6e22e>rotate</span>(<span style=color:#a6e22e>HALF_PI</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>4</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>angle</span>)
-  <span style=color:#a6e22e>arc</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>80</span>, <span style=color:#ae81ff>80</span>, <span style=color:#a6e22e>PI</span>, <span style=color:#a6e22e>HALF_PI</span>)
-  <span style=color:#a6e22e>pop</span>()
-
-  <span style=color:#a6e22e>push</span>()
-  <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>2</span>)
-  <span style=color:#a6e22e>translate</span>(<span style=color:#ae81ff>250</span>, <span style=color:#ae81ff>250</span>)
-  <span style=color:#a6e22e>rotate</span>(<span style=color:#a6e22e>HALF_PI</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>angle</span>)
-  <span style=color:#a6e22e>arc</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>80</span>, <span style=color:#ae81ff>80</span>, <span style=color:#a6e22e>PI</span>, <span style=color:#a6e22e>HALF_PI</span>)
-  <span style=color:#a6e22e>pop</span>()
-
-  <span style=color:#a6e22e>push</span>()
-  <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>2</span>)
-  <span style=color:#a6e22e>translate</span>(<span style=color:#ae81ff>350</span>, <span style=color:#ae81ff>250</span>)
-  <span style=color:#a6e22e>rotate</span>(<span style=color:#a6e22e>HALF_PI</span> <span style=color:#f92672>-</span> <span style=color:#a6e22e>angle</span>)
-  <span style=color:#a6e22e>arc</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>80</span>, <span style=color:#ae81ff>80</span>, <span style=color:#a6e22e>PI</span>, <span style=color:#a6e22e>HALF_PI</span>)
-  <span style=color:#a6e22e>pop</span>()
-
-
-  <span style=color:#a6e22e>angle</span> <span style=color:#f92672>+=</span> <span style=color:#ae81ff>0.003</span>
+<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>fillPixel</span>(<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>y</span>) {
+    <span style=color:#a6e22e>noStroke</span>();
+    <span style=color:#a6e22e>squareColor</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>color</span>(<span style=color:#ae81ff>255</span>, <span style=color:#ae81ff>255</span>, <span style=color:#ae81ff>255</span>);
+    <span style=color:#a6e22e>squareColor</span>.<span style=color:#a6e22e>setAlpha</span>(<span style=color:#ae81ff>100</span>);
+    <span style=color:#a6e22e>fill</span>(<span style=color:#a6e22e>squareColor</span>);
+    <span style=color:#a6e22e>square</span>(<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>scalFact</span>);
 }
 
 </code></pre></div>

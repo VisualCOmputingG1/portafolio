@@ -93,19 +93,26 @@ srcdoc="
 &lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/details></description></item><item><title>Ejemplo de rasterizacion</title><link>https://visualcomputingg1.github.io/portafolio/post/rasterizacion/</link><pubDate>Thu, 04 Nov 2021 00:00:00 +0000</pubDate><guid>https://visualcomputingg1.github.io/portafolio/post/rasterizacion/</guid><description>&lt;h2 id="descripcion">Descripcion&lt;/h2>
-&lt;p>Contornos ilusorios o contornos subjetivos son ilusiones ópticas que evocan la percepción de una era sin luminancia o
-cambio de color dentro del borde. El brillo ilusorio y su profundidad ordenados son frecuentemente acompañados de
-contornos ilusorios. Friedrich Schumann es a menudo acreditado con el descubrimiento de los contornos ilusorios
-alrededor de los principios del siglo veinte, sin embargo los contornos ilusorios son presentados en un arte de
-citar a las Edades Medias. La hoja Científica Americana de Gaetano Kanizsa escrita en 1976 marca el resurgimiento de
-interés en los contornos ilusorios por científicos de visión. &lt;em>&lt;a href="https://es.wikipedia.org/wiki/Contornos_ilusorios">&lt;strong>contornos ilusorios&lt;/strong>&lt;/a>&lt;/em>&lt;/p>
-&lt;h2 id="usabilidad">Usabilidad&lt;/h2>
-&lt;p>Al ser estimulos que afectan directamente las bases neuronales de las percepciones suelen ser utilizados para llamar la
-atencion de los receptores de manera discreta, formando figuras que realmente no estan en la imagen&lt;/p>
-&lt;p>&lt;img src="img_1.png" alt="img_1.png">&lt;/p>
+&lt;p>Usamos el algoritmo del punto medio para calcular todos los puntos perimetrales en el primer octante, y luego los reflejamos a los demas octantes, basados en la propiedad simetrica de la figura a generar
+el algoritmo es muy similar al algoritmo para generar lineas basado en el punto medio, lo unico que cambia es la condicion de frontera&lt;/p>
+&lt;p>paara cualquier pixel (x,y), el siguiente pixel en ser pintado es bien sea &lt;code>(x, y+1)&lt;/code> o &lt;code>(x-1, y+1)&lt;/code>. Esto se decide en los siguientes pasos:&lt;/p>
+&lt;ol>
+&lt;li>Encuentra el punto medio &lt;code>p&lt;/code> para ambos posibles pixeles &lt;code>(x-0.5, y+1)&lt;/code>&lt;/li>
+&lt;li>si &lt;code>p&lt;/code> yace dentro del perimetro del perimetro o bien sobre el, entonces pintamos &lt;code>(x, y+1)&lt;/code>, de otro modo si esta afuera pintmaremos &lt;code> (x-1, y+1)&lt;/code>
+&lt;a href="https://www.geeksforgeeks.org/mid-point-circle-drawing-algorithm/">geeksforgeeks&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;h3 id="condicion-de-frontera">Condicion de frontera&lt;/h3>
+&lt;p>decidir si el punto yace dentro o fuera del perimetro se decide a travez de la siguiente formula:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-python" data-lang="python">F(p) &lt;span style="color:#f92672">=&lt;/span> x2 &lt;span style="color:#f92672">+&lt;/span> y2 &lt;span style="color:#f92672">-&lt;/span> r2
+&lt;span style="color:#66d9ef">if&lt;/span> F(p)&lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#ae81ff">0&lt;/span>: &lt;span style="color:#66d9ef">return&lt;/span> inside
+&lt;span style="color:#66d9ef">else&lt;/span> &lt;span style="color:#66d9ef">if&lt;/span> F(p) &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>: &lt;span style="color:#66d9ef">return&lt;/span> inside &lt;span style="color:#75715e"># it means to be on the perimeter&lt;/span>
+&lt;span style="color:#66d9ef">else&lt;/span>: &lt;span style="color:#66d9ef">return&lt;/span> outside
+&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="ejemplo-estatico">Ejemplo estatico&lt;/h2>
+&lt;p>&lt;img src="295px-Midpoint_circle_algorithm_animation_(radius_23).gif" alt="">&lt;/p>
+&lt;h2 id="implementacion">Implementacion&lt;/h2>
 &lt;iframe
 id="contournsIlusion"
-style="width:425px; height:425px"
+style="width:625px; height:625px"
 srcdoc="
 &lt;!DOCTYPE html>
 &lt;html>
@@ -121,68 +128,67 @@ srcdoc="
 >&lt;/iframe>
 &lt;details >&lt;summary>code to the solution&lt;/summary>
 &lt;div class="markdown-inner">
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-js" data-lang="js">&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-js" data-lang="js">&lt;span style="color:#75715e">// initial values
+&lt;/span>&lt;span style="color:#75715e">// initial values
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">x&lt;/span>, &lt;span style="color:#a6e22e">y&lt;/span>, &lt;span style="color:#a6e22e">r&lt;/span>, &lt;span style="color:#a6e22e">d&lt;/span>, &lt;span style="color:#a6e22e">xc&lt;/span>, &lt;span style="color:#a6e22e">yc&lt;/span>;
+&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">i&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">grids&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">26&lt;/span>;
+&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">scalFact&lt;/span>;
 &lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">setup&lt;/span>() {
-&lt;span style="color:#a6e22e">createCanvas&lt;/span>(&lt;span style="color:#ae81ff">400&lt;/span>, &lt;span style="color:#ae81ff">400&lt;/span>);
+&lt;span style="color:#a6e22e">createCanvas&lt;/span>(&lt;span style="color:#ae81ff">600&lt;/span>, &lt;span style="color:#ae81ff">600&lt;/span>);
+&lt;span style="color:#a6e22e">background&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>);
+&lt;span style="color:#a6e22e">scalFact&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">width&lt;/span> &lt;span style="color:#f92672">/&lt;/span> &lt;span style="color:#a6e22e">grids&lt;/span>;
+&lt;span style="color:#a6e22e">r&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">8&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#a6e22e">scalFact&lt;/span>;
+&lt;span style="color:#a6e22e">xc&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">12&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#a6e22e">scalFact&lt;/span>;
+&lt;span style="color:#a6e22e">yc&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">12&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#a6e22e">scalFact&lt;/span>;
+&lt;span style="color:#a6e22e">showGrids&lt;/span>();
+&lt;span style="color:#a6e22e">showRefCircle&lt;/span>();
+&lt;span style="color:#a6e22e">bresenham&lt;/span>();
 }
-&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">draw&lt;/span>() {
-&lt;span style="color:#a6e22e">background&lt;/span>(&lt;span style="color:#ae81ff">240&lt;/span>);
-&lt;span style="color:#75715e">//First
-&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">fill&lt;/span>(&lt;span style="color:#ae81ff">255&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>)
-&lt;span style="color:#a6e22e">stroke&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;yellow&amp;#39;&lt;/span>)
-&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
-&lt;span style="color:#a6e22e">push&lt;/span>()
-&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">50&lt;/span>, &lt;span style="color:#ae81ff">150&lt;/span>)
-&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
-&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
-&lt;span style="color:#a6e22e">pop&lt;/span>()
-&lt;span style="color:#a6e22e">push&lt;/span>()
-&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
-&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">150&lt;/span>, &lt;span style="color:#ae81ff">150&lt;/span>)
-&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span> &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
-&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
-&lt;span style="color:#a6e22e">pop&lt;/span>()
-&lt;span style="color:#a6e22e">push&lt;/span>()
-&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
-&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">150&lt;/span>, &lt;span style="color:#ae81ff">250&lt;/span>)
-&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">3&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
-&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
-&lt;span style="color:#a6e22e">pop&lt;/span>()
-&lt;span style="color:#a6e22e">push&lt;/span>()
-&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
-&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">50&lt;/span>, &lt;span style="color:#ae81ff">250&lt;/span>)
-&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">4&lt;/span> &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
-&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
-&lt;span style="color:#a6e22e">pop&lt;/span>()
-&lt;span style="color:#75715e">//Second
-&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">fill&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;blue&amp;#39;&lt;/span>)
-&lt;span style="color:#a6e22e">stroke&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;yellow&amp;#39;&lt;/span>)
-&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
-&lt;span style="color:#a6e22e">push&lt;/span>()
-&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
-&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">250&lt;/span>, &lt;span style="color:#ae81ff">150&lt;/span>)
-&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">3&lt;/span> &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
-&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
-&lt;span style="color:#a6e22e">pop&lt;/span>()
-&lt;span style="color:#a6e22e">push&lt;/span>()
-&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
-&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">350&lt;/span>, &lt;span style="color:#ae81ff">150&lt;/span>)
-&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">4&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
-&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
-&lt;span style="color:#a6e22e">pop&lt;/span>()
-&lt;span style="color:#a6e22e">push&lt;/span>()
-&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
-&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">250&lt;/span>, &lt;span style="color:#ae81ff">250&lt;/span>)
-&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
-&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
-&lt;span style="color:#a6e22e">pop&lt;/span>()
-&lt;span style="color:#a6e22e">push&lt;/span>()
-&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
-&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">350&lt;/span>, &lt;span style="color:#ae81ff">250&lt;/span>)
-&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
-&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
-&lt;span style="color:#a6e22e">pop&lt;/span>()
-&lt;span style="color:#a6e22e">angle&lt;/span> &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#ae81ff">0.003&lt;/span>
+&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">showGrids&lt;/span>() {
+&lt;span style="color:#a6e22e">stroke&lt;/span>(&lt;span style="color:#ae81ff">255&lt;/span>);
+&lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#a6e22e">i&lt;/span>; &lt;span style="color:#a6e22e">i&lt;/span> &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#a6e22e">grids&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#a6e22e">scalFact&lt;/span>; &lt;span style="color:#a6e22e">i&lt;/span> &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#a6e22e">scalFact&lt;/span>) {
+&lt;span style="color:#a6e22e">line&lt;/span>(&lt;span style="color:#a6e22e">i&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#a6e22e">i&lt;/span>, &lt;span style="color:#a6e22e">height&lt;/span>);
+&lt;span style="color:#a6e22e">line&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#a6e22e">i&lt;/span>, &lt;span style="color:#a6e22e">width&lt;/span>, &lt;span style="color:#a6e22e">i&lt;/span>);
+}
+}
+&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">showRefCircle&lt;/span>() {
+&lt;span style="color:#a6e22e">stroke&lt;/span>(&lt;span style="color:#ae81ff">200&lt;/span>);
+&lt;span style="color:#a6e22e">noFill&lt;/span>();
+&lt;span style="color:#a6e22e">circle&lt;/span>(&lt;span style="color:#a6e22e">xc&lt;/span> &lt;span style="color:#f92672">+&lt;/span> (&lt;span style="color:#a6e22e">scalFact&lt;/span> &lt;span style="color:#f92672">/&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span>), &lt;span style="color:#a6e22e">yc&lt;/span> &lt;span style="color:#f92672">+&lt;/span> (&lt;span style="color:#a6e22e">scalFact&lt;/span> &lt;span style="color:#f92672">/&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span>), &lt;span style="color:#a6e22e">r&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span>);
+}
+&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">bresenham&lt;/span>() {
+&lt;span style="color:#a6e22e">x&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;span style="color:#a6e22e">y&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">r&lt;/span>;
+&lt;span style="color:#a6e22e">d&lt;/span> &lt;span style="color:#f92672">=&lt;/span> (&lt;span style="color:#ae81ff">3&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#a6e22e">scalFact&lt;/span>) &lt;span style="color:#f92672">-&lt;/span> (&lt;span style="color:#ae81ff">2&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#a6e22e">r&lt;/span>);
+&lt;span style="color:#a6e22e">symPlot&lt;/span>();
+&lt;span style="color:#66d9ef">while&lt;/span> (&lt;span style="color:#a6e22e">x&lt;/span> &lt;span style="color:#f92672">&amp;lt;=&lt;/span> &lt;span style="color:#a6e22e">y&lt;/span>) {
+&lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#a6e22e">d&lt;/span> &lt;span style="color:#f92672">&amp;lt;=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>) {
+&lt;span style="color:#a6e22e">d&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">d&lt;/span> &lt;span style="color:#f92672">+&lt;/span> (&lt;span style="color:#ae81ff">4&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#a6e22e">x&lt;/span>) &lt;span style="color:#f92672">+&lt;/span> (&lt;span style="color:#ae81ff">6&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#a6e22e">scalFact&lt;/span>);
+} &lt;span style="color:#66d9ef">else&lt;/span> {
+&lt;span style="color:#a6e22e">d&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">d&lt;/span> &lt;span style="color:#f92672">+&lt;/span> (&lt;span style="color:#ae81ff">4&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#a6e22e">x&lt;/span>) &lt;span style="color:#f92672">-&lt;/span> (&lt;span style="color:#ae81ff">4&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#a6e22e">y&lt;/span>) &lt;span style="color:#f92672">+&lt;/span> (&lt;span style="color:#ae81ff">10&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#a6e22e">scalFact&lt;/span>);
+&lt;span style="color:#a6e22e">y&lt;/span> &lt;span style="color:#f92672">-=&lt;/span> &lt;span style="color:#a6e22e">scalFact&lt;/span>;
+}
+&lt;span style="color:#a6e22e">x&lt;/span> &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#a6e22e">scalFact&lt;/span>;
+&lt;span style="color:#a6e22e">symPlot&lt;/span>();
+}
+}
+&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">symPlot&lt;/span>() {
+&lt;span style="color:#a6e22e">fillPixel&lt;/span>(&lt;span style="color:#a6e22e">x&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">xc&lt;/span>, &lt;span style="color:#a6e22e">y&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">yc&lt;/span>);
+&lt;span style="color:#a6e22e">fillPixel&lt;/span>(&lt;span style="color:#a6e22e">x&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">xc&lt;/span>, &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#a6e22e">y&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">yc&lt;/span>);
+&lt;span style="color:#a6e22e">fillPixel&lt;/span>(&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#a6e22e">x&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">xc&lt;/span>, &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#a6e22e">y&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">yc&lt;/span>);
+&lt;span style="color:#a6e22e">fillPixel&lt;/span>(&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#a6e22e">x&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">xc&lt;/span>, &lt;span style="color:#a6e22e">y&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">yc&lt;/span>);
+&lt;span style="color:#a6e22e">fillPixel&lt;/span>(&lt;span style="color:#a6e22e">y&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">xc&lt;/span>, &lt;span style="color:#a6e22e">x&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">yc&lt;/span>);
+&lt;span style="color:#a6e22e">fillPixel&lt;/span>(&lt;span style="color:#a6e22e">y&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">xc&lt;/span>, &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#a6e22e">x&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">yc&lt;/span>);
+&lt;span style="color:#a6e22e">fillPixel&lt;/span>(&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#a6e22e">y&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">xc&lt;/span>, &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#a6e22e">x&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">yc&lt;/span>);
+&lt;span style="color:#a6e22e">fillPixel&lt;/span>(&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#a6e22e">y&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">xc&lt;/span>, &lt;span style="color:#a6e22e">x&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">yc&lt;/span>);
+}
+&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">fillPixel&lt;/span>(&lt;span style="color:#a6e22e">x&lt;/span>, &lt;span style="color:#a6e22e">y&lt;/span>) {
+&lt;span style="color:#a6e22e">noStroke&lt;/span>();
+&lt;span style="color:#a6e22e">squareColor&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">color&lt;/span>(&lt;span style="color:#ae81ff">255&lt;/span>, &lt;span style="color:#ae81ff">255&lt;/span>, &lt;span style="color:#ae81ff">255&lt;/span>);
+&lt;span style="color:#a6e22e">squareColor&lt;/span>.&lt;span style="color:#a6e22e">setAlpha&lt;/span>(&lt;span style="color:#ae81ff">100&lt;/span>);
+&lt;span style="color:#a6e22e">fill&lt;/span>(&lt;span style="color:#a6e22e">squareColor&lt;/span>);
+&lt;span style="color:#a6e22e">square&lt;/span>(&lt;span style="color:#a6e22e">x&lt;/span>, &lt;span style="color:#a6e22e">y&lt;/span>, &lt;span style="color:#a6e22e">scalFact&lt;/span>);
 }
 &lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
