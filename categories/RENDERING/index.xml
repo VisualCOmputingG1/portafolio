@@ -63,101 +63,51 @@ srcdoc="
 &lt;li>&lt;a href="https://www.davepagurek.com/blog/depth-of-field/">https://www.davepagurek.com/blog/depth-of-field/&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://www.davrous.com/2013/06/21/tutorial-part-4-learning-how-to-write-a-3d-software-engine-in-c-ts-or-js-rasterization-z-buffering/#code4js">https://www.davrous.com/2013/06/21/tutorial-part-4-learning-how-to-write-a-3d-software-engine-in-c-ts-or-js-rasterization-z-buffering/#code4js&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://www.cs.helsinki.fi/group/goa/render/piilopinnat/z_buffer.html">https://www.cs.helsinki.fi/group/goa/render/piilopinnat/z_buffer.html&lt;/a>&lt;/li>
-&lt;/ul></description></item><item><title>Ejemplo de rasterizacion</title><link>https://visualcomputingg1.github.io/portafolio/post/iluminacion/</link><pubDate>Thu, 04 Nov 2021 00:00:00 +0000</pubDate><guid>https://visualcomputingg1.github.io/portafolio/post/iluminacion/</guid><description>&lt;h2 id="descripcion">Descripcion&lt;/h2>
-&lt;p>Contornos ilusorios o contornos subjetivos son ilusiones ópticas que evocan la percepción de una era sin luminancia o
-cambio de color dentro del borde. El brillo ilusorio y su profundidad ordenados son frecuentemente acompañados de
-contornos ilusorios. Friedrich Schumann es a menudo acreditado con el descubrimiento de los contornos ilusorios
-alrededor de los principios del siglo veinte, sin embargo los contornos ilusorios son presentados en un arte de
-citar a las Edades Medias. La hoja Científica Americana de Gaetano Kanizsa escrita en 1976 marca el resurgimiento de
-interés en los contornos ilusorios por científicos de visión. &lt;em>&lt;a href="https://es.wikipedia.org/wiki/Contornos_ilusorios">&lt;strong>contornos ilusorios&lt;/strong>&lt;/a>&lt;/em>&lt;/p>
-&lt;h2 id="usabilidad">Usabilidad&lt;/h2>
-&lt;p>Al ser estimulos que afectan directamente las bases neuronales de las percepciones suelen ser utilizados para llamar la
-atencion de los receptores de manera discreta, formando figuras que realmente no estan en la imagen&lt;/p>
-&lt;p>&lt;img src="img_1.png" alt="img_1.png">&lt;/p>
+&lt;/ul></description></item><item><title>Algoritmo del pintor</title><link>https://visualcomputingg1.github.io/portafolio/post/iluminacion/</link><pubDate>Thu, 04 Nov 2021 00:00:00 +0000</pubDate><guid>https://visualcomputingg1.github.io/portafolio/post/iluminacion/</guid><description>&lt;h2 id="descripcion">Descripcion&lt;/h2>
+&lt;p>El nombre &amp;ldquo;algoritmo del pintor&amp;rdquo; se refiere a la técnica empleada por muchos pintores donde comienzan pintando partes distantes de una escena antes que partes más cercanas, cubriendo así algunas áreas de partes distantes. De manera similar, el algoritmo del pintor ordena todos los polígonos en una escena por su profundidad y luego los pinta en este orden, del más lejano al más cercano. Pintará sobre las partes que normalmente no son visibles, resolviendo así el problema de visibilidad, a costa de haber pintado áreas invisibles de objetos distantes. &lt;em>&lt;a href="https://en.wikipedia.org/wiki/Painter%27s_algorithm">&lt;strong>Algoritmo del pintor&lt;/strong>&lt;/a>&lt;/em>&lt;/p>
+&lt;p>&lt;img src="img1.png" alt="img1.png">&lt;/p>
+&lt;p>En esta imagen de ejemplo se pintan primero las montañas lejanas, seguidas por el prado; finalmente se dibujan los objetos más cercanos, los árboles.&lt;/p>
+&lt;h2 id="algoritmo">Algoritmo&lt;/h2>
+&lt;p>Conceptualmente, el algoritmo de Painter funciona de la siguiente manera:&lt;/p>
+&lt;ol>
+&lt;li>Ordenar cada polígono por profundidad&lt;/li>
+&lt;li>Coloque cada polígono desde el polígono más lejano al polígono más cercano&lt;/li>
+&lt;/ol>
 &lt;iframe
-id="contournsIlusion"
-style="width:425px; height:425px"
+id="painterAlgorithm"
+style="width:850px; height:600px"
 srcdoc="
 &lt;!DOCTYPE html>
 &lt;html>
 &lt;head>
 &lt;script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js>&lt;/script>
 &lt;script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js>&lt;/script>
-&lt;script src=contournsIlusion.js>&lt;/script>
+&lt;script src=painterAlgorithm.js>&lt;/script>
 &lt;/head>
 &lt;body>
 &lt;/body>
 &lt;/html>
 "
 >&lt;/iframe>
-&lt;details >&lt;summary>code to the solution&lt;/summary>
-&lt;div class="markdown-inner">
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-js" data-lang="js">&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>
-&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">setup&lt;/span>() {
-&lt;span style="color:#a6e22e">createCanvas&lt;/span>(&lt;span style="color:#ae81ff">400&lt;/span>, &lt;span style="color:#ae81ff">400&lt;/span>);
-}
-&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">draw&lt;/span>() {
-&lt;span style="color:#a6e22e">background&lt;/span>(&lt;span style="color:#ae81ff">240&lt;/span>);
-&lt;span style="color:#75715e">//First
-&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">fill&lt;/span>(&lt;span style="color:#ae81ff">255&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>)
-&lt;span style="color:#a6e22e">stroke&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;yellow&amp;#39;&lt;/span>)
-&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
-&lt;span style="color:#a6e22e">push&lt;/span>()
-&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">50&lt;/span>, &lt;span style="color:#ae81ff">150&lt;/span>)
-&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
-&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
-&lt;span style="color:#a6e22e">pop&lt;/span>()
-&lt;span style="color:#a6e22e">push&lt;/span>()
-&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
-&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">150&lt;/span>, &lt;span style="color:#ae81ff">150&lt;/span>)
-&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span> &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
-&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
-&lt;span style="color:#a6e22e">pop&lt;/span>()
-&lt;span style="color:#a6e22e">push&lt;/span>()
-&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
-&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">150&lt;/span>, &lt;span style="color:#ae81ff">250&lt;/span>)
-&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">3&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
-&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
-&lt;span style="color:#a6e22e">pop&lt;/span>()
-&lt;span style="color:#a6e22e">push&lt;/span>()
-&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
-&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">50&lt;/span>, &lt;span style="color:#ae81ff">250&lt;/span>)
-&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">4&lt;/span> &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
-&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
-&lt;span style="color:#a6e22e">pop&lt;/span>()
-&lt;span style="color:#75715e">//Second
-&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">fill&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;blue&amp;#39;&lt;/span>)
-&lt;span style="color:#a6e22e">stroke&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;yellow&amp;#39;&lt;/span>)
-&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
-&lt;span style="color:#a6e22e">push&lt;/span>()
-&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
-&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">250&lt;/span>, &lt;span style="color:#ae81ff">150&lt;/span>)
-&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">3&lt;/span> &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
-&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
-&lt;span style="color:#a6e22e">pop&lt;/span>()
-&lt;span style="color:#a6e22e">push&lt;/span>()
-&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
-&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">350&lt;/span>, &lt;span style="color:#ae81ff">150&lt;/span>)
-&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">4&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
-&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
-&lt;span style="color:#a6e22e">pop&lt;/span>()
-&lt;span style="color:#a6e22e">push&lt;/span>()
-&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
-&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">250&lt;/span>, &lt;span style="color:#ae81ff">250&lt;/span>)
-&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
-&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
-&lt;span style="color:#a6e22e">pop&lt;/span>()
-&lt;span style="color:#a6e22e">push&lt;/span>()
-&lt;span style="color:#a6e22e">strokeWeight&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)
-&lt;span style="color:#a6e22e">translate&lt;/span>(&lt;span style="color:#ae81ff">350&lt;/span>, &lt;span style="color:#ae81ff">250&lt;/span>)
-&lt;span style="color:#a6e22e">rotate&lt;/span>(&lt;span style="color:#a6e22e">HALF_PI&lt;/span> &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#a6e22e">angle&lt;/span>)
-&lt;span style="color:#a6e22e">arc&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#ae81ff">80&lt;/span>, &lt;span style="color:#a6e22e">PI&lt;/span>, &lt;span style="color:#a6e22e">HALF_PI&lt;/span>)
-&lt;span style="color:#a6e22e">pop&lt;/span>()
-&lt;span style="color:#a6e22e">angle&lt;/span> &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#ae81ff">0.003&lt;/span>
-}
-&lt;/code>&lt;/pre>&lt;/div>
-&lt;/div>
-&lt;/details></description></item><item><title>Ejemplo de rasterizacion</title><link>https://visualcomputingg1.github.io/portafolio/post/rasterizacion/</link><pubDate>Thu, 04 Nov 2021 00:00:00 +0000</pubDate><guid>https://visualcomputingg1.github.io/portafolio/post/rasterizacion/</guid><description>&lt;h2 id="descripcion">Descripcion&lt;/h2>
+&lt;h2 id="ventajas">Ventajas&lt;/h2>
+&lt;ul>
+&lt;li>El algoritmo del pintor no es tan complejo en estructura como sus otras contrapartes del algoritmo de clasificación en profundidad.&lt;/li>
+&lt;li>Esta simplicidad lo hace útil en escenarios de salida de gráficos de computadora básicos donde un renderizado no sofisticado deberá realizarse con poca dificultad.&lt;/li>
+&lt;li>El algoritmo del pintor prioriza el uso eficiente de la memoria, pero a expensas de una mayor potencia de procesamiento, ya que se deben renderizar todas las partes de todas las imágenes.&lt;/li>
+&lt;/ul>
+&lt;h2 id="limitaciones">Limitaciones&lt;/h2>
+&lt;ul>
+&lt;li>En el caso de superposición cíclica, como se muestra en la siguiente figura, los polígonos A, B y C se superponen entre sí de tal manera que es imposible determinar qué polígono está por encima de los demás.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="img2.png" alt="img2.png">&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>El caso de perforar polígonos surge cuando un polígono se cruza con otro. De manera similar a la superposición cíclica, este problema se puede resolver cortando los polígonos ofensivos.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>En implementaciones básicas, el algoritmo del pintor puede ser ineficaz. Obliga al sistema a representar cada punto en cada polígono del conjunto visible, incluso si ese polígono está ocluido en la escena final. Esto significa que, para escenas detalladas, el algoritmo del pintor puede sobrecargar el hardware de la computadora.&lt;/p>
+&lt;/li>
+&lt;/ul></description></item><item><title>Ejemplo de rasterizacion</title><link>https://visualcomputingg1.github.io/portafolio/post/rasterizacion/</link><pubDate>Thu, 04 Nov 2021 00:00:00 +0000</pubDate><guid>https://visualcomputingg1.github.io/portafolio/post/rasterizacion/</guid><description>&lt;h2 id="descripcion">Descripcion&lt;/h2>
 &lt;p>Usamos el algoritmo del punto medio para calcular todos los puntos perimetrales en el primer octante, y luego los reflejamos a los demas octantes, basados en la propiedad simetrica de la figura a generar
 el algoritmo es muy similar al algoritmo para generar lineas basado en el punto medio, lo unico que cambia es la condicion de frontera&lt;/p>
 &lt;p>paara cualquier pixel (x,y), el siguiente pixel en ser pintado es bien sea &lt;code>(x, y+1)&lt;/code> o &lt;code>(x-1, y+1)&lt;/code>. Esto se decide en los siguientes pasos:&lt;/p>

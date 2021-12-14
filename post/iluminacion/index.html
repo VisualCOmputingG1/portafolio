@@ -6,7 +6,7 @@
 <meta name=generator content="Source Themes Academia 4.3.1">
 <meta name=generator content="Hugo 0.90.1">
 <meta name=author content="Nicolás Caicedo">
-<meta name=description content="este fenómeno nos hace ver que figuras geométricas resaltan, o inclusive que están en otro color, siendo que no es realmente asi">
+<meta name=description content="El algoritmo del pintor crea imágenes ordenando los polígonos dentro de la imagen por su profundidad y colocando cada polígono en orden desde el objeto más lejano hasta el más cercano.">
 <link rel=alternate hreflang=en-us href=https://visualcomputingg1.github.io/portafolio/post/iluminacion/>
 <meta name=theme-color content="#fc6f5c">
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin=anonymous>
@@ -24,12 +24,12 @@
 <meta property="twitter:card" content="summary_large_image">
 <meta property="og:site_name" content="UNstable">
 <meta property="og:url" content="https://visualcomputingg1.github.io/portafolio/post/iluminacion/">
-<meta property="og:title" content="Ejemplo de rasterizacion | UNstable">
-<meta property="og:description" content="este fenómeno nos hace ver que figuras geométricas resaltan, o inclusive que están en otro color, siendo que no es realmente asi"><meta property="og:image" content="https://visualcomputingg1.github.io/portafolio/post/iluminacion/featured.jpg">
+<meta property="og:title" content="Algoritmo del pintor | UNstable">
+<meta property="og:description" content="El algoritmo del pintor crea imágenes ordenando los polígonos dentro de la imagen por su profundidad y colocando cada polígono en orden desde el objeto más lejano hasta el más cercano."><meta property="og:image" content="https://visualcomputingg1.github.io/portafolio/post/iluminacion/featured.jpg">
 <meta property="twitter:image" content="https://visualcomputingg1.github.io/portafolio/post/iluminacion/featured.jpg"><meta property="og:locale" content="en-us">
 <meta property="article:published_time" content="2021-11-04T00:00:00+00:00">
 <meta property="article:modified_time" content="2021-11-04T00:00:00+00:00">
-<title>Ejemplo de rasterizacion | UNstable</title>
+<title>Algoritmo del pintor | UNstable</title>
 </head>
 <body id=top data-spy=scroll data-target=#TableOfContents data-offset=71>
 <aside class=search-results id=search>
@@ -74,13 +74,13 @@
 </nav>
 <article class="article py-5" itemscope itemtype=http://schema.org/Article>
 <div class="article-container py-3">
-<h1 itemprop=name>Ejemplo de rasterizacion</h1>
-<p class=page-subtitle>cuando se forma una figura geométrica, el ojo humano tiende a identificarlo por encima del resto de imágenes, aun cuando en realidad no existe</p>
+<h1 itemprop=name>Algoritmo del pintor</h1>
+<p class=page-subtitle>Es un algoritmo para la determinación de la superficie visible en gráficos de computadora 3D que funciona polígono por polígono en lugar de píxel por píxel, fila por fila o área por base de área de otros algoritmos de eliminación de superficies ocultas.</p>
 <meta content="2021-11-04 00:00:00 +0000 UTC" itemprop=datePublished>
 <meta content="2021-11-04 00:00:00 +0000 UTC" itemprop=dateModified>
 <div class=article-metadata>
 <div>
-<span itemprop="author name" itemtype=http://schema.org/Person><a href=/portafolio/authors/Santiago/>Santiago Hernandez</a></span>
+<span itemprop="author name" itemtype=http://schema.org/Person><a href=/portafolio/authors/Stevan/>Stevan Valbuena</a></span>
 </div>
 <span class=article-date>
 <time>Nov 4, 2021</time>
@@ -100,17 +100,16 @@
 <div class=article-container>
 <div class=article-style itemprop=articleBody>
 <h2 id=descripcion>Descripcion</h2>
-<p>Contornos ilusorios o contornos subjetivos son ilusiones ópticas que evocan la percepción de una era sin luminancia o
-cambio de color dentro del borde. El brillo ilusorio y su profundidad ordenados son frecuentemente acompañados de
-contornos ilusorios. Friedrich Schumann es a menudo acreditado con el descubrimiento de los contornos ilusorios
-alrededor de los principios del siglo veinte, sin embargo los contornos ilusorios son presentados en un arte de
-citar a las Edades Medias. La hoja Científica Americana de Gaetano Kanizsa escrita en 1976 marca el resurgimiento de
-interés en los contornos ilusorios por científicos de visión. <em><a href=https://es.wikipedia.org/wiki/Contornos_ilusorios><strong>contornos ilusorios</strong></a></em></p>
-<h2 id=usabilidad>Usabilidad</h2>
-<p>Al ser estimulos que afectan directamente las bases neuronales de las percepciones suelen ser utilizados para llamar la
-atencion de los receptores de manera discreta, formando figuras que realmente no estan en la imagen</p>
-<p><img src=img_1.png alt=img_1.png></p>
-<iframe id=contournsIlusion style=width:425px;height:425px srcdoc="
+<p>El nombre &ldquo;algoritmo del pintor&rdquo; se refiere a la técnica empleada por muchos pintores donde comienzan pintando partes distantes de una escena antes que partes más cercanas, cubriendo así algunas áreas de partes distantes. De manera similar, el algoritmo del pintor ordena todos los polígonos en una escena por su profundidad y luego los pinta en este orden, del más lejano al más cercano. Pintará sobre las partes que normalmente no son visibles, resolviendo así el problema de visibilidad, a costa de haber pintado áreas invisibles de objetos distantes. <em><a href=https://en.wikipedia.org/wiki/Painter%27s_algorithm><strong>Algoritmo del pintor</strong></a></em></p>
+<p><img src=img1.png alt=img1.png></p>
+<p>En esta imagen de ejemplo se pintan primero las montañas lejanas, seguidas por el prado; finalmente se dibujan los objetos más cercanos, los árboles.</p>
+<h2 id=algoritmo>Algoritmo</h2>
+<p>Conceptualmente, el algoritmo de Painter funciona de la siguiente manera:</p>
+<ol>
+<li>Ordenar cada polígono por profundidad</li>
+<li>Coloque cada polígono desde el polígono más lejano al polígono más cercano</li>
+</ol>
+<iframe id=painterAlgorithm style=width:850px;height:600px srcdoc="
 <!DOCTYPE html>
 <html>
 <head>
@@ -121,115 +120,50 @@ atencion de los receptores de manera discreta, formando figuras que realmente no
   
   
   
-  <script src=contournsIlusion.js></script>
+  <script src=painterAlgorithm.js></script>
 </head>
 <body>
 </body>
 </html>
 "></iframe>
-<details><summary>code to the solution</summary>
-<div class=markdown-inner>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>angle</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
-
-<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>setup</span>() {
-  <span style=color:#a6e22e>createCanvas</span>(<span style=color:#ae81ff>400</span>, <span style=color:#ae81ff>400</span>);
-}
-
-<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>draw</span>() {
-  <span style=color:#a6e22e>background</span>(<span style=color:#ae81ff>240</span>);
-
-  <span style=color:#75715e>//First
-</span><span style=color:#75715e></span>  <span style=color:#a6e22e>fill</span>(<span style=color:#ae81ff>255</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>)
-  <span style=color:#a6e22e>stroke</span>(<span style=color:#e6db74>&#39;yellow&#39;</span>)
-  <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>2</span>)
-
-  <span style=color:#a6e22e>push</span>()
-  <span style=color:#a6e22e>translate</span>(<span style=color:#ae81ff>50</span>, <span style=color:#ae81ff>150</span>)
-  <span style=color:#a6e22e>rotate</span>(<span style=color:#a6e22e>HALF_PI</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>angle</span>)
-  <span style=color:#a6e22e>arc</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>80</span>, <span style=color:#ae81ff>80</span>, <span style=color:#a6e22e>PI</span>, <span style=color:#a6e22e>HALF_PI</span>)
-  <span style=color:#a6e22e>pop</span>()
-
-  <span style=color:#a6e22e>push</span>()
-  <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>2</span>)
-  <span style=color:#a6e22e>translate</span>(<span style=color:#ae81ff>150</span>, <span style=color:#ae81ff>150</span>)
-  <span style=color:#a6e22e>rotate</span>(<span style=color:#a6e22e>HALF_PI</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>-</span> <span style=color:#a6e22e>angle</span>)
-  <span style=color:#a6e22e>arc</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>80</span>, <span style=color:#ae81ff>80</span>, <span style=color:#a6e22e>PI</span>, <span style=color:#a6e22e>HALF_PI</span>)
-  <span style=color:#a6e22e>pop</span>()
-
-  <span style=color:#a6e22e>push</span>()
-  <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>2</span>)
-  <span style=color:#a6e22e>translate</span>(<span style=color:#ae81ff>150</span>, <span style=color:#ae81ff>250</span>)
-  <span style=color:#a6e22e>rotate</span>(<span style=color:#a6e22e>HALF_PI</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>3</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>angle</span>)
-  <span style=color:#a6e22e>arc</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>80</span>, <span style=color:#ae81ff>80</span>, <span style=color:#a6e22e>PI</span>, <span style=color:#a6e22e>HALF_PI</span>)
-  <span style=color:#a6e22e>pop</span>()
-
-  <span style=color:#a6e22e>push</span>()
-  <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>2</span>)
-  <span style=color:#a6e22e>translate</span>(<span style=color:#ae81ff>50</span>, <span style=color:#ae81ff>250</span>)
-  <span style=color:#a6e22e>rotate</span>(<span style=color:#a6e22e>HALF_PI</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>4</span> <span style=color:#f92672>-</span> <span style=color:#a6e22e>angle</span>)
-  <span style=color:#a6e22e>arc</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>80</span>, <span style=color:#ae81ff>80</span>, <span style=color:#a6e22e>PI</span>, <span style=color:#a6e22e>HALF_PI</span>)
-  <span style=color:#a6e22e>pop</span>()
-
-
-  <span style=color:#75715e>//Second
-</span><span style=color:#75715e></span>  <span style=color:#a6e22e>fill</span>(<span style=color:#e6db74>&#39;blue&#39;</span>)
-  <span style=color:#a6e22e>stroke</span>(<span style=color:#e6db74>&#39;yellow&#39;</span>)
-  <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>2</span>)
-
-  <span style=color:#a6e22e>push</span>()
-  <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>2</span>)
-  <span style=color:#a6e22e>translate</span>(<span style=color:#ae81ff>250</span>, <span style=color:#ae81ff>150</span>)
-  <span style=color:#a6e22e>rotate</span>(<span style=color:#a6e22e>HALF_PI</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>3</span> <span style=color:#f92672>-</span> <span style=color:#a6e22e>angle</span>)
-  <span style=color:#a6e22e>arc</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>80</span>, <span style=color:#ae81ff>80</span>, <span style=color:#a6e22e>PI</span>, <span style=color:#a6e22e>HALF_PI</span>)
-  <span style=color:#a6e22e>pop</span>()
-
-  <span style=color:#a6e22e>push</span>()
-  <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>2</span>)
-  <span style=color:#a6e22e>translate</span>(<span style=color:#ae81ff>350</span>, <span style=color:#ae81ff>150</span>)
-  <span style=color:#a6e22e>rotate</span>(<span style=color:#a6e22e>HALF_PI</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>4</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>angle</span>)
-  <span style=color:#a6e22e>arc</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>80</span>, <span style=color:#ae81ff>80</span>, <span style=color:#a6e22e>PI</span>, <span style=color:#a6e22e>HALF_PI</span>)
-  <span style=color:#a6e22e>pop</span>()
-
-  <span style=color:#a6e22e>push</span>()
-  <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>2</span>)
-  <span style=color:#a6e22e>translate</span>(<span style=color:#ae81ff>250</span>, <span style=color:#ae81ff>250</span>)
-  <span style=color:#a6e22e>rotate</span>(<span style=color:#a6e22e>HALF_PI</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>angle</span>)
-  <span style=color:#a6e22e>arc</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>80</span>, <span style=color:#ae81ff>80</span>, <span style=color:#a6e22e>PI</span>, <span style=color:#a6e22e>HALF_PI</span>)
-  <span style=color:#a6e22e>pop</span>()
-
-  <span style=color:#a6e22e>push</span>()
-  <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>2</span>)
-  <span style=color:#a6e22e>translate</span>(<span style=color:#ae81ff>350</span>, <span style=color:#ae81ff>250</span>)
-  <span style=color:#a6e22e>rotate</span>(<span style=color:#a6e22e>HALF_PI</span> <span style=color:#f92672>-</span> <span style=color:#a6e22e>angle</span>)
-  <span style=color:#a6e22e>arc</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>80</span>, <span style=color:#ae81ff>80</span>, <span style=color:#a6e22e>PI</span>, <span style=color:#a6e22e>HALF_PI</span>)
-  <span style=color:#a6e22e>pop</span>()
-
-
-  <span style=color:#a6e22e>angle</span> <span style=color:#f92672>+=</span> <span style=color:#ae81ff>0.003</span>
-}
-
-</code></pre></div>
-</div>
-</details>
+<h2 id=ventajas>Ventajas</h2>
+<ul>
+<li>El algoritmo del pintor no es tan complejo en estructura como sus otras contrapartes del algoritmo de clasificación en profundidad.</li>
+<li>Esta simplicidad lo hace útil en escenarios de salida de gráficos de computadora básicos donde un renderizado no sofisticado deberá realizarse con poca dificultad.</li>
+<li>El algoritmo del pintor prioriza el uso eficiente de la memoria, pero a expensas de una mayor potencia de procesamiento, ya que se deben renderizar todas las partes de todas las imágenes.</li>
+</ul>
+<h2 id=limitaciones>Limitaciones</h2>
+<ul>
+<li>En el caso de superposición cíclica, como se muestra en la siguiente figura, los polígonos A, B y C se superponen entre sí de tal manera que es imposible determinar qué polígono está por encima de los demás.</li>
+</ul>
+<p><img src=img2.png alt=img2.png></p>
+<ul>
+<li>
+<p>El caso de perforar polígonos surge cuando un polígono se cruza con otro. De manera similar a la superposición cíclica, este problema se puede resolver cortando los polígonos ofensivos.</p>
+</li>
+<li>
+<p>En implementaciones básicas, el algoritmo del pintor puede ser ineficaz. Obliga al sistema a representar cada punto en cada polígono del conjunto visible, incluso si ese polígono está ocluido en la escena final. Esto significa que, para escenas detalladas, el algoritmo del pintor puede sobrecargar el hardware de la computadora.</p>
+</li>
+</ul>
 </div>
 <div class="media author-card" itemscope itemtype=http://schema.org/Person>
 <div class=media-body>
-<h5 class=card-title itemprop=name><a href=https://visualcomputingg1.github.io/portafolio>Santiago Hernandez</a></h5>
+<h5 class=card-title itemprop=name><a href=https://visualcomputingg1.github.io/portafolio>Stevan Valbuena</a></h5>
 <h6 class=card-subtitle>Student of systems engineering</h6>
-<p class=card-text itemprop=description>Mis intereses principales son enfocados al desarrollo backend, a la gestion de proyectos de software y a la investigacion en inteligencia artificial</p>
+<p class=card-text itemprop=description>Me interesa bastante el desarrollo web, me gusta aprender cosas nuevas cada día y asi mejorar mis habilidades como desarrollador. También me gusta mucho la electronica.</p>
 <ul class=network-icon aria-hidden=true>
 <li>
-<a itemprop=sameAs href=https://www.linkedin.com/in/sanhernandezmon/ target=_blank rel=noopener>
+<a itemprop=sameAs href=https://www.linkedin.com/in/magnert-stevan-valbuena-gaviria-258a611b5/ target=_blank rel=noopener>
 <i class="fab fa-linkedin"></i>
 </a>
 </li>
 <li>
-<a itemprop=sameAs href=https://www.instagram.com/sanhmon/ target=_blank rel=noopener>
+<a itemprop=sameAs href="https://www.instagram.com/magnertstevan/?hl=es" target=_blank rel=noopener>
 <i class="fab fa-instagram"></i>
 </a>
 </li>
 <li>
-<a itemprop=sameAs href=https://github.com/santihernandezS4N target=_blank rel=noopener>
+<a itemprop=sameAs href=https://github.com/mvalbuenag target=_blank rel=noopener>
 <i class="fab fa-github"></i>
 </a>
 </li>
