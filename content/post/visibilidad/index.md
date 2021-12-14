@@ -36,7 +36,8 @@ Descrita por Wolfgang Straßer en su tesis doctoral sobre algoritmos rápidos pa
 
  En la actualidad, su uso principal es el de los videojuegos, que requieren un procesamiento rápido y preciso de las escenas en 3D. Además, los datos del buffer Z obtenidos al renderizar una superficie desde el punto de vista de la luz permiten la creación de sombras mediante la técnica de mapeo de sombras.
 
-![z-buffer.png](z-buffer.png)
+![z-buffer.png](z-buffer.png)![featured.png](featured.png)
+
 
 ## Z-buffer vs el Algoritmo del pintor
 
@@ -60,7 +61,6 @@ Sin embargo, con Z-buffer, se pude dibujar cosas en cualquier orden y se seguir�
 
 El algoritmo consiste en mirar todos los píxeles cercanos que se pueda, y detectar si se esta lo suficientemente cerca como para que su desenfoque toque el píxel actual, y si ese desenfoque iría por delante o por detrás del píxel actual. _[**Desenfoque p5.js**](https://editor.p5js.org/davepagurek/sketches/cmcqbj1II)_
 
-{{< p5-iframe sketch="zbuff.js" width="700" height="500" >}}
 
 {{< details title="z-buffer Algoritmo" open=false >}}
 ```js
