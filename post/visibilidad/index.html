@@ -103,7 +103,7 @@
 <p>Descrita por Wolfgang Straßer en su tesis doctoral sobre algoritmos rápidos para el renderizado de objetos ocluidos. El algoritmo funciona, cuando en un pipeline de renderizado 3d, cuando se proyecta un objeto en la pantalla, la profundidad (valor z) de un fragmento generado en la imagen de la pantalla proyectada se compara con el valor ya almacenado en el buffer (test de profundidad), y lo sustituye si el nuevo valor es más cercano. Funciona en tándem con el rasterizador, que calcula los valores de color. El fragmento emitido por el rasterizador se guarda si no se solapa con otro fragmento. <em><a href=https://en.wikipedia.org/wiki/Z-buffering><strong>Z-buffering</strong></a></em></p>
 <h2 id=usabilidad>Usabilidad</h2>
 <p>En la actualidad, su uso principal es el de los videojuegos, que requieren un procesamiento rápido y preciso de las escenas en 3D. Además, los datos del buffer Z obtenidos al renderizar una superficie desde el punto de vista de la luz permiten la creación de sombras mediante la técnica de mapeo de sombras.</p>
-<p><img src=z-buffer.png alt=z-buffer.png></p>
+<p><img src=z-buffer.png alt=z-buffer.png><img src=featured.png alt=featured.png></p>
 <h2 id=z-buffer-vs-el-algoritmo-del-pintor>Z-buffer vs el Algoritmo del pintor</h2>
 <p>Si se estuviera dibujando una escena en un lienzo 2D, se gestionarí la profundidad dibujando primero los objetos más lejanos. De esta manera, los objetos más cercanos tienen la posibilidad de dibujarse encima de los objetos más lejanos dibujados previamente. Esto se llama el algoritmo del pintor.</p>
 <p>Sin embargo, con Z-buffer, se pude dibujar cosas en cualquier orden y se seguirá mostrando los objetos más cercanos delante (a menos que se diga lo contrario expliciamente). Lo hace registrando la profundidad de cada píxel en un buffer de profundidad, que es como una imagen monocromática del mismo tamaño que el lienzo principal. En lugar de interpretar los valores de los píxeles en el buffer de profundidad como colores, los lee como profundidad.</p>
@@ -122,23 +122,6 @@
 </ul>
 <h2 id=el-algoritmo-de-desenfoque>El algoritmo de desenfoque</h2>
 <p>El algoritmo consiste en mirar todos los píxeles cercanos que se pueda, y detectar si se esta lo suficientemente cerca como para que su desenfoque toque el píxel actual, y si ese desenfoque iría por delante o por detrás del píxel actual. <em><a href=https://editor.p5js.org/davepagurek/sketches/cmcqbj1II><strong>Desenfoque p5.js</strong></a></em></p>
-<iframe id=zbuff style=width:700px;height:500px srcdoc="
-<!DOCTYPE html>
-<html>
-<head>
-  <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js></script>
-  <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js></script>
-  
-  
-  
-  
-  
-  <script src=zbuff.js></script>
-</head>
-<body>
-</body>
-</html>
-"></iframe>
 <details><summary>z-buffer Algoritmo</summary>
 <div class=markdown-inner>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#75715e>// First of all, initialize the depth of each pixel.
