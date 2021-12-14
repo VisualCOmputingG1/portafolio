@@ -5,8 +5,8 @@
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=generator content="Source Themes Academia 4.3.1">
 <meta name=generator content="Hugo 0.90.1">
-<meta name=author content="Camilo Sepúlveda">
-<meta name=description content="este fenómeno nos hace ver que figuras geométricas resaltan, o inclusive que están en otro color, siendo que no es realmente asi">
+<meta name=author content="Nicolás Caicedo">
+<meta name=description content="Los búferes de profundidad son una ayuda para renderizar una escena y garantizar que los polígonos correctos oculten adecuadamente a otros polígonos, tambien son arte de la memoria de un adaptador de video encargada de gestionar las coordenadas de profundidad de las imágenes en los gráficos en tres dimensiones (3-D).">
 <link rel=alternate hreflang=en-us href=https://visualcomputingg1.github.io/portafolio/post/visibilidad/>
 <meta name=theme-color content="#fc6f5c">
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin=anonymous>
@@ -24,12 +24,12 @@
 <meta property="twitter:card" content="summary_large_image">
 <meta property="og:site_name" content="UNstable">
 <meta property="og:url" content="https://visualcomputingg1.github.io/portafolio/post/visibilidad/">
-<meta property="og:title" content="Ejemplo de rasterizacion | UNstable">
-<meta property="og:description" content="este fenómeno nos hace ver que figuras geométricas resaltan, o inclusive que están en otro color, siendo que no es realmente asi"><meta property="og:image" content="https://visualcomputingg1.github.io/portafolio/post/visibilidad/featured.jpg">
+<meta property="og:title" content="Algoritmo Z-buffer | UNstable">
+<meta property="og:description" content="Los búferes de profundidad son una ayuda para renderizar una escena y garantizar que los polígonos correctos oculten adecuadamente a otros polígonos, tambien son arte de la memoria de un adaptador de video encargada de gestionar las coordenadas de profundidad de las imágenes en los gráficos en tres dimensiones (3-D)."><meta property="og:image" content="https://visualcomputingg1.github.io/portafolio/post/visibilidad/featured.jpg">
 <meta property="twitter:image" content="https://visualcomputingg1.github.io/portafolio/post/visibilidad/featured.jpg"><meta property="og:locale" content="en-us">
-<meta property="article:published_time" content="2021-11-04T00:00:00+00:00">
-<meta property="article:modified_time" content="2021-11-04T00:00:00+00:00">
-<title>Ejemplo de rasterizacion | UNstable</title>
+<meta property="article:published_time" content="2021-12-13T00:00:00+00:00">
+<meta property="article:modified_time" content="2021-12-13T00:00:00+00:00">
+<title>Algoritmo Z-buffer | UNstable</title>
 </head>
 <body id=top data-spy=scroll data-target=#TableOfContents data-offset=71>
 <aside class=search-results id=search>
@@ -74,20 +74,20 @@
 </nav>
 <article class="article py-5" itemscope itemtype=http://schema.org/Article>
 <div class="article-container py-3">
-<h1 itemprop=name>Ejemplo de rasterizacion</h1>
-<p class=page-subtitle>cuando se forma una figura geométrica, el ojo humano tiende a identificarlo por encima del resto de imágenes, aun cuando en realidad no existe</p>
-<meta content="2021-11-04 00:00:00 +0000 UTC" itemprop=datePublished>
-<meta content="2021-11-04 00:00:00 +0000 UTC" itemprop=dateModified>
+<h1 itemprop=name>Algoritmo Z-buffer</h1>
+<p class=page-subtitle>Z-buffer y el mapeo de sombras.</p>
+<meta content="2021-12-13 00:00:00 +0000 UTC" itemprop=datePublished>
+<meta content="2021-12-13 00:00:00 +0000 UTC" itemprop=dateModified>
 <div class=article-metadata>
 <div>
-<span itemprop="author name" itemtype=http://schema.org/Person><a href=/portafolio/authors/Santiago/>Santiago Hernandez</a></span>
+<span itemprop="author name" itemtype=http://schema.org/Person><a href=/portafolio/authors/Nicolas/>Nicolás Caicedo</a></span>
 </div>
 <span class=article-date>
-<time>Nov 4, 2021</time>
+<time>Dec 13, 2021</time>
 </span>
 <span class=middot-divider></span>
 <span class=article-reading-time>
-2 min read
+3 min read
 </span>
 <span class=middot-divider></span>
 <span class=article-categories>
@@ -100,17 +100,29 @@
 <div class=article-container>
 <div class=article-style itemprop=articleBody>
 <h2 id=descripcion>Descripcion</h2>
-<p>Contornos ilusorios o contornos subjetivos son ilusiones ópticas que evocan la percepción de una era sin luminancia o
-cambio de color dentro del borde. El brillo ilusorio y su profundidad ordenados son frecuentemente acompañados de
-contornos ilusorios. Friedrich Schumann es a menudo acreditado con el descubrimiento de los contornos ilusorios
-alrededor de los principios del siglo veinte, sin embargo los contornos ilusorios son presentados en un arte de
-citar a las Edades Medias. La hoja Científica Americana de Gaetano Kanizsa escrita en 1976 marca el resurgimiento de
-interés en los contornos ilusorios por científicos de visión. <em><a href=https://es.wikipedia.org/wiki/Contornos_ilusorios><strong>contornos ilusorios</strong></a></em></p>
+<p>Descrita por Wolfgang Straßer en su tesis doctoral sobre algoritmos rápidos para el renderizado de objetos ocluidos. El algoritmo funciona, cuando en un pipeline de renderizado 3d, cuando se proyecta un objeto en la pantalla, la profundidad (valor z) de un fragmento generado en la imagen de la pantalla proyectada se compara con el valor ya almacenado en el buffer (test de profundidad), y lo sustituye si el nuevo valor es más cercano. Funciona en tándem con el rasterizador, que calcula los valores de color. El fragmento emitido por el rasterizador se guarda si no se solapa con otro fragmento. <em><a href=https://en.wikipedia.org/wiki/Z-buffering><strong>Z-buffering</strong></a></em></p>
 <h2 id=usabilidad>Usabilidad</h2>
-<p>Al ser estimulos que afectan directamente las bases neuronales de las percepciones suelen ser utilizados para llamar la
-atencion de los receptores de manera discreta, formando figuras que realmente no estan en la imagen</p>
-<p><img src=img_1.png alt=img_1.png></p>
-<iframe id=contournsIlusion style=width:425px;height:425px srcdoc="
+<p>En la actualidad, su uso principal es el de los videojuegos, que requieren un procesamiento rápido y preciso de las escenas en 3D. Además, los datos del buffer Z obtenidos al renderizar una superficie desde el punto de vista de la luz permiten la creación de sombras mediante la técnica de mapeo de sombras.</p>
+<p><img src=z-buffer.png alt=z-buffer.png></p>
+<h2 id=z-buffer-vs-el-algoritmo-del-pintor>Z-buffer vs el Algoritmo del pintor</h2>
+<p>Si se estuviera dibujando una escena en un lienzo 2D, se gestionarí la profundidad dibujando primero los objetos más lejanos. De esta manera, los objetos más cercanos tienen la posibilidad de dibujarse encima de los objetos más lejanos dibujados previamente. Esto se llama el algoritmo del pintor.</p>
+<p>Sin embargo, con Z-buffer, se pude dibujar cosas en cualquier orden y se seguirá mostrando los objetos más cercanos delante (a menos que se diga lo contrario expliciamente). Lo hace registrando la profundidad de cada píxel en un buffer de profundidad, que es como una imagen monocromática del mismo tamaño que el lienzo principal. En lugar de interpretar los valores de los píxeles en el buffer de profundidad como colores, los lee como profundidad.</p>
+<p><img src=alg_pintor.png alt=alg_pintor.png></p>
+<h2 id=ventajas-y-desventajas>Ventajas y desventajas</h2>
+<h3 id=ventajas>Ventajas:</h3>
+<ul>
+<li>Fácil de usar.</li>
+<li>Puede implementarse fácilmente en sapce de objetos o imágenes.</li>
+<li>Se puede ejecutar rápidamente, incluso con muchos polígonos.</li>
+</ul>
+<h3 id=desventajas>Desventajas:</h3>
+<ul>
+<li>Ocupa mucha memoria.</li>
+<li>No puede hacer superficies transparentes sin código adicional.</li>
+</ul>
+<h2 id=el-algoritmo-de-desenfoque>El algoritmo de desenfoque</h2>
+<p>El algoritmo consiste en mirar todos los píxeles cercanos que se pueda, y detectar si se esta lo suficientemente cerca como para que su desenfoque toque el píxel actual, y si ese desenfoque iría por delante o por detrás del píxel actual. <em><a href=https://editor.p5js.org/davepagurek/sketches/cmcqbj1II><strong>Desenfoque p5.js</strong></a></em></p>
+<iframe id=zbuff style=width:700px;height:500px srcdoc="
 <!DOCTYPE html>
 <html>
 <head>
@@ -121,115 +133,60 @@ atencion de los receptores de manera discreta, formando figuras que realmente no
   
   
   
-  <script src=contournsIlusion.js></script>
+  <script src=zbuff.js></script>
 </head>
 <body>
 </body>
 </html>
 "></iframe>
-<details><summary>code to the solution</summary>
+<details><summary>z-buffer Algoritmo</summary>
 <div class=markdown-inner>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>angle</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#75715e>// First of all, initialize the depth of each pixel.
+</span><span style=color:#75715e></span><span style=color:#a6e22e>d</span>(<span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>j</span>) <span style=color:#f92672>=</span> <span style=color:#a6e22e>infinite</span> <span style=color:#75715e>// Max length
+</span><span style=color:#75715e></span>
+<span style=color:#75715e>// Initialize the color value for each pixel to the background color
+</span><span style=color:#75715e></span><span style=color:#a6e22e>c</span>(<span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>j</span>) <span style=color:#f92672>=</span> <span style=color:#a6e22e>background</span> <span style=color:#a6e22e>color</span>
 
-<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>setup</span>() {
-  <span style=color:#a6e22e>createCanvas</span>(<span style=color:#ae81ff>400</span>, <span style=color:#ae81ff>400</span>);
-}
-
-<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>draw</span>() {
-  <span style=color:#a6e22e>background</span>(<span style=color:#ae81ff>240</span>);
-
-  <span style=color:#75715e>//First
-</span><span style=color:#75715e></span>  <span style=color:#a6e22e>fill</span>(<span style=color:#ae81ff>255</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>)
-  <span style=color:#a6e22e>stroke</span>(<span style=color:#e6db74>&#39;yellow&#39;</span>)
-  <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>2</span>)
-
-  <span style=color:#a6e22e>push</span>()
-  <span style=color:#a6e22e>translate</span>(<span style=color:#ae81ff>50</span>, <span style=color:#ae81ff>150</span>)
-  <span style=color:#a6e22e>rotate</span>(<span style=color:#a6e22e>HALF_PI</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>angle</span>)
-  <span style=color:#a6e22e>arc</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>80</span>, <span style=color:#ae81ff>80</span>, <span style=color:#a6e22e>PI</span>, <span style=color:#a6e22e>HALF_PI</span>)
-  <span style=color:#a6e22e>pop</span>()
-
-  <span style=color:#a6e22e>push</span>()
-  <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>2</span>)
-  <span style=color:#a6e22e>translate</span>(<span style=color:#ae81ff>150</span>, <span style=color:#ae81ff>150</span>)
-  <span style=color:#a6e22e>rotate</span>(<span style=color:#a6e22e>HALF_PI</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>-</span> <span style=color:#a6e22e>angle</span>)
-  <span style=color:#a6e22e>arc</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>80</span>, <span style=color:#ae81ff>80</span>, <span style=color:#a6e22e>PI</span>, <span style=color:#a6e22e>HALF_PI</span>)
-  <span style=color:#a6e22e>pop</span>()
-
-  <span style=color:#a6e22e>push</span>()
-  <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>2</span>)
-  <span style=color:#a6e22e>translate</span>(<span style=color:#ae81ff>150</span>, <span style=color:#ae81ff>250</span>)
-  <span style=color:#a6e22e>rotate</span>(<span style=color:#a6e22e>HALF_PI</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>3</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>angle</span>)
-  <span style=color:#a6e22e>arc</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>80</span>, <span style=color:#ae81ff>80</span>, <span style=color:#a6e22e>PI</span>, <span style=color:#a6e22e>HALF_PI</span>)
-  <span style=color:#a6e22e>pop</span>()
-
-  <span style=color:#a6e22e>push</span>()
-  <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>2</span>)
-  <span style=color:#a6e22e>translate</span>(<span style=color:#ae81ff>50</span>, <span style=color:#ae81ff>250</span>)
-  <span style=color:#a6e22e>rotate</span>(<span style=color:#a6e22e>HALF_PI</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>4</span> <span style=color:#f92672>-</span> <span style=color:#a6e22e>angle</span>)
-  <span style=color:#a6e22e>arc</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>80</span>, <span style=color:#ae81ff>80</span>, <span style=color:#a6e22e>PI</span>, <span style=color:#a6e22e>HALF_PI</span>)
-  <span style=color:#a6e22e>pop</span>()
-
-
-  <span style=color:#75715e>//Second
-</span><span style=color:#75715e></span>  <span style=color:#a6e22e>fill</span>(<span style=color:#e6db74>&#39;blue&#39;</span>)
-  <span style=color:#a6e22e>stroke</span>(<span style=color:#e6db74>&#39;yellow&#39;</span>)
-  <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>2</span>)
-
-  <span style=color:#a6e22e>push</span>()
-  <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>2</span>)
-  <span style=color:#a6e22e>translate</span>(<span style=color:#ae81ff>250</span>, <span style=color:#ae81ff>150</span>)
-  <span style=color:#a6e22e>rotate</span>(<span style=color:#a6e22e>HALF_PI</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>3</span> <span style=color:#f92672>-</span> <span style=color:#a6e22e>angle</span>)
-  <span style=color:#a6e22e>arc</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>80</span>, <span style=color:#ae81ff>80</span>, <span style=color:#a6e22e>PI</span>, <span style=color:#a6e22e>HALF_PI</span>)
-  <span style=color:#a6e22e>pop</span>()
-
-  <span style=color:#a6e22e>push</span>()
-  <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>2</span>)
-  <span style=color:#a6e22e>translate</span>(<span style=color:#ae81ff>350</span>, <span style=color:#ae81ff>150</span>)
-  <span style=color:#a6e22e>rotate</span>(<span style=color:#a6e22e>HALF_PI</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>4</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>angle</span>)
-  <span style=color:#a6e22e>arc</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>80</span>, <span style=color:#ae81ff>80</span>, <span style=color:#a6e22e>PI</span>, <span style=color:#a6e22e>HALF_PI</span>)
-  <span style=color:#a6e22e>pop</span>()
-
-  <span style=color:#a6e22e>push</span>()
-  <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>2</span>)
-  <span style=color:#a6e22e>translate</span>(<span style=color:#ae81ff>250</span>, <span style=color:#ae81ff>250</span>)
-  <span style=color:#a6e22e>rotate</span>(<span style=color:#a6e22e>HALF_PI</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>angle</span>)
-  <span style=color:#a6e22e>arc</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>80</span>, <span style=color:#ae81ff>80</span>, <span style=color:#a6e22e>PI</span>, <span style=color:#a6e22e>HALF_PI</span>)
-  <span style=color:#a6e22e>pop</span>()
-
-  <span style=color:#a6e22e>push</span>()
-  <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>2</span>)
-  <span style=color:#a6e22e>translate</span>(<span style=color:#ae81ff>350</span>, <span style=color:#ae81ff>250</span>)
-  <span style=color:#a6e22e>rotate</span>(<span style=color:#a6e22e>HALF_PI</span> <span style=color:#f92672>-</span> <span style=color:#a6e22e>angle</span>)
-  <span style=color:#a6e22e>arc</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>80</span>, <span style=color:#ae81ff>80</span>, <span style=color:#a6e22e>PI</span>, <span style=color:#a6e22e>HALF_PI</span>)
-  <span style=color:#a6e22e>pop</span>()
-
-
-  <span style=color:#a6e22e>angle</span> <span style=color:#f92672>+=</span> <span style=color:#ae81ff>0.003</span>
+<span style=color:#75715e>// For each polygon, do the following steps :
+</span><span style=color:#75715e></span><span style=color:#66d9ef>for</span> (<span style=color:#a6e22e>each</span> <span style=color:#a6e22e>pixel</span> <span style=color:#66d9ef>in</span> <span style=color:#a6e22e>polygons</span> <span style=color:#a6e22e>projection</span>)
+{
+    <span style=color:#75715e>// Find depth i.e, z of polygon
+</span><span style=color:#75715e></span>    <span style=color:#75715e>//   at (x, y) corresponding to pixel (i, j)   
+</span><span style=color:#75715e></span>    <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>z</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>d</span>(<span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>j</span>))
+    {
+        <span style=color:#a6e22e>d</span>(<span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>j</span>) <span style=color:#f92672>=</span> <span style=color:#a6e22e>z</span>;
+        <span style=color:#a6e22e>c</span>(<span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>j</span>) <span style=color:#f92672>=</span> <span style=color:#a6e22e>color</span>;
+    }
 }
 
 </code></pre></div>
 </div>
 </details>
+<h2 id=referencias>Referencias</h2>
+<ul>
+<li><a href=https://www.davepagurek.com/blog/depth-of-field/>https://www.davepagurek.com/blog/depth-of-field/</a></li>
+<li><a href=https://www.davrous.com/2013/06/21/tutorial-part-4-learning-how-to-write-a-3d-software-engine-in-c-ts-or-js-rasterization-z-buffering/#code4js>https://www.davrous.com/2013/06/21/tutorial-part-4-learning-how-to-write-a-3d-software-engine-in-c-ts-or-js-rasterization-z-buffering/#code4js</a></li>
+<li><a href=https://www.cs.helsinki.fi/group/goa/render/piilopinnat/z_buffer.html>https://www.cs.helsinki.fi/group/goa/render/piilopinnat/z_buffer.html</a></li>
+</ul>
 </div>
 <div class="media author-card" itemscope itemtype=http://schema.org/Person>
 <div class=media-body>
-<h5 class=card-title itemprop=name><a href=https://visualcomputingg1.github.io/portafolio>Santiago Hernandez</a></h5>
+<h5 class=card-title itemprop=name><a href=https://visualcomputingg1.github.io/portafolio>Nicolás Caicedo</a></h5>
 <h6 class=card-subtitle>Student of systems engineering</h6>
-<p class=card-text itemprop=description>Mis intereses principales son enfocados al desarrollo backend, a la gestion de proyectos de software y a la investigacion en inteligencia artificial</p>
+<p class=card-text itemprop=description>Mis intereses estan en el desarrollo web, principalmente en el desarrollo front end, diseño UX/UI, investigar sobre temas de inteligenia artificial y poder seguir aprendiendo de herramientas tecnologias que revolucionan el mundo.</p>
 <ul class=network-icon aria-hidden=true>
 <li>
-<a itemprop=sameAs href=https://www.linkedin.com/in/sanhernandezmon/ target=_blank rel=noopener>
+<a itemprop=sameAs href=https://www.linkedin.com/in/nacaicedol/ target=_blank rel=noopener>
 <i class="fab fa-linkedin"></i>
 </a>
 </li>
 <li>
-<a itemprop=sameAs href=https://www.instagram.com/sanhmon/ target=_blank rel=noopener>
+<a itemprop=sameAs href=https://www.instagram.com/caice_3/ target=_blank rel=noopener>
 <i class="fab fa-instagram"></i>
 </a>
 </li>
 <li>
-<a itemprop=sameAs href=https://github.com/santihernandezS4N target=_blank rel=noopener>
+<a itemprop=sameAs href=https://github.com/nacaicedol target=_blank rel=noopener>
 <i class="fab fa-github"></i>
 </a>
 </li>

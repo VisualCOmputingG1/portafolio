@@ -1,4 +1,69 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>UNstable</title><link>https://visualcomputingg1.github.io/portafolio/authors/Nicolas/</link><description>Recent content on UNstable</description><generator>Source Themes academia (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Copyright &amp;copy; {year}</copyright><lastBuildDate>Mon, 08 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://visualcomputingg1.github.io/portafolio/authors/Nicolas/index.xml" rel="self" type="application/rss+xml"/><item><title>Dual Axis Illusion</title><link>https://visualcomputingg1.github.io/portafolio/post/Ilusion4/</link><pubDate>Mon, 08 Nov 2021 00:00:00 +0000</pubDate><guid>https://visualcomputingg1.github.io/portafolio/post/Ilusion4/</guid><description>&lt;h2 id="descripcion">Descripcion&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>UNstable</title><link>https://visualcomputingg1.github.io/portafolio/authors/Nicolas/</link><description>Recent content on UNstable</description><generator>Source Themes academia (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Copyright &amp;copy; {year}</copyright><lastBuildDate>Mon, 13 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://visualcomputingg1.github.io/portafolio/authors/Nicolas/index.xml" rel="self" type="application/rss+xml"/><item><title>Algoritmo Z-buffer</title><link>https://visualcomputingg1.github.io/portafolio/post/visibilidad/</link><pubDate>Mon, 13 Dec 2021 00:00:00 +0000</pubDate><guid>https://visualcomputingg1.github.io/portafolio/post/visibilidad/</guid><description>&lt;h2 id="descripcion">Descripcion&lt;/h2>
+&lt;p>Descrita por Wolfgang Straßer en su tesis doctoral sobre algoritmos rápidos para el renderizado de objetos ocluidos. El algoritmo funciona, cuando en un pipeline de renderizado 3d, cuando se proyecta un objeto en la pantalla, la profundidad (valor z) de un fragmento generado en la imagen de la pantalla proyectada se compara con el valor ya almacenado en el buffer (test de profundidad), y lo sustituye si el nuevo valor es más cercano. Funciona en tándem con el rasterizador, que calcula los valores de color. El fragmento emitido por el rasterizador se guarda si no se solapa con otro fragmento. &lt;em>&lt;a href="https://en.wikipedia.org/wiki/Z-buffering">&lt;strong>Z-buffering&lt;/strong>&lt;/a>&lt;/em>&lt;/p>
+&lt;h2 id="usabilidad">Usabilidad&lt;/h2>
+&lt;p>En la actualidad, su uso principal es el de los videojuegos, que requieren un procesamiento rápido y preciso de las escenas en 3D. Además, los datos del buffer Z obtenidos al renderizar una superficie desde el punto de vista de la luz permiten la creación de sombras mediante la técnica de mapeo de sombras.&lt;/p>
+&lt;p>&lt;img src="z-buffer.png" alt="z-buffer.png">&lt;/p>
+&lt;h2 id="z-buffer-vs-el-algoritmo-del-pintor">Z-buffer vs el Algoritmo del pintor&lt;/h2>
+&lt;p>Si se estuviera dibujando una escena en un lienzo 2D, se gestionarí la profundidad dibujando primero los objetos más lejanos. De esta manera, los objetos más cercanos tienen la posibilidad de dibujarse encima de los objetos más lejanos dibujados previamente. Esto se llama el algoritmo del pintor.&lt;/p>
+&lt;p>Sin embargo, con Z-buffer, se pude dibujar cosas en cualquier orden y se seguirá mostrando los objetos más cercanos delante (a menos que se diga lo contrario expliciamente). Lo hace registrando la profundidad de cada píxel en un buffer de profundidad, que es como una imagen monocromática del mismo tamaño que el lienzo principal. En lugar de interpretar los valores de los píxeles en el buffer de profundidad como colores, los lee como profundidad.&lt;/p>
+&lt;p>&lt;img src="alg_pintor.png" alt="alg_pintor.png">&lt;/p>
+&lt;h2 id="ventajas-y-desventajas">Ventajas y desventajas&lt;/h2>
+&lt;h3 id="ventajas">Ventajas:&lt;/h3>
+&lt;ul>
+&lt;li>Fácil de usar.&lt;/li>
+&lt;li>Puede implementarse fácilmente en sapce de objetos o imágenes.&lt;/li>
+&lt;li>Se puede ejecutar rápidamente, incluso con muchos polígonos.&lt;/li>
+&lt;/ul>
+&lt;h3 id="desventajas">Desventajas:&lt;/h3>
+&lt;ul>
+&lt;li>Ocupa mucha memoria.&lt;/li>
+&lt;li>No puede hacer superficies transparentes sin código adicional.&lt;/li>
+&lt;/ul>
+&lt;h2 id="el-algoritmo-de-desenfoque">El algoritmo de desenfoque&lt;/h2>
+&lt;p>El algoritmo consiste en mirar todos los píxeles cercanos que se pueda, y detectar si se esta lo suficientemente cerca como para que su desenfoque toque el píxel actual, y si ese desenfoque iría por delante o por detrás del píxel actual. &lt;em>&lt;a href="https://editor.p5js.org/davepagurek/sketches/cmcqbj1II">&lt;strong>Desenfoque p5.js&lt;/strong>&lt;/a>&lt;/em>&lt;/p>
+&lt;iframe
+id="zbuff"
+style="width:700px; height:500px"
+srcdoc="
+&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+&lt;script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js>&lt;/script>
+&lt;script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js>&lt;/script>
+&lt;script src=zbuff.js>&lt;/script>
+&lt;/head>
+&lt;body>
+&lt;/body>
+&lt;/html>
+"
+>&lt;/iframe>
+&lt;details >&lt;summary>z-buffer Algoritmo&lt;/summary>
+&lt;div class="markdown-inner">
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-js" data-lang="js">&lt;span style="color:#75715e">// First of all, initialize the depth of each pixel.
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">d&lt;/span>(&lt;span style="color:#a6e22e">i&lt;/span>, &lt;span style="color:#a6e22e">j&lt;/span>) &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">infinite&lt;/span> &lt;span style="color:#75715e">// Max length
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>
+&lt;span style="color:#75715e">// Initialize the color value for each pixel to the background color
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">c&lt;/span>(&lt;span style="color:#a6e22e">i&lt;/span>, &lt;span style="color:#a6e22e">j&lt;/span>) &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">background&lt;/span> &lt;span style="color:#a6e22e">color&lt;/span>
+&lt;span style="color:#75715e">// For each polygon, do the following steps :
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#a6e22e">each&lt;/span> &lt;span style="color:#a6e22e">pixel&lt;/span> &lt;span style="color:#66d9ef">in&lt;/span> &lt;span style="color:#a6e22e">polygons&lt;/span> &lt;span style="color:#a6e22e">projection&lt;/span>)
+{
+&lt;span style="color:#75715e">// Find depth i.e, z of polygon
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#75715e">// at (x, y) corresponding to pixel (i, j)
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#a6e22e">z&lt;/span> &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#a6e22e">d&lt;/span>(&lt;span style="color:#a6e22e">i&lt;/span>, &lt;span style="color:#a6e22e">j&lt;/span>))
+{
+&lt;span style="color:#a6e22e">d&lt;/span>(&lt;span style="color:#a6e22e">i&lt;/span>, &lt;span style="color:#a6e22e">j&lt;/span>) &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">z&lt;/span>;
+&lt;span style="color:#a6e22e">c&lt;/span>(&lt;span style="color:#a6e22e">i&lt;/span>, &lt;span style="color:#a6e22e">j&lt;/span>) &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">color&lt;/span>;
+}
+}
+&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/details>
+&lt;h2 id="referencias">Referencias&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://www.davepagurek.com/blog/depth-of-field/">https://www.davepagurek.com/blog/depth-of-field/&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.davrous.com/2013/06/21/tutorial-part-4-learning-how-to-write-a-3d-software-engine-in-c-ts-or-js-rasterization-z-buffering/#code4js">https://www.davrous.com/2013/06/21/tutorial-part-4-learning-how-to-write-a-3d-software-engine-in-c-ts-or-js-rasterization-z-buffering/#code4js&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.cs.helsinki.fi/group/goa/render/piilopinnat/z_buffer.html">https://www.cs.helsinki.fi/group/goa/render/piilopinnat/z_buffer.html&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Dual Axis Illusion</title><link>https://visualcomputingg1.github.io/portafolio/post/Ilusion4/</link><pubDate>Mon, 08 Nov 2021 00:00:00 +0000</pubDate><guid>https://visualcomputingg1.github.io/portafolio/post/Ilusion4/</guid><description>&lt;h2 id="descripcion">Descripcion&lt;/h2>
 &lt;p>Esta forma giratoria parece desafiar la lógica al girar alrededor del eje horizontal y vertical, al mismo tiempo. Para hacer las cosas aún más confusas, la dirección de rotación también es ambigua.
 El autor, Frank Force, menciona que la idea de crear Dual Axis surgió en la mente de Force mientras experimentaba con las curvas de Lissajous (un sistema de ecuaciones que genera una acción armónica compleja). Force creía que, con la mezcla adecuada de concentración y dedicación, podría hacer que el sistema girara alrededor de cualquier eje.&lt;/p>
 &lt;h2 id="usabilidad">Usabilidad&lt;/h2>
